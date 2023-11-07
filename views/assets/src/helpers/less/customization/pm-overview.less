@@ -75,47 +75,52 @@ i {
 
 
 /*Project details page*/
+.pm-project-menu .menu-item a {
+	border: none;
+	color: var(--bb-body-text-color);
+	display: block;
+	padding: 0 0 8px;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: 1;
+}
+.pm-project-menu {
+	border: none;
+	padding: 0;
+	background: no-repeat;
+}
+.pm-project-menu .menu-item a span.logo {
+	display: none;
+}
+.pm-project-menu .menu-item {
+	padding-right: 30px;
+}
+.pm-project-menu .menu-item a.router-link-exact-active.router-link-active.active {
+	border-bottom: 2px solid var(--bb-primary-color);
+	font-weight: 500;
+	color: var(--bb-headings-color);
+	border-left: 0px;
+	border-right: 0px;
+	border-top: 0px;
+}
+.pm-project-menu .menu-item a.message {
+	background: no-repeat;
+}
+.pm-project-menu {
+	margin-bottom: 35px!important;
+}
+
 .pm-task-list-wrap{
 	.list-content-body .content .lists-content ul.pm-todolists, .list-content-body .content .task-field{
 		background: var(--bb-content-background-color);
 		padding: 20px 0px 20px!important;
-		margin-bottom: 20px!important;
+		margin-bottom: 30px!important;
 		border-radius: 10px;
 	}
 	.list-content-body .content {
 		border: none;
 	}
-	.pm-project-menu .menu-item a {
-		border: none;
-		color: var(--bb-body-text-color);
-		display: block;
-		padding: 0 0 8px;
-		text-decoration: none;
-		font-size: 14px;
-		line-height: 1;
-	}
-	.pm-project-menu {
-		border: none;
-		padding: 0;
-		background: no-repeat;
-	}
-	.pm-project-menu .menu-item a span.logo {
-		display: none;
-	}
-	.pm-project-menu .menu-item {
-		padding-right: 30px;
-	}
-	.pm-project-menu .menu-item a.router-link-exact-active.router-link-active.active {
-		border-bottom: 2px solid var(--bb-primary-color);
-		font-weight: 500;
-		color: var(--bb-headings-color);
-	}
-	.pm-project-menu .menu-item a.message {
-		background: no-repeat;
-	}
-	.pm-project-menu {
-		margin-bottom: 35px!important;
-	}
+	
 	.list-content-body .content .list-action-btn-wrap {
 		margin-bottom: 0px!important;
 		border-bottom-left-radius: 0px;
@@ -322,4 +327,9 @@ i {
 
 .pm-header-title-content .header-row-1 {
     position: relative;
+}
+.pm-task-form .input-area .input-action-wrap .task-create-form .fields .process-fields .task-users .user-images {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 5px);
 }
