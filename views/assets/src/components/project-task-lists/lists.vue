@@ -22,7 +22,7 @@
                             <div class="new-list-btn" >
                                 <a v-if="can_create_list  && !isArchivedPage" @click.prevent="showHideListForm('toggle')" href="#" class="list-action-group add-list">
                                     <span class="plus">+</span>
-                                    <span>{{ __('Add Task List', 'wedevs-project-manager') }}</span>
+                                    <span>{{ __('Add Section', 'wedevs-project-manager') }}</span>
                                 </a>
 
                                 <new-task-list-form v-if="is_active_list_form && can_create_list  && !isArchivedPage"></new-task-list-form>
@@ -54,10 +54,10 @@
                         </div>
                         <div :class="!isListFetch ? 'lists-wrap' : ''">
                             <div 
-                                class="task-field" 
+                                class="task-field new-task-form-field" 
                                 v-if="can_create_task && !isArchivedPage && parseInt(current_page_number)<=1"
                             >
-                                <new-task-form  
+                                <new-task-form-extended  
                                     :list="list" 
                                     :options="{
                                         focus: true
@@ -328,6 +328,7 @@
     import date_picker from './date-picker.vue';
     import Menu from '@components/common/menu.vue';
     import new_task_form from './new-task-form.vue';
+    import new_task_form_extended from './new-task-form-extended.vue';
 
     export default {
 
@@ -349,6 +350,7 @@
             'pm-datepickter': date_picker,
             'pm-menu': Menu,
             'new-task-form': new_task_form,
+            'new-task-form-extended': new_task_form_extended,
             'single-task': pm.SingleTask,
         },
 

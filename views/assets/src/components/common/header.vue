@@ -3,7 +3,9 @@
         <div class="header-row-1">
             <div class="project-title">
                 <span class="title">{{ project.title }}</span>
-                
+                <span class="icon-pm-down-arrow" @click.prevent="showHideTitleAction()"></span>
+            </div>
+            <div class="title-action-dropdown" v-if="showTitleAction">
                 <div class="settings first header-settings" v-if="is_manager()">
                     <pm-popper trigger="click" :options="popperOptions" :force-show="projectFormStatus">
                         <div class="pm-popper popper">
@@ -55,7 +57,6 @@
                         @click.prevent="updateDescriptionVisibility()"
                     />
                 </div>
-
             </div>
 
             <div class="project-search-box-container">
@@ -348,6 +349,7 @@
                     }
                 },
                 projectFormStatus : false,
+                showTitleAction : false
             }
 
         },
@@ -405,6 +407,11 @@
             updateDescriptionVisibility () {
                 let status = this.showDescription ? false : true;
                 this.$store.commit( 'updateShowDescription', status );
+            },
+
+            showHideTitleAction(){
+                this.showTitleAction = !this.showTitleAction;
+                console.log(this.showTitleAction);
             },
 
             windowActivity (el) {
