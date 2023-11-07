@@ -219,3 +219,32 @@ i {
 .pm-popper-ref.popper-ref.task-user-multiselect.bb-icon-user-avatar.bb-icon-l.pm-dark-hover {
     font-size: 22px;
 }
+
+
+/*Kanban View Page*/
+.kbc-kanboard .kbc-table-wrap .kbc-th-wrap .kbc-th {
+	border: none;
+	.kbc-section-background {
+		background-color: var(--bb-body-background-color);
+		box-shadow: none !important;
+		.kbc-section-header-wrap {
+			border: none;
+			.kbc-section-header {
+				padding-left: 5px;
+				.kbc-section-title span {
+					color: var(--bb-secondary-button-text-regular);
+				}
+			}
+		}
+		.kbc-tasks-wrap {
+			.kbc-kanboard-sortable-wrap {
+				.kbc-td-contents {
+					margin: 0px;
+					.kbc-content-inside {
+						border: none;
+					}
+				}
+			}
+		}
+	}
+}
