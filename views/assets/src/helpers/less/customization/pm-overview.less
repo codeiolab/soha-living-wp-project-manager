@@ -72,3 +72,115 @@ i {
 		}
     }
 }
+
+
+/*Project details page*/
+.pm-task-list-wrap{
+	.list-content-body .content .lists-content ul.pm-todolists, .list-content-body .content .task-field, .list-content-body .content .list-action-btn-wrap{
+		background: var(--bb-content-background-color);
+		border-radius: var(--bb-block-radius);
+		box-shadow: 0 6px 24px 0 rgba(18,43,70,0);
+		padding: 20px 0px 20px!important;
+		margin-bottom: 20px!important;
+	}
+	.list-content-body .content {
+		border: none;
+	}
+	.pm-project-menu .menu-item a {
+		border: none;
+		color: var(--bb-body-text-color);
+		display: block;
+		padding: 0 0 8px;
+		text-decoration: none;
+		font-size: 14px;
+		line-height: 1;
+	}
+	.pm-project-menu {
+		border: none;
+		padding: 0;
+		background: no-repeat;
+	}
+	.pm-project-menu .menu-item a span.logo {
+		display: none;
+	}
+	.pm-project-menu .menu-item {
+		padding-right: 30px;
+	}
+	.pm-project-menu .menu-item a.router-link-exact-active.router-link-active.active {
+		border-bottom: 2px solid var(--bb-primary-color);
+		font-weight: 500;
+		color: var(--bb-headings-color);
+	}
+	.pm-project-menu .menu-item a.message {
+		background: no-repeat;
+	}
+	.pm-project-menu {
+		margin-bottom: 35px!important;
+	}
+	.list-content-body .content .list-action-btn-wrap {
+		margin-bottom: 0px!important;
+		border-bottom-left-radius: 0px;
+		border-bottom-right-radius: 0px;
+		padding-left: 20px!important;
+    	padding-right: 20px!important;
+	}
+	
+	.list-content-body .content .task-field {
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
+		
+	}
+	.list-content-body .content .list-items .list-content {
+		border: none!important;
+		padding-top: 0;
+	}
+	.list-content-body .content .lists-content ul.pm-todolists .task-group {
+		margin-bottom: 0px!important;
+	}
+	.list-content-body .content .task-field {
+		padding: 20px!important;
+	}
+}
+
+.pm-project-menu .menu-item:first-child {
+    padding-left: 0;
+}
+
+.pm-task-list-wrap {
+	.list-content-body .content .list-action-btn-wrap .new-list-btn a{
+		background-color: var(--bb-primary-button-background-regular);
+		color: var(--bb-primary-button-text-regular);
+		border: 1px solid var(--bb-primary-button-border-regular);
+		justify-content: center;
+		font-size: 15px;
+		border-radius: var(--bb-button-radius);
+		min-height: 38px;
+		line-height: 38px;
+	}
+	.list-content-body .content .list-action-btn-wrap .new-list-btn a span.plus {
+		display: none;
+	}
+	.list-content-body .content .list-items .list-content .progress-bar {
+		border-radius: 0px;
+		height: 10px;
+	}
+	.list-content-body .content .list-items .list-content .progress-bar .completed {
+		border-radius: 0px;
+		height: 10px;
+		background-color: var(--bb-primary-button-background-regular);
+	}
+	.list-content-body .content .list-items .list-content .list-title-anchor {
+		color: var(--bb-headings-color);
+	}
+	.list-content-body .content .list-items .list-content .list-item-content .before-title .icon-pm-up-arrow:before, .pm-task-list-wrap .list-content-body .content .list-items .list-content .list-item-content .before-title .icon-pm-down-arrow:before {
+		color: var(--bb-alternate-text-color);
+	}
+}
+
+
+.pm-task-form .input-area .input-action-wrap .task-create-form {
+    margin-bottom: 0;
+}
+.recurrent-task{
+	margin-left: 10px;
+}

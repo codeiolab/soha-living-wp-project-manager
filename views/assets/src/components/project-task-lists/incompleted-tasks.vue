@@ -8,7 +8,8 @@
                         <span :class="is_manager (project) ? 'icon-pm-drag-drop' : 'blank-drag-drop'"></span>
                     </div> 
                     <div class="checkbox">
-                        <input v-if="!show_spinner" :disabled="can_complete_task(task)" v-model="task.status"  @change="doneUndone()" type="checkbox"  value="" name="" >
+                        <input id="incompleted-task" v-if="!show_spinner" :disabled="can_complete_task(task)" v-model="task.status"  @change="doneUndone()" type="checkbox"  value="" name="" >
+                        <label for="incompleted-task"></label>
                         <span class="pm-spinner" v-if="show_spinner"></span>
                     </div>
                 </div>
@@ -27,11 +28,14 @@
                     </div> 
 
                     <div v-if="taskTimeWrap(task)" :title="getTaskFullDate(task)" :class="'task-activity task-time '+taskDateWrap(task.due_date.date)">
-                        <span v-if="task.due_date.date" class="icon-pm-calendar"></span>
+                        <!-- <span v-if="task.due_date.date" class="icon-pm-calendar"></span> -->
                         <span v-if="task_start_field && task.due_date.date">{{ taskDateFormat( task.start_at.date ) }}</span>
                         <span v-if="isBetweenDate( task_start_field, task.start_at.date, task.due_date.date )">&ndash;</span>
                         <span>{{ taskDateFormat(task.due_date.date) }}</span>
                     </div>
+                    
+                    <div v-if="!taskTimeWrap(task)" @click.prevent="getSingleTask(task)"><i class="bb-icon-calendar bb-icon-l"></i></div>
+                    <div v-if="task.recurrent && task.recurrent > 0" class="recurrent-task"><i class="bb-icon-repeat bb-icon-l"></i></div>
 
                    <div class="task-activity" v-if="isPrivateTask(task.meta.privacy)">
                         <span  class="icon-pm-private"></span>

@@ -5,7 +5,8 @@
             <div class="todo-content">
                 <div class="task-left">
                     <div class="checkbox">
-                        <input v-if="!show_spinner" :disabled="can_complete_task(task)" v-model="task.status"  @change="doneUndone()" type="checkbox"  value="" name="" >
+                        <input id="completed-task" v-if="!show_spinner" :disabled="can_complete_task(task)" v-model="task.status"  @change="doneUndone()" type="checkbox"  value="" name="" >
+                        <label for="completed-task"></label>
                         <span class="pm-spinner" v-if="show_spinner"></span>
                     </div>
                 </div>
@@ -29,6 +30,7 @@
                         <span v-if="isBetweenDate( task_start_field, task.start_at.date, task.due_date.date )">&ndash;</span>
                         <span>{{ taskDateFormat(task.due_date.date) }}</span>
                     </div>
+                    <div v-if="task.recurrent && task.recurrent > 0" class="recurrent-task"><i class="bb-icon-repeat bb-icon-l"></i></div>
                    
                   <!--   <a  href="#" @click.prevent="getSingleTask(task)" class="task-activity comment">
                         <span class="icon-pm-comment"></span>
