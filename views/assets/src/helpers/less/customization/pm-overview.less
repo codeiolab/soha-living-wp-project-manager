@@ -23,9 +23,6 @@ i {
 	}
     .pm-header {
         .pm-header-left {
-            h2 {
-                font-size: 24px;
-            }
             #pm-create-project {
                 background-color: #ECECEC;
                 height: 38px;
@@ -71,6 +68,9 @@ i {
                     display: none;
                 }
             }
+        }
+        .pm-header-right {
+            margin-top: 5px;
         }
     }
     
@@ -213,24 +213,42 @@ i {
 			}
 
 			// project progress bar
-			.pm-project-progress {
+			.pm-project-progress-wrapper {
+                .clearfix();
 				display: block;
-				width: 100%;
+				// width: 100%;
 				margin: 10px 0;
-				background: #D7DEE2;
 				position: relative;
-				height: 3px;
-				border-radius: @theme-border-radius;
-				.pm-project-status {
-					position: absolute;
-					top: 0;
-					left: 0;
-					height: 3px;
-					z-index: 1;
-					width: 80%;
-					border-radius: @theme-border-radius;
-					background: @theme-color;
-				}
+                width: auto !important;
+                display: inherit !important;
+                min-width: 120px;
+                margin: 0 40px !important;
+                margin-right: 20px;
+                order: 2;
+                .pm-project-progress {
+                    margin: 0  !important;
+                    height: 10px;
+                    border-radius: 0;
+                    .pm-project-status {
+                        height: 10px;
+                        border-radius: 0;
+                        background-color: var(--pm-primary-color);
+                    }
+                }
+                .progress-bar {
+                    width: 80%;
+                    float: left;
+                    margin-top: 10px;
+                }
+
+                .progress-stats {
+                    width: 19%;
+                    float: left;
+                    padding-left: 10px;
+                    text-align: left;
+                    // min-width: 80px;
+                    margin-top: 3px;
+                }
 			}
 		}
 	}
@@ -245,7 +263,7 @@ i {
 			border: var(--pm-content-background-color) solid 2px;
 			border-radius: @theme-border-radius;
 			background: var(--pm-content-background-color);
-                height: 38px;
+                // height: 38px;
 			li {
 				float: left;
 				a {
@@ -281,4 +299,9 @@ i {
 			}
 		}
 	}
+}
+
+// Grid view
+.pm-page-wrapper .pm-project-grid .pm-project-item .pm-project-item-body .pm-project-progress-wrapper {
+    margin: 0 0px !important;
 }
