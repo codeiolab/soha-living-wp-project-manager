@@ -21,6 +21,67 @@ i {
 	form.pm-filter-selection {
 		margin: 0;
 	}
+    .pm-header {
+        .pm-header-left {
+            h2 {
+                font-size: 24px;
+            }
+            #pm-create-project {
+                background-color: #ECECEC;
+                height: 38px;
+                color: var(--pm-headings-color);
+                i { 
+                    &::before{
+                        font-size: 15px;
+                    }
+                }
+                padding-right: 25px;
+            }
+        }
+        .pm-project-search {
+            input  {
+                &.pm-search {
+                    display: inline-block;
+                    height: 38px !important;
+                    padding: 3px 8px;
+                    margin-bottom: 0 0 10px;
+                    font-size: 12px;
+                    line-height: 100%;
+                    color: #555555;
+                    vertical-align: middle;
+                    border: 1px solid #DDDDDD;
+                    -webkit-box-shadow: none;
+                    -moz-box-shadow: none;
+                    box-shadow: none;
+                    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+                    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+                    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+                    transition: border linear 0.2s, box-shadow linear 0.2s;
+
+                    background-repeat: no-repeat;
+                    background-size: 16px;
+                    // background-image: url('../images/search.svg');
+                    background-position: left 10px center;
+	                background-image : url('./../images/search.svg') ;
+                    padding-left: 35px;
+                }
+            }
+            button {
+                &.pm-submit-btn {
+                    display: none;
+                }
+            }
+        }
+    }
+    
+    .pm-panel-header {
+        .pm-filter-selection {
+            select {
+                height: 38px !important;
+            }
+        }
+        
+    }
     .pm-overview-container {
 		background: none;
 		border: none;
@@ -184,7 +245,7 @@ i {
 			border: var(--pm-content-background-color) solid 2px;
 			border-radius: @theme-border-radius;
 			background: var(--pm-content-background-color);
-
+                height: 38px;
 			li {
 				float: left;
 				a {
@@ -220,5 +281,4 @@ i {
 			}
 		}
 	}
-
 }
