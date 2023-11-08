@@ -69,18 +69,8 @@
                                     params: {
                                         project_id: project.id
                                     }}">
-                                    <i class="pm-icon logo icon-pm-task-list" aria-hidden="true"></i>
+                                    <i class="bb-icon-checkbox bb-icon-l" aria-hidden="true"></i>
                                     <span class="pm-tooltip-label">{{ parseInt( project.meta.data.total_tasks ) + tooltipLabels.tasks }}</span>
-                                </router-link>
-                            </li>
-                            <li class="pm-meta-discussion pm-has-tooltip">
-                                <router-link :to="{
-                                    name: 'discussions',
-                                    params: {
-                                        project_id: project.id
-                                    }}">
-                                    <i class="pm-icon flaticon-pm-discussions"></i>
-                                    <span class="pm-tooltip-label">{{ parseInt( project.meta.data.total_discussion_boards ) + tooltipLabels.discussions }}</span>
                                 </router-link>
                             </li>
                             <li class="pm-meta-list pm-has-tooltip">
@@ -89,8 +79,25 @@
                                     params: {
                                         project_id: project.id
                                     }}">
-                                    <i class="pm-icon flaticon-list"></i>
+                                    <i class="bb-icon-file-checklist bb-icon-l"></i>
                                     <span class="pm-tooltip-label">{{ parseInt( project.meta.data.total_task_lists ) + tooltipLabels.tasksLists }}</span>
+                                </router-link>
+                            </li>
+
+                            <li class="pm-meta-comment pm-has-tooltip">
+                                <a href="#">
+                                    <i class="bb-icon-comment bb-icon-l"></i>
+                                    <span class="pm-tooltip-label">{{ parseInt( project.meta.data.total_comments ) + tooltipLabels.comments }}</span>
+                                </a>
+                            </li>
+                            <li class="pm-meta-discussion pm-has-tooltip">
+                                <router-link :to="{
+                                    name: 'discussions',
+                                    params: {
+                                        project_id: project.id
+                                    }}">
+                                    <i class="bb-icon-user-friends-alt bb-icon-l"></i>
+                                    <span class="pm-tooltip-label">{{ parseInt( project.meta.data.total_discussion_boards ) + tooltipLabels.discussions }}</span>
                                 </router-link>
                             </li>
                             <li class="pm-meta-files pm-has-tooltip">
@@ -99,11 +106,11 @@
                                     params: {
                                         project_id: project.id
                                     }}">
-                                    <i class="pm-icon flaticon-document"></i>
+                                    <i class="bb-icon-folder-open bb-icon-l"></i>
                                     <span class="pm-tooltip-label">{{ parseInt( project.meta.data.total_files ) + tooltipLabels.files }}</span>
                                 </router-link>
                             </li>
-                            <li class="pm-meta-flag pm-has-tooltip">
+                            <!-- <li class="pm-meta-flag pm-has-tooltip">
                                 <router-link :to="{
                                     name: 'milestones',
                                     params: {
@@ -112,13 +119,7 @@
                                     <i class="pm-icon flaticon-flag"></i>
                                     <span class="pm-tooltip-label">{{ parseInt( project.meta.data.total_milestones ) + tooltipLabels.milestones }}</span>
                                 </router-link>
-                            </li>
-                            <li class="pm-meta-comment pm-has-tooltip">
-                                <a href="#">
-                                    <i class="pm-icon flaticon-comment-black-oval-bubble-shape"></i>
-                                    <span class="pm-tooltip-label">{{ parseInt( project.meta.data.total_comments ) + tooltipLabels.comments }}</span>
-                                </a>
-                            </li>
+                            </li> -->
                         </ul>
 
                         <!-- progress -->
