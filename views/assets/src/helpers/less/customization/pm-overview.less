@@ -224,15 +224,16 @@ i {
 /*Kanban View Page*/
 .kbc-kanboard .kbc-table-wrap .kbc-th-wrap .kbc-th {
 	border: none;
+	box-shadow: none;
 	.kbc-section-background {
 		background-color: var(--bb-body-background-color);
-		box-shadow: none !important;
 		.kbc-section-header-wrap {
 			border: none;
 			.kbc-section-header {
 				padding-left: 5px;
 				.kbc-section-title span {
 					color: var(--bb-secondary-button-text-regular);
+					font-weight: bold;
 				}
 			}
 		}
@@ -240,8 +241,30 @@ i {
 			.kbc-kanboard-sortable-wrap {
 				.kbc-td-contents {
 					margin: 0px;
+					border-radius: 5px;
 					.kbc-content-inside {
 						border: none;
+						border-radius: 5px;
+						padding-bottom: 10px;
+						.kbc-after-inside-content {
+							border: none;
+							background: none;
+							width: auto;
+							margin-left: auto;
+							text-align: end;
+							.kbc-comment-count i {
+								font-size: medium;
+							}
+						}
+						.kbc-after-task-title-wrap {
+							display: flex;
+							.cpm-assigned-user img {
+								border-radius: 50%;
+							}
+							.kbc-task-user-wrap {
+								width: auto;
+							}
+						}
 					}
 				}
 			}
