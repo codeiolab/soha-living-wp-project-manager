@@ -246,14 +246,19 @@ i {
 						border: none;
 						border-radius: 5px;
 						padding-bottom: 10px;
+						margin-bottom: 8px;
 						.kbc-after-inside-content {
 							border: none;
 							background: none;
 							width: auto;
 							margin-left: auto;
 							text-align: end;
+							.kbc-comment-count span {
+								color: var(--bb-alternate-text-color);
+							}
 							.kbc-comment-count i {
 								font-size: medium;
+								color: var(--bb-alternate-text-color);
 							}
 						}
 						.kbc-after-task-title-wrap {
@@ -264,6 +269,11 @@ i {
 							.kbc-task-user-wrap {
 								width: auto;
 							}
+						}
+						.kbc-after-task-title-wrap .kbc-task-date-wrap span {
+							color: var(--bb-alternate-text-color);
+							font-weight: 300;
+							font-size: small;
 						}
 					}
 				}
