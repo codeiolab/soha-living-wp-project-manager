@@ -82,7 +82,7 @@
                                                 </div>
                                                 <div class="after-title">
                                                     <div class="view-single-list"  :title="__( 'Single List', 'wedevs-project-manager' )">
-                                                        <span @click.prevent="goToSigleList( inboxList )" class="icon-pm-eye"></span>
+                                                        <span @click.prevent="goToSigleList( inboxList )" class="bb-icon-eye bb-icon-l"></span>
                                                     </div>
                                                     <div class="list-title-action progress-bar">
                                                         <div :style="getProgressStyle( inboxList )" class="bar completed"></div>

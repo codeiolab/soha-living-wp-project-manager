@@ -1,11 +1,11 @@
 
 /*Project task list page*/
 .pm-project-menu .menu-item a {
-	border: none;
+	border: none!important;
 	color: var(--bb-body-text-color);
 	display: block;
 	padding: 0 0 8px;
-	text-decoration: none;
+	text-decoration: none!important;
 	font-size: 14px;
 	line-height: 1;
 }
@@ -23,8 +23,8 @@
 .pm-project-menu .menu-item {
 	padding-right: 30px;
 }
-.pm-project-menu .menu-item a.router-link-exact-active.router-link-active.active {
-	border-bottom: 2px solid var(--bb-primary-color);
+.pm-project-menu .menu-item .router-link-active.active {
+	border-bottom: 2px solid var(--bb-primary-color)!important;
 	font-weight: 500;
 	color: var(--bb-headings-color);
 	border-left: 0px;
@@ -165,7 +165,7 @@
     border-bottom: 0px;
 }
 .pm-task-list-wrap .list-content-body .content .list-items .list-content .list-item-content .after-title .view-single-list {
-    display: none;
+    font-size: 22px;
 }
 .task-group .pm-todo-wrap .todo-content .task-action-wrap .task-activity {
     width: 130px;
