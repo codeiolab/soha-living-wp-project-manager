@@ -1,7 +1,7 @@
 <template>
     <div class="pm-task-comment-wrap">
 
-        <div class="discuss-text pm-h2">{{ __( 'Discussion', 'wedevs-project-manager') }}</div>
+        <div class="discuss-text pm-h2">{{ __( 'Comments', 'wedevs-project-manager') }}</div>
 
         <div  class="comment-content">
             <ul class="comment-content-ul" v-if="comments.length">

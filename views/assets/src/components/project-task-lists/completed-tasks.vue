@@ -5,7 +5,8 @@
             <div class="todo-content">
                 <div class="task-left">
                     <div class="checkbox">
-                        <input v-if="!show_spinner" :disabled="can_complete_task(task)" v-model="task.status"  @change="doneUndone()" type="checkbox"  value="" name="" >
+                        <input id="completed-task" v-if="!show_spinner" :disabled="can_complete_task(task)" v-model="task.status"  @change="doneUndone()" type="checkbox"  value="" name="" >
+                        <label for="completed-task"></label>
                         <span class="pm-spinner" v-if="show_spinner"></span>
                     </div>
                 </div>
@@ -21,14 +22,16 @@
                         <a class="image-anchor" v-for="user in task.assignees.data" :key="user.id" :href="myTaskRedirect(user.id)" :title="user.display_name">
                             <img class="image" :src="user.avatar_url" :alt="user.display_name" height="48" width="48">
                         </a>
-                    </div> 
+                    </div>
+                    <div v-else class="no-task-assigne task-activity assigned-users-content"></div>
 
-                    <div v-if="taskTimeWrap(task)" :class="'task-activity '+taskDateWrap(task.due_date.date)">
-                        <span class="icon-pm-calendar"></span>
+                    <div v-if="taskTimeWrap(task)" :class="'task-activity task-time '+taskDateWrap(task.due_date.date)">
+                        <!-- <span class="icon-pm-calendar"></span> -->
                         <span v-if="task_start_field">{{ taskDateFormat( task.start_at.date ) }}</span>
                         <span v-if="isBetweenDate( task_start_field, task.start_at.date, task.due_date.date )">&ndash;</span>
                         <span>{{ taskDateFormat(task.due_date.date) }}</span>
                     </div>
+                    <div v-if="task.recurrent && task.recurrent > 0" class="recurrent-task"><i class="bb-icon-repeat bb-icon-l"></i></div>
                    
                   <!--   <a  href="#" @click.prevent="getSingleTask(task)" class="task-activity comment">
                         <span class="icon-pm-comment"></span>

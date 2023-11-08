@@ -21,7 +21,8 @@
 
 		    <template v-if="!customTemplate" slot="input" scop="date" style="min-width: 350px;">
 		    	<div class="pm-daterange-view">
-		    		<i class="glyphicon glyphicon-calendar fa fa-calendar item"></i>
+		    		<!-- <i class="glyphicon glyphicon-calendar fa fa-calendar item"></i> -->
+					<i class="bb-icon-calendar bb-icon-l item"></i>
 		    		<span class="item date-text">{{ getDate( date ) }}</span>
 		    	</div>
 		      

@@ -48,16 +48,16 @@
             <pm-do-action hook="pm_project_form" :actionData="project"></pm-do-action>
 
             <div class="pm-form-item item project-notify">
-                <label>
-                    <input type="checkbox" v-model="project_notify" name="project_notify" id="project-notify" value="yes" />
+                <input type="checkbox" v-model="project_notify" name="project_notify" id="project-notify" value="yes" />
+                <label for="project-notify">
                     {{ __( 'Notify Co-Workers', 'wedevs-project-manager') }}
                 </label>
             </div>
 
             <div class="submit">
+                <a @click.prevent="closeForm()" class="pm-button pm-secondary project-cancel" href="#">{{ __( 'Close', 'wedevs-project-manager') }}</a>
                 <input v-if="project.id" type="submit" name="update_project" id="update_project" class="pm-button pm-primary" :value="update_project">
                 <input v-if="!project.id" type="submit" name="add_project" id="add_project" class="pm-button pm-primary" :value="add_new_project">
-                <a @click.prevent="closeForm()" class="pm-button pm-secondary project-cancel" href="#">{{ __( 'Close', 'wedevs-project-manager') }}</a>
                 <span v-show="show_spinner" class="pm-loading"></span>
 
             </div>
