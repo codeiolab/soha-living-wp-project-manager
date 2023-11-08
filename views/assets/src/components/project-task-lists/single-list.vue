@@ -2,8 +2,7 @@
     <div class="pm-wrap pm pm-front-end">
         <pm-header></pm-header>
         <pm-menu></pm-menu>
-
-        <div v-if="!loading" class="single-list-content">
+        <div class="single-list-back-wrapper">
             <router-link  
                 class="list-back-btn pm-button pm-secondary"
                 :to="{ 
@@ -14,64 +13,68 @@
                 }">
 
                 <span class="icon-pm-left-arrow"></span>
-                <span class="title">{{ __( 'Back to Task Lists', 'wedevs-project-manager') }}</span>
+                <span class="title">{{ __( 'Back to Section List', 'wedevs-project-manager') }}</span>
             </router-link>
+        </div>
+        <div v-if="!loading" class="single-list-content">
+            <div class="single-list-content-inner">
+                <div class="title-wrp">
+                    <div class="title">
+                        <span v-html="list.title"></span>
+                    </div>
+                    <div class="list-actions">
+                        <div class="list-title-action progress-bar">
+                            <div :style="getProgressStyle( list )" class="bar completed"></div>
+                        </div>
+                        <div class="list-title-action task-count">
+                            <span>{{ list.meta.total_complete_tasks }}</span>/<span>{{ getTotalTask(list.meta.total_complete_tasks, list.meta.total_incomplete_tasks) }}</span>
+                        </div>
+                        <div v-if="!isInbox(list.id) && PM_Vars.is_pro" class="list-title-action">
+                            <span  v-if="!parseInt(list.meta.privacy) && user_can('view_private_task')" class="icon-pm-unlock"></span>
+                            <span  v-if="parseInt(list.meta.privacy) && user_can('view_private_task')" class="icon-pm-private"></span>
+                        </div>
+                    </div>
 
-            <div class="title-wrp">
-                <div class="title">
-                    <span v-html="list.title"></span>
+                    <div v-if="!isInbox(list.id) && can_edit_task_list(list)" :data-list_id="list.id" @click="showHideMoreMenu(list)" class="more-menu list-more-menu">
+
+                        <span  class="icon-pm-more-options"></span>
+                        <div v-if="list.moreMenu && !list.edit_mode"  class="more-menu-ul-wrap">
+                            <ul>
+                                <li class="first-li" v-if="!isArchivedList(list)">
+                                    <a @click.prevent="showEditForm(list)" class="li-a" href="#">
+                                        <span class="icon-pm-pencil"></span>
+                                        <span>{{ __('Edit', 'wedevs-project-manager') }}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a @click.prevent="deleteSelfList( list )" class="li-a" href="#">
+                                        <span class="icon-pm-delete"></span>
+                                        <span>{{ __('Delete', 'wedevs-project-manager') }}</span>
+                                    </a>
+                                </li>
+                                <pm-do-action hook="list-action-menu" :actionData="list"></pm-do-action>
+
+                            </ul>
+                        </div>
+
+                        <div v-if="list.edit_mode" class="list-update-warp">
+                            <new-task-list-form section="lists" :list="list" ></new-task-list-form>
+                        </div>
+                    </div>
                 </div>
-                <div class="list-actions">
-                    <div class="list-title-action progress-bar">
-                        <div :style="getProgressStyle( list )" class="bar completed"></div>
-                    </div>
-                    <div class="list-title-action task-count">
-                        <span>{{ list.meta.total_complete_tasks }}</span>/<span>{{ getTotalTask(list.meta.total_complete_tasks, list.meta.total_incomplete_tasks) }}</span>
-                    </div>
-                    <div v-if="!isInbox(list.id) && PM_Vars.is_pro" class="list-title-action">
-                        <span  v-if="!parseInt(list.meta.privacy) && user_can('view_private_task')" class="icon-pm-unlock"></span>
-                        <span  v-if="parseInt(list.meta.privacy) && user_can('view_private_task')" class="icon-pm-private"></span>
-                    </div>
+
+                <div class="description">
+                    <span v-html="list.description"></span>
                 </div>
 
-                <div v-if="!isInbox(list.id) && can_edit_task_list(list)" :data-list_id="list.id" @click="showHideMoreMenu(list)" class="more-menu list-more-menu">
-
-                    <span  class="icon-pm-more-options"></span>
-                    <div v-if="list.moreMenu && !list.edit_mode"  class="more-menu-ul-wrap">
-                        <ul>
-                            <li class="first-li" v-if="!isArchivedList(list)">
-                                <a @click.prevent="showEditForm(list)" class="li-a" href="#">
-                                    <span class="icon-pm-pencil"></span>
-                                    <span>{{ __('Edit', 'wedevs-project-manager') }}</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a @click.prevent="deleteSelfList( list )" class="li-a" href="#">
-                                    <span class="icon-pm-delete"></span>
-                                    <span>{{ __('Delete', 'wedevs-project-manager') }}</span>
-                                </a>
-                            </li>
-                            <pm-do-action hook="list-action-menu" :actionData="list"></pm-do-action>
-
-                        </ul>
-                    </div>
-
-                    <div v-if="list.edit_mode" class="list-update-warp">
-                        <new-task-list-form section="lists" :list="list" ></new-task-list-form>
-                    </div>
-                </div>
+                <list-tasks :list="list"></list-tasks>
             </div>
-
-            <div class="description">
-                <span v-html="list.description"></span>
-            </div>
-
-            <list-tasks :list="list"></list-tasks>
+        </div>
+        <div class="single-task-list-comments">
             <div class="list-comments-wrap">
-                <div class="discuss-text">{{ __( 'Discussion', 'wedevs-project-manager') }}</div>
+                <div class="discuss-text">{{ __( 'Comments', 'wedevs-project-manager') }}</div>
                 <list-comments :comments="comments" :commentable="list"></list-comments>
             </div>
-            
         </div>
 
         <div v-if="parseInt(listTaskId) && parseInt(listProjectId)">
