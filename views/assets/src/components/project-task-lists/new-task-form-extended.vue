@@ -16,7 +16,7 @@
                         @submit.prevent="taskFormAction()" 
                         action=""
                     >
-                        <div class="fields">
+                        <div class="fields add-new-task-form-field">
                             
                             <input 
                                 v-model="task.title"  
@@ -30,7 +30,7 @@
                                 @keyup.self.enter="taskFormAction()"
                             >
 
-                            <div class="action-icons process-fields" v-if="focusField">
+                            <div class="action-icons process-fields">
                                 <div class="process-content-1">
                                     <div class="task-users process-field">
                                         <pm-popper trigger="click" :options="popperOptions()">
@@ -72,7 +72,7 @@
                                                 slot="reference" 
                                                 v-pm-tooltip 
                                                 :title="__('Assign user', 'wedevs-project-manager')"  
-                                                class="pm-popper-ref popper-ref task-user-multiselect icon-pm-single-user pm-dark-hover"
+                                                class="pm-popper-ref popper-ref task-user-multiselect bb-icon-user-avatar bb-icon-l pm-dark-hover"
                                                 @click.prevent="focusAssignUserInput()"
                                             >
 
@@ -97,26 +97,6 @@
                                     </div>
 
                                     <div class="task-date process-field task-date-field-wrap">
-                                        <!-- <pm-date-range-picker 
-                                            @apply="onChangeDate"
-                                            @cancel="dateRangePickerClose"
-                                            :contentClass="isActiveDate()"
-                                            :options="{
-                                                input: false,
-                                                autoOpen: false,
-                                                autoApply: false,
-                                                opens: 'right',
-                                                singleDatePicker: task_start_field ? false : true,
-                                                showDropdowns: true,
-                                                startDate: getStartDate(),
-                                                endDate: getEndDate(),
-                                                locale: {
-                                                    cancelLabel: __( 'Clear', 'wedevs-project-manager' )
-                                                }
-                                            }">
-                                            
-                                        </pm-date-range-picker> -->
-
                                         <pm-vue2-daterange-picker
                                             :opens="'right'"
                                             :singleDatePicker="task_start_field ? false : true"
@@ -126,127 +106,66 @@
                                             :autoApply="true"
                                             @update="onChangeDate"
                                         />
-                                           
-                                      
-             
-                                        <!-- <div class="date-field">
-                                            <span v-if="task_start_field && task.due_date.date">{{ taskDateFormat(task.start_at.date) }}</span>
-                                            <span v-if="isBetweenDate( task_start_field, task.start_at.date, task.due_date.date )">&ndash;</span>
-                                            <span>{{ taskDateFormat(task.due_date.date) }}</span>
-                                        </div> -->
                                     </div>
+                                    <div v-if="taskTypeField" class="task-type-wrap process-field">
+                                        <pm-popper trigger="click" :options="popperOptions()">
+                                            <div class="pm-popper popper">
+                                                <div class="pm-multiselect-top">
+                                                    <div class="pm-multiselect-content">
+                                                        <div v-if="taskTypeLoading">
+                                                            <span>{{ __( 'Loading', 'wedevs-project-manager' ) }}...</span>
+                                                        </div>
 
-<div v-if="taskTypeField" class="task-type-wrap process-field">
-    <pm-popper trigger="click" :options="popperOptions()">
-        <div class="pm-popper popper">
-            <div class="pm-multiselect-top">
-                <div class="pm-multiselect-content">
-                    <div v-if="taskTypeLoading">
-                        <span>{{ __( 'Loading', 'wedevs-project-manager' ) }}...</span>
-                    </div>
+                                                        <div v-if="!taskTypeLoading && !hasTaskType">
+                                                            <span>{{ __( 'Task type not found!', 'wedevs-project-manager' ) }}</span>
+                                                        </div>
 
-                    <div v-if="!taskTypeLoading && !hasTaskType">
-                        <span>{{ __( 'Task type not found!', 'wedevs-project-manager' ) }}</span>
-                    </div>
+                                                        <pm-task-type-dropdown 
+                                                            @onChange="onChangeTaskType"
+                                                            :selectedTaskTypes="task.type"
+                                                            :allowEmpty="true"
+                                                            @afterGetTaskTypes="afterGetTaskTypes"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                    <pm-task-type-dropdown 
-                        @onChange="onChangeTaskType"
-                        :selectedTaskTypes="task.type"
-                        :allowEmpty="true"
-                        @afterGetTaskTypes="afterGetTaskTypes"
-                    />
-                </div>
-            </div>
-        </div>
-
-        <div 
-            slot="reference" 
-            v-pm-tooltip 
-            :title="__('Task Type', 'wedevs-project-manager')"  
-            class="pm-popper-ref popper-ref task-type-btn pm-dark-hover"
-        >
-            <i>
-                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="330.34px" height="330.34px" viewBox="0 0 330.34 330.34" style="enable-background:new 0 0 330.34 330.34;" xml:space="preserve"> <g> <g> <path d="M306.756,165.93c-1.54-4.211-6.201-6.371-10.389-4.826L220.482,188.9l61.341-61.293c1.519-1.511,2.367-3.576,2.367-5.729 c0-2.144-0.849-4.206-2.367-5.73l-47.45-47.477c-3.164-3.164-8.29-3.164-11.454,0l-60.162,60.12l33.742-80.04 c0.833-1.98,0.844-4.211,0.042-6.199c-0.812-1.988-2.378-3.575-4.361-4.406l-61.844-26.077c-4.127-1.759-8.878,0.201-10.613,4.316 L86.4,95.434V11.27c0-4.472-3.628-8.1-8.1-8.1H8.1c-4.472,0-8.1,3.628-8.1,8.1V319.07c0,4.472,3.628,8.1,8.1,8.1h70.2 c0.989,0,1.928-0.206,2.803-0.527c0.876,0.316,1.788,0.527,2.737,0.527c0.931,0,1.869-0.158,2.787-0.496l238.396-87.338 c4.197-1.54,6.359-6.191,4.819-10.389L306.756,165.93z M47.883,310.97H16.2v-13.362v-8.786v-6.012v-20.846V19.37h54v114.491 v20.849v20.854v45.727v11.443v11.222v0.232v50.182v8.427v2.579v0.453v5.142h-1.464h-4.854H47.883z M178.427,49.924 l-46.045,109.224l-8.343,19.786l-8.345,19.786l-14.244,33.786l-8.604,20.403L86.4,268.218v-12.946v-17.249v-10.024v-11.454 v-11.443v-67.962l45.106-106.99L178.427,49.924z M113.643,245.289l8.604-20.402l23.828-56.526l82.561-82.506l36.002,36.018 l-80.335,80.286l-27.253,27.231L93.63,292.766L113.643,245.289z M107.552,301.757l85.672-85.614l101.108-37.04l17.513,47.809 L107.552,301.757z"/> <path d="M43.2,277.668c-0.356,0-0.691,0.079-1.036,0.101c-3.035,0.274-5.719,1.672-7.642,3.817 c-1.268,1.414-2.204,3.133-2.668,5.042c-0.211,0.886-0.356,1.793-0.356,2.742c0,2.573,0.854,4.925,2.257,6.855 c2.127,2.921,5.55,4.841,9.445,4.841c0.566,0,1.107-0.084,1.653-0.169c2.336-0.332,4.442-1.345,6.117-2.848 c0.809-0.728,1.523-1.55,2.106-2.479c0.96-1.519,1.545-3.28,1.711-5.168c0.032-0.348,0.103-0.686,0.103-1.039 C54.902,282.904,49.663,277.668,43.2,277.668z"/> </g> </g> </svg>
-            </i>    
-            <div 
-                class="type-title" 
-                v-if="taskType.title"
-            >
-                <span>{{ taskType.title }}</span>
-            </div>
-        </div>
-    </pm-popper>
-</div>
+                                            <div 
+                                                slot="reference" 
+                                                v-pm-tooltip 
+                                                :title="__('Task Type', 'wedevs-project-manager')"  
+                                                class="pm-popper-ref popper-ref task-type-btn pm-dark-hover"
+                                            >
+                                                <i>
+                                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="330.34px" height="330.34px" viewBox="0 0 330.34 330.34" style="enable-background:new 0 0 330.34 330.34;" xml:space="preserve"> <g> <g> <path d="M306.756,165.93c-1.54-4.211-6.201-6.371-10.389-4.826L220.482,188.9l61.341-61.293c1.519-1.511,2.367-3.576,2.367-5.729 c0-2.144-0.849-4.206-2.367-5.73l-47.45-47.477c-3.164-3.164-8.29-3.164-11.454,0l-60.162,60.12l33.742-80.04 c0.833-1.98,0.844-4.211,0.042-6.199c-0.812-1.988-2.378-3.575-4.361-4.406l-61.844-26.077c-4.127-1.759-8.878,0.201-10.613,4.316 L86.4,95.434V11.27c0-4.472-3.628-8.1-8.1-8.1H8.1c-4.472,0-8.1,3.628-8.1,8.1V319.07c0,4.472,3.628,8.1,8.1,8.1h70.2 c0.989,0,1.928-0.206,2.803-0.527c0.876,0.316,1.788,0.527,2.737,0.527c0.931,0,1.869-0.158,2.787-0.496l238.396-87.338 c4.197-1.54,6.359-6.191,4.819-10.389L306.756,165.93z M47.883,310.97H16.2v-13.362v-8.786v-6.012v-20.846V19.37h54v114.491 v20.849v20.854v45.727v11.443v11.222v0.232v50.182v8.427v2.579v0.453v5.142h-1.464h-4.854H47.883z M178.427,49.924 l-46.045,109.224l-8.343,19.786l-8.345,19.786l-14.244,33.786l-8.604,20.403L86.4,268.218v-12.946v-17.249v-10.024v-11.454 v-11.443v-67.962l45.106-106.99L178.427,49.924z M113.643,245.289l8.604-20.402l23.828-56.526l82.561-82.506l36.002,36.018 l-80.335,80.286l-27.253,27.231L93.63,292.766L113.643,245.289z M107.552,301.757l85.672-85.614l101.108-37.04l17.513,47.809 L107.552,301.757z"/> <path d="M43.2,277.668c-0.356,0-0.691,0.079-1.036,0.101c-3.035,0.274-5.719,1.672-7.642,3.817 c-1.268,1.414-2.204,3.133-2.668,5.042c-0.211,0.886-0.356,1.793-0.356,2.742c0,2.573,0.854,4.925,2.257,6.855 c2.127,2.921,5.55,4.841,9.445,4.841c0.566,0,1.107-0.084,1.653-0.169c2.336-0.332,4.442-1.345,6.117-2.848 c0.809-0.728,1.523-1.55,2.106-2.479c0.96-1.519,1.545-3.28,1.711-5.168c0.032-0.348,0.103-0.686,0.103-1.039 C54.902,282.904,49.663,277.668,43.2,277.668z"/> </g> </g> </svg>
+                                                </i>    
+                                                <div 
+                                                    class="type-title" 
+                                                    v-if="taskType.title"
+                                                >
+                                                    <span>{{ taskType.title }}</span>
+                                                </div>
+                                            </div>
+                                        </pm-popper>
+                                    </div>
 
                                     <pm-do-slot v-if="estimationField" hook="estimation_task_tools" :actionData="taskTools"></pm-do-slot>
                                     <pm-do-slot hook="task_tools" :actionData="taskTools"></pm-do-slot>
                                 </div>
-                                
-
-                                <div class="task-submit-wrap process-content-2">
-                                    <a href="#" class="pm-button pm-secondary cancel-button" @click.prevent="closeForm()">
-                                        <i><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 241.171 241.171" style="enable-background:new 0 0 241.171 241.171;" xml:space="preserve"><path id="Close" d="M138.138,120.754l99.118-98.576c4.752-4.704,4.752-12.319,0-17.011c-4.74-4.704-12.439-4.704-17.179,0 l-99.033,98.492L21.095,3.699c-4.74-4.752-12.439-4.752-17.179,0c-4.74,4.764-4.74,12.475,0,17.227l99.876,99.888L3.555,220.497 c-4.74,4.704-4.74,12.319,0,17.011c4.74,4.704,12.439,4.704,17.179,0l100.152-99.599l99.551,99.563 c4.74,4.752,12.439,4.752,17.179,0c4.74-4.764,4.74-12.475,0-17.227L138.138,120.754z"/></svg></i>
-                                    </a>
-                                    <!-- <input  
-                                        :style="show_spinner ? 'color: #1A9ED4' : ''" 
-                                        :class="focusField ? 'pm-button submit pm-primary' : 'pm-button submit pm-secondary'" 
-                                        :value="__( 'Add New', 'wedevs-project-manager' )"
-                                        type="submit" 
-                                    > -->
-                                    <pm-button
-                                        :label="isEmpty(task.id) 
-                                            ? __( 'Add New', 'wedevs-project-manager') 
-                                            : __( 'Update', 'wedevs-project-manager')"
-                                        isPrimary
-                                        :spinner="show_spinner"
-                                        type="submit"
-                                        @onClick="submitTask()"
-                                    />
-                                    <!-- <span v-if="show_spinner" class="pm-spinner"></span> -->
-                                </div>
                             </div>
                         </div>
-                        
-
-                      
-
-                       <!--  <div v-if="datePicker" class="subtask-date new-task-caledar-wrap">
-                            <pm-content-datepicker  
-                                v-if="task_start_field"
-                                v-model="task.start_at.date"  
-                                class="pm-date-picker-from pm-inline-date-picker-from"
-                                :callback="callBackDatePickerForm">
-                                
-                            </pm-content-datepicker>
-                            <pm-content-datepicker 
-                                v-model="task.due_date.date"  
-                                class="pm-date-picker-to pm-inline-date-picker-to"
-                                :callback="callBackDatePickerTo">
-                                    
-                            </pm-content-datepicker>
-
-                        </div> -->
-
-                        <!-- <div v-if="descriptionField" class="new-task-description">
-                            <text-editor  :editor_id="'new-task-description-editor-' + list.id" :content="content"></text-editor>
-                        </div> -->
-                        
+                        <pm-button
+                            :label="isEmpty(task.id) 
+                                ? __( 'Add New Task', 'wedevs-project-manager') 
+                                : __( 'Update', 'wedevs-project-manager')"
+                            isPrimary
+                            :spinner="show_spinner"
+                            type="submit"
+                            @onClick="submitTask()"
+                        />
                     </form>
-
                 </pm-click-wrap>
             </div>
-            <!-- <div>
-                <div v-if="task.title"> {{ lengthtitle - task.title.length }} {{ __( 'characters remaining', 'wedevs-project-manager' ) }}</div>
-                <div>{{ task.assignees.data }}</div>
-                
-                <div>
-                    <span class="icon-pm-calendar"></span>
-                    <span>{{ task.start_at.date }}</span>
-                    <span>&ndash;</span>
-                    <span>{{ task.due_date.date }}</span>
-                </div>
-                
-            </div> -->
         </div>
     </div>
 

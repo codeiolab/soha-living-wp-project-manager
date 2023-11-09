@@ -7,27 +7,31 @@
         <ul v-if="isFetchProjects" class="pm-tabs pm-list-inline">
             <li class="pm-tab-item pm-item-active">
                 <router-link :to="{name: 'project_lists'}">
-                    <i class="pm-icon icon-pm-task-list"></i>
+                    <!-- <i class=" pm-icon icon-pm-task-list"></i> -->
                     <span>{{ __( 'Active', 'wedevs-project-manager') }}</span>
                 </router-link>
+                <span v-if="activated" class="count">{{ __( `${activated}`, 'wedevs-project-manager') }}</span>
             </li>
             <li class="pm-tab-item pm-item-completed">
                 <router-link :to="{name: 'completed_projects'}" class="pm-archive-project">
-                    <i class="pm-icon flaticon-check-mark"></i>
+                    <!-- <i class="pm-icon flaticon-check-mark"></i> -->
                     <span>{{ __( 'Completed', 'wedevs-project-manager') }} </span> 
                 </router-link>
+                <span v-if="completed" class="count">{{ __( `${completed}`, 'wedevs-project-manager') }}</span>
             </li>
             <li class="pm-tab-item pm-item-favourite">
                 <router-link :to="{name: 'favourite_projects'}">
-                    <i class="pm-icon flaticon-bookmark-star"></i>
+                    <!-- <i class="pm-icon flaticon-bookmark-star"></i> -->
                     <span>{{ __( 'Favourite', 'wedevs-project-manager') }}</span>
                 </router-link>
+                <span v-if="favourite" class="count">{{ __( `${favourite}`, 'wedevs-project-manager') }}</span>
             </li>
             <li class="pm-tab-item pm-item-all">
                 <router-link :to="{name: 'all_projects'}">
-                    <i class="pm-icon flaticon-menu-1"></i>
+                    <!-- <i class="pm-icon flaticon-menu-1"></i> -->
                     <span>{{ __( 'All', 'wedevs-project-manager') }}</span>
                 </router-link>
+                <span v-if="allof" class="count">{{ __( `${allof}`, 'wedevs-project-manager') }}</span>
             </li>
             <!-- <li class="pm-tab-item pm-item-archive">
                 <a href="#">
@@ -50,34 +54,20 @@
         },
         mixins: [Mixins],
         computed: {
-            headerMenuToggler () {
-                if(this.headerMenuCollapsed) {
-                    return 'pm-col-6-sm pm-tabs-container pm-tabs-opened';
-                }else {
-                    return 'pm-col-6-sm pm-tabs-container';
-                }
-            },
-            headerMenuTriggerClass(){
-                 if(this.headerMenuCollapsed) {
-                    return 'pm-icon flaticon-cross';
-                }else {
-                    return 'pm-icon flaticon-menu';
-                }
-            },
             activated () {
-                return this.$store.state.projects_meta.total_incomplete;
+                const prs = this.$store.state.projects.filter((item) => item.status === '0');
+                return prs.length;
             },
             completed () {
-                return this.$store.state.projects_meta.total_complete;
+                return this.$store.state.projects.length - this.activated;
             },
             allof () {
-                var incomplete = this.$store.state.projects_meta.total_incomplete; 
-                var complete   = this.$store.state.projects_meta.total_complete;
-
-                return incomplete + complete;
+                 return  this.$store.state.projects.length;
             },
             favourite () {
-                return this.$store.state.projects_meta.total_favourite;
+                return this.$store.state.projects
+                    .filter((item) => item.favourite)
+                    .length;
             }
         },
         methods: {

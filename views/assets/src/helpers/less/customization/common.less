@@ -47,16 +47,16 @@
 }
 
 /*Checkbox design*/
-.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .pm-make-privacy.pm-make-task-privacy, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item.project-notify{
+.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .pm-make-privacy.pm-make-task-privacy, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item.project-notify, .subtask-checkbox{
     position: relative;
     color: var(--bb-body-text-color);
     font-size: 14px;
 }
-.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .pm-make-privacy.pm-make-task-privacy input[type="checkbox"], .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item.project-notify input[type="checkbox"], .task-group .pm-todo-wrap .todo-content .checkbox input[type="checkbox"]{
+.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .pm-make-privacy.pm-make-task-privacy input[type="checkbox"], .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item.project-notify input[type="checkbox"], .task-group .pm-todo-wrap .todo-content .checkbox input[type="checkbox"], .subtask-checkbox input[type="checkbox"]{
     opacity: 0;
     position: absolute;
 }
-.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .pm-make-privacy.pm-make-task-privacy input[type="checkbox"]+label:before, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item.project-notify input[type="checkbox"]+label:before, .task-group .pm-todo-wrap .todo-content .checkbox input[type="checkbox"]+label:before {
+.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .pm-make-privacy.pm-make-task-privacy input[type="checkbox"]+label:before, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item.project-notify input[type="checkbox"]+label:before, .task-group .pm-todo-wrap .todo-content .checkbox input[type="checkbox"]+label:before, .subtask-checkbox input[type="checkbox"]+label:before {
     content: "";
     margin-right: 10px;
     display: inline-block;
@@ -73,12 +73,12 @@
     top: 0;
 }
 
-.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .pm-make-privacy.pm-make-task-privacy input[type="checkbox"]:checked+label:before, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item.project-notify input[type="checkbox"]:checked+label:before, .task-group .pm-todo-wrap .todo-content .checkbox input[type="checkbox"]:checked+label:before {
+.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .pm-make-privacy.pm-make-task-privacy input[type="checkbox"]:checked+label:before, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item.project-notify input[type="checkbox"]:checked+label:before, .task-group .pm-todo-wrap .todo-content .checkbox input[type="checkbox"]:checked+label:before, .subtask-checkbox input[type="checkbox"]:checked+label:before {
     background: var(--bb-primary-color);
     border-color: var(--bb-primary-color);
 }
 
-.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .pm-make-privacy.pm-make-task-privacy input[type="checkbox"]:checked+label:after, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item.project-notify input[type="checkbox"]:checked+label:after, .task-group .pm-todo-wrap .todo-content .checkbox input[type="checkbox"]:checked+label:after {
+.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .pm-make-privacy.pm-make-task-privacy input[type="checkbox"]:checked+label:after, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item.project-notify input[type="checkbox"]:checked+label:after, .task-group .pm-todo-wrap .todo-content .checkbox input[type="checkbox"]:checked+label:after, .subtask-checkbox input[type="checkbox"]:checked+label:after {
     content: "\e876";
     position: absolute;
     font-family: "bb-icons";
@@ -114,4 +114,7 @@
 
 .task-group .pm-todo-wrap .todo-content .bb-icon-calendar {
     font-size: 18px;
+}
+.popup-body .subtask-form .input-area .meta-items {
+    display: none!important;
 }

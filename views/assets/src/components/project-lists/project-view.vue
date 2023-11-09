@@ -3,13 +3,13 @@
     <ul class="pm-view-style-group pm-list-inline">
         <li>
             <a v-bind:class="{'active': activeClass('grid_view') }" href="#" :title="grid_view" @click.prevent="setcookie('grid_view')"> 
-                <i class="pm-icon flaticon-menu-1"></i>
+                <i class="bb-icon-grid-large bb-icon-l"></i>
                 <span>{{ __( 'Grid View', 'wedevs-project-manager') }}</span>
             </a>
         </li>
         <li>
             <a v-bind:class="{'active': activeClass('list_view') }" href="#" :title="list_view" @click.prevent="setcookie('list_view')">  
-                <i class="pm-icon flaticon-list" ></i>   
+                <i class="bb-icon-align-justify bb-icon-l" ></i>   
                 <span>{{ __( 'List View', 'wedevs-project-manager') }}</span>
             </a>
         </li>
