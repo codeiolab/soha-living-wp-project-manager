@@ -5,8 +5,7 @@
         <div v-for="milestone in upComingMileStones" class="pm-milestone late">
             <div class="milestone-detail ">
                 <h3 class="milestone-head">
-                    <span v-html="milestone.title"></span>
-                    <br>
+                   <div><span v-html="milestone.title"></span></div>
                     <span class="time-left">
                         ({{ humanDate(milestone) }} {{ __( 'left -', 'wedevs-project-manager') }} 
                         <time :datetime="momentFormat(milestone)" :title="momentFormat(milestone)">
@@ -24,7 +23,7 @@
             </div>
 
             <transition name="slide" v-if="can_edit_milestone(milestone)">
-                <div class="pm-milestone-edit-form pm-col-6 pm-sm-col-12" style="float:none;margin-left:20px;" v-if="milestone.edit_mode" >
+                <div class="pm-milestone-edit-form" style="float:none;" v-if="milestone.edit_mode" >
                     <new-milestone-form section="milestones" :milestone="milestone"></new-milestone-form>
                 </div>
             </transition>
