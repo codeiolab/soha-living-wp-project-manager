@@ -14,17 +14,14 @@
                 </div>
             </div>
         </div>
-        
+        <div class="pm-milestone-link clearfix" v-if="user_can('create_milestone')">
+            <a @click.prevent="showHideMilestoneForm('toggle')" id="pm-add-milestone" href="#" class="pm-btn pm-btn-blue pm-plus-white pm-margin-bottom add-milestone pm-btn-uppercase"> <i aria-hidden="true" class="bb-icon-plus bb-icon-l"></i>{{ __( 'Add Milestone', 'wedevs-project-manager') }}</a>
+        </div>
         <div class="pm-milestone pm-milestone-container" v-if="isFetchMilestone">
             <div class="pm-blank-template milestone" v-if="blankTemplate">
                 <div class="pm-content" >
-                    <h3 class="pm-page-title">  {{ __( 'Milestones', 'wedevs-project-manager') }}</h3>
-                    <p>
-                        {{ __( 'Create a lifecycle of your projects using milestones. Time mark the different stages of your project with multiple milestones and also it will help the assigned people to aim for a date to complete the project according to those steps.', 'wedevs-project-manager') }}
-                    </p>
-                        <div class="pm-milestone-link clearfix" v-if="user_can('create_milestone')">
-                            <a @click.prevent="showHideMilestoneForm('toggle')" id="pm-add-milestone" href="#" class="pm-btn pm-btn-blue pm-plus-white pm-margin-bottom add-milestone pm-btn-uppercase">{{ __( 'Add Milestone', 'wedevs-project-manager') }}</a>
-                        </div>
+                    <h3>  {{ __( 'Create a new milestones', 'wedevs-project-manager') }}</h3>
+                        
 
                         <transition name="slide" v-if="can_create_milestone">
 
@@ -35,7 +32,7 @@
                             </div>
                         </transition>
 
-                    <div class="pm-list-content">
+                    <!-- <div class="pm-list-content">
                         <h3 class="pm-page-title pm-why-for"> {{ __( 'When to use Milestones?', 'wedevs-project-manager') }}</h3>
 
                         <ul class="pm-list">
@@ -43,31 +40,26 @@
                             <li>{{ __( 'To divide a project into several development-time phases.', 'wedevs-project-manager')}} </li>
                             <li>{{ __( 'To coordinate projects and assigned persons timely.', 'wedevs-project-manager') }} </li>
                         </ul>
-                    </div>
+                    </div> -->
 
                 </div>
 
             </div>
             <div v-if="!blankTemplate">
                 <div class="pm-row pm-milestone-details" >
-                    <div class="pm-milestone-link clearfix" v-if="can_create_milestone">
-                        <a @click.prevent="showHideMilestoneForm('toggle')"  id="pm-add-milestone" href="#" class="pm-btn pm-btn-blue pm-plus-white pm-margin-bottom add-milestone pm-btn-uppercase">{{ __( 'Add Milestone', 'wedevs-project-manager') }}</a>
-                    </div>
-
+                    <h3>  {{ __( 'Create a new milestones', 'wedevs-project-manager') }}</h3>
                      <transition name="slide" v-if="can_create_milestone">
-                        <div  class="pm-new-milestone-form pm-col-6 pm-sm-col-12" style="float:none;" v-if="is_milestone_form_active">
+                        <div  class="pm-new-milestone-form" style="float:none;" v-if="is_milestone_form_active">
                             <div class="pm-milestone-form-wrap">
                                 <new-milestone-form section="milestones" :milestone="{}"></new-milestone-form>
                             </div>
 
                         </div>
                     </transition>
-
-                    <late-milestones></late-milestones>
-                    <upcomming-milestone></upcomming-milestone>
-                    <completed-milestones></completed-milestones>
-                    
                 </div>
+                <late-milestones></late-milestones>
+                <upcomming-milestone></upcomming-milestone>
+                <completed-milestones></completed-milestones>
 
                 <pm-pagination 
                     :total_pages="total_milestone_page" 
@@ -115,7 +107,9 @@
                 current_page_number: 1,
             }
         },
-
+        mounted: function () {
+            return this.$store.state.projectMilestones.is_milestone_form_active = true;
+        },
         watch: {
             '$route' (route) {
                 this.getSelfMilestones(this);

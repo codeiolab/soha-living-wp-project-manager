@@ -556,6 +556,9 @@
 .daterangepicker td.active, .daterangepicker td.active:hover {
     background: var(--bb-primary-button-background-regular);
 }
+.pm .milestone .pm-content{
+    background: none!important;
+}
 
 /*Single task list page*/
 #wedevs-project-manager .single-list-content {
@@ -625,33 +628,33 @@
 }
 
 /*Discussion*/
-.pm-discussion.pm-discussion-container {
+.pm-discussion.pm-discussion-container, .pm-milestone.pm-milestone-container {
     background: transparent;
     border: none;
     padding: 0;
 }
-.pm-discussion.pm-discussion-container .discussion {
+.pm-discussion.pm-discussion-container .discussion, .pm-milestone.pm-milestone-container .milestone, .pm-milestone.pm-milestone-container .pm-milestone-details  {
     background: #fff;
     border: none;
     border-radius: 10px;
-    padding: 35px;
+    padding: 35px!important;
     margin-top: 20px!important;
 }
-.pm-discussion.pm-discussion-container .pm-new-message-form {
+.pm-discussion.pm-discussion-container .pm-new-message-form, .pm-milestone.pm-milestone-container .pm-milestone-form-wrap {
     margin: 0;
     box-shadow: none;
     border: none;
     padding: 0;
 }
 
-.pm-discussion.pm-discussion-container form.pm-form.pm-message-form {
+.pm-discussion.pm-discussion-container form.pm-form.pm-message-form, .pm-milestone.pm-milestone-container .pm-new-milestone-form {
     margin: 0;
 }
 
-.discussion .pm-message-form-wrap {
+.discussion .pm-message-form-wrap, .milestone .pm-milestone-form-wrap {
     padding: 0;
 }
-.pm-message-form .notify-users {
+.pm-message-form .notify-users, .pm-message-form .notify-users {
     border: none!important;
     box-shadow: none!important;
     margin-bottom: 15px!important;
@@ -830,7 +833,7 @@ ul.pm-user-list li {
 #pm-signle-message .pm-entry-detail div p:last-child {
     margin-bottom: 0!important;
 }
-.comment-lists-wrapper ul.pm-comment-wrap li.pm-comment {
+.comment-lists-wrapper ul.pm-comment-wrap li.pm-comment, .pm-milestone-data .pm-milestone {
     border: none;
     padding: 30px!important;
     background: #fff;
@@ -844,6 +847,55 @@ ul.pm-user-list li {
 
 .comment-lists-wrapper ul.pm-comment-wrap li:last-child {
     margin-bottom: 0px;
+}
+.pm .milestone .pm-content, .pm-milestone .pm-milestone-form{
+    max-width: inherit!important;
+    width: 100%;
+}
+.milestone .pm-content h3 {
+    text-align: left;
+}
+
+.milestone .pm-content .pm-new-milestone-form .item, .pm-milestone-form .item {
+    margin-bottom: 15px;
+}
+.pm-milestone-data {
+    margin-top: 50px;
+}
+
+.pm-milestone-data h2.group-title {
+    margin-bottom: 20px!important;
+}
+.pm-milestone-data .pm-milestone h3.milestone-head {
+    margin: 0!important;
+}
+
+.pm-milestone-data .pm-milestone h3.milestone-head span.time-left {
+    font-size: 13px;
+    color: #a0a0a0;
+}
+.pm-milestone-data .pm-milestone h3.milestone-head ul.pm-links.pm-right {
+    display: flex;
+    align-items: center;
+}
+
+.pm-milestone-data .pm-milestone h3.milestone-head ul.pm-links.pm-right a {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    color: #a0a0a0;
+}
+.pm-milestone-edit-form {
+    margin-top: 30px;
+}
+
+.pm-milestone-edit-form form.pm-milestone-form {
+    margin-bottom: 0;
+}
+
+.pm-milestone-edit-form .submit {
+    padding-bottom: 0;
 }
 
 /*Activity Module*/
@@ -862,7 +914,7 @@ ul.pm-user-list li {
     padding: 0!important;
     background: transparent!important;
     border: none;
-    margin-bottom: 3px!important;
+    margin-bottom: 5px!important;
 }
 
 .pm .pm-activity-list li.pm-row .pm-activity-body ul li .date {
@@ -891,4 +943,7 @@ ul.pm-user-list li {
 
 .pm .pm-activity-list li.pm-row .pm-activity-body .pm-col-8 {
     width: 45%;
+}
+.pm .pm-front-end .button{
+    text-shadow: none!important;
 }
