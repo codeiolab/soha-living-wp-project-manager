@@ -1,19 +1,16 @@
 <template>
     <div class="notify-users" v-if="assain_users.length">    
         <h2 class="pm-box-title"> 
-            {{ __( 'Notify users', 'wedevs-project-manager') }}               
-            <label class="pm-small-title" for="select-all"> 
-                <input type="checkbox" v-model="select_all" id="select-all" @change="select_all_user()" class="pm-toggle-checkbox" > 
-                {{ __( 'Select all', 'wedevs-project-manager') }}
-            </label>
+            {{ __( 'Notify users', 'wedevs-project-manager') }}
         </h2>
         <ul class="pm-user-list">
-            
-            <li v-for="user in assain_users" :key="user.id">
-                <label>
-                    <input type="checkbox" ref="users" v-model="notify_users"   :value="user.id"> 
-                    {{user.display_name}}
-                </label>
+            <li class="pm-checkbox">
+                <input type="checkbox" v-model="select_all" id="select-all" @change="select_all_user()" class="pm-toggle-checkbox" > 
+                <label for="select-all"> {{ __( 'Select all', 'wedevs-project-manager') }}</label>
+            </li>
+            <li class="pm-checkbox" v-for="user in assain_users" :key="user.id">
+                <input type="checkbox" ref="users" v-model="notify_users" :id="'assain_user-' + user.id"   :value="user.id"> 
+                <label :for="'assain_user-' + user.id">{{user.display_name}}</label>
             </li>
             <div class="clearfix"></div>
         </ul>
