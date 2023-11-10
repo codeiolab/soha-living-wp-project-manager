@@ -337,7 +337,6 @@ i {
 	}
 }
 
-
 .pm-task-form {
 	.input-area .input-action-wrap .task-create-form {
 		margin-bottom: 0;
@@ -380,6 +379,68 @@ i {
     font-size: 22px;
 }
 
+// Files view page
+.pm-files.pm-files-container-pro {
+	border: none;
+	.pm-pro-file-container {
+		.pm-previous-back ul {
+			background: none;
+			li:first-child a {
+				font-size: x-large;
+			}
+			li a {
+				color: var(--pm-secondary-button-text-regular) !important;
+			}
+		}
+		div ul.pm-folders-list li div.ff-content {
+			border-radius: 10px;
+			.image-content {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				i {
+					font-size: xxx-large;
+					color: var(--pm-secondary-button-text-regular) !important;
+				}
+			}
+		}
+		.file-from-wrapper {
+			.metabox-holder .postbox {
+				border: none;
+				border-radius: 10px;
+				padding: 30px;
+				.hndle {
+					border-bottom: none;
+				}
+				.inside {
+					.pm-attachment-area {
+						border-radius: 10px;
+					}
+					form#pm-doc-form {
+						box-shadow: none;
+					}
+					form#pm-link-form {
+						box-shadow: none;
+					}
+				}
+			}
+			.modal-container .modal-body {
+				display: flex;
+			}
+		}
+	}
+}
+
+.modal-container .modal-body .folder-image i {
+	font-size: xxx-large;
+	color: var(--pm-secondary-button-text-regular) !important;
+}
+
+.pm-modal-conetnt .doc_contents div h3 span a {
+	display: flex !important;
+	align-items: center !important;
+}
 
 /*Kanban View Page*/
 .kbc-kanboard {
