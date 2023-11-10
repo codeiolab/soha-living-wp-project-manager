@@ -15,7 +15,7 @@
         <div class="submit">
             <input v-if="!milestone.id" type="submit" name="create_milestone" id="create_milestone" class="button-primary" :value="add_milestone">
             <input v-if="milestone.id" type="submit" name="update_milestone" id="update_milestone" class="button-primary" :value="update_milestone">
-            <a @click.prevent="showHideMilestoneForm(false, milestone)" class="button milestone-cancel">{{  __( 'Cancel', 'wedevs-project-manager') }}</a>
+            <a @click.prevent="showHideMilestoneForm(false, milestone)" class="milestone-cancel button-secondary">{{  __( 'Cancel', 'wedevs-project-manager') }}</a>
             <span v-show="show_spinner" class="pm-spinner"></span>
         </div>
         

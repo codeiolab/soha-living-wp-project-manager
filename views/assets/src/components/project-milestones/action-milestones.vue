@@ -1,20 +1,27 @@
 <template>
  <ul class="pm-links pm-right" v-if="can_edit_milestone(milestone)">
     <li>
-        <a @click.prevent="showHideMilestoneForm('toggle', milestone)" class="pm-icon-edit dashicons dashicons-edit " :title="edit_milestone"></a>
+        <a @click.prevent="showHideMilestoneForm('toggle', milestone)" class="pm-icon-edit" :title="edit_milestone">
+            <i class="bb-icon-edit bb-icon-l"></i>
+        </a>
     </li>
     <li>
-        <a @click.prevent="deleteSelfMilestone()" class="pm-milestone-delete dashicons dashicons-trash" :title="delete_milestone" href="#"></a>
+        <a @click.prevent="deleteSelfMilestone()" class="pm-milestone-delete" :title="delete_milestone" href="#">
+            <i class="bb-icon-trash bb-icon-l"></i>
+        </a>
     </li>
 
     <li>
-        <a v-if="is_complete" @click.prevent="milestoneMarkUndone(milestone)" class="pm-milestone-open dashicons dashicons-update" :title="mark_as_incomplete" href="#"></a>
+        <a v-if="is_complete" @click.prevent="milestoneMarkUndone(milestone)" class="pm-milestone-open" :title="mark_as_incomplete" href="#"><i class="bb-icon-repeat bb-icon-l"></i></a>
     </li>
     <li>
-        <a v-if="!is_complete" @click.prevent="milestoneMarkDone(milestone)" class="pm-milestone-complete dashicons dashicons-yes" :title="mark_as_complete" href="#"></a>
+        <a v-if="!is_complete" @click.prevent="milestoneMarkDone(milestone)" class="pm-milestone-complete" :title="mark_as_complete" href="#"><i class="bb-icon-check bb-icon-l"></i></a>
     </li>
     <li>
-        <a href="#" @click.prevent="milestoneLockUnlock(milestone)" v-if="PM_Vars.is_pro && user_can('view_private_milestone')"><span :class="privateClass( milestone.meta.privacy )"></span></a>
+        <a href="#" @click.prevent="milestoneLockUnlock(milestone)" v-if="PM_Vars.is_pro && user_can('view_private_milestone')">
+            <i class="bb-icon-lock-alt-open bb-icon-l" v-if="milestone.meta.privacy == 0"></i>
+            <i class="bb-icon-lock-alt bb-icon-l" v-else></i>
+        </a>
     </li>
 </ul>
 </template>
