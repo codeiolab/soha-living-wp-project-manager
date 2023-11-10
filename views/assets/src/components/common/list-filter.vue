@@ -75,11 +75,11 @@
                 </div>
                 <div class="action">
                     <span v-if="taskFilterSpinner" class="pm-spinner"></span>
-                    <a @click.prevent="clearFilter()" class="pm-button pm-secondary" href="#">{{__('Clear Filter', 'wedevs-project-manager')  }}</a>
-                    <a @click.prevent="cancel()" class="pm-button pm-secondary" href="#">{{__('Cancel', 'wedevs-project-manager')  }}</a>
+                    <a @click.prevent="clearFilter()" class="button-secondary" href="#">{{__('Clear Filter', 'wedevs-project-manager')  }}</a>
+                    <a @click.prevent="cancel()" class="button-secondary" href="#">{{__('Cancel', 'wedevs-project-manager')  }}</a>
                     <input  
                         type="submit" 
-                        :class=" runningQuery ? 'submit-btn-color pm-button pm-primary filter-submit-btn' : 'pm-button pm-primary filter-submit-btn'" 
+                        :class=" runningQuery ? 'submit-btn-color button-primary filter-submit-btn' : 'button-primary filter-submit-btn'" 
                         name="submit_todo" 
                         :value="__('Apply Filter', 'wedevs-project-manager')">
                     
