@@ -131,19 +131,19 @@
 }
 
 
-.task-group .more-task-wrap .group-action-btn.show-completed-task .anchor-btn, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a, .single-list-back-wrapper a.list-back-btn, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel, .comment-action-chunk a.pm-button.pm-secondary{
-	background: var(--bb-secondary-button-background-regular);
-	color: var(--bb-secondary-button-text-regular);
-	border: 1px solid var(--bb-secondary-button-border-regular);
-	padding: 8px 16px;
-	font-size: 12px;
-	border-radius: var(--bb-button-radius);
-	transition: .3s;
+.task-group .more-task-wrap .group-action-btn.show-completed-task .anchor-btn, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a, .single-list-back-wrapper a.list-back-btn, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel, .comment-action-chunk a.pm-button.pm-secondary, .pm-btn.pm-plus-white, .button-secondary{
+	background: var(--bb-secondary-button-background-regular)!important;
+	color: var(--bb-secondary-button-text-regular)!important;
+	border: 1px solid var(--bb-secondary-button-border-regular)!important;
+	padding: 8px 16px!important;
+	font-size: 12px!important;
+	border-radius: var(--bb-button-radius)!important;
+	transition: .3s!important;
 }
-.task-group .more-task-wrap .group-action-btn.show-completed-task .anchor-btn:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a:hover, .single-list-back-wrapper a.list-back-btn:hover, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel:hover, .comment-action-chunk a.pm-button.pm-secondary:hover {
-	background-color: var(--bb-secondary-button-background-hover);
-	color: var(--bb-secondary-button-text-hover);
-	border: 1px solid var(--bb-secondary-button-border-hover);
+.task-group .more-task-wrap .group-action-btn.show-completed-task .anchor-btn:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a:hover, .single-list-back-wrapper a.list-back-btn:hover, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel:hover, .comment-action-chunk a.pm-button.pm-secondary:hover, .pm-btn.pm-plus-white:hover, .button-secondary:hover {
+	background-color: var(--bb-secondary-button-background-hover)!important;
+	color: var(--bb-secondary-button-text-hover)!important;
+	border: 1px solid var(--bb-secondary-button-border-hover)!important;
 }
 .pm-task-list-wrap .list-content-body{
 	background: transparent;
@@ -556,6 +556,9 @@
 .daterangepicker td.active, .daterangepicker td.active:hover {
     background: var(--bb-primary-button-background-regular);
 }
+.pm .milestone .pm-content{
+    background: none!important;
+}
 
 /*Single task list page*/
 #wedevs-project-manager .single-list-content {
@@ -622,4 +625,325 @@
 .comment-action-chunk input.pm-primary {
     font-size: 14px!important;
     line-height: 1!important;
+}
+
+/*Discussion*/
+.pm-discussion.pm-discussion-container, .pm-milestone.pm-milestone-container {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+.pm-discussion.pm-discussion-container .discussion, .pm-milestone.pm-milestone-container .milestone, .pm-milestone.pm-milestone-container .pm-milestone-details  {
+    background: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 35px!important;
+    margin-top: 20px!important;
+}
+.pm-discussion.pm-discussion-container .pm-new-message-form, .pm-milestone.pm-milestone-container .pm-milestone-form-wrap {
+    margin: 0;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+}
+
+.pm-discussion.pm-discussion-container form.pm-form.pm-message-form, .pm-milestone.pm-milestone-container .pm-new-milestone-form {
+    margin: 0;
+}
+
+.discussion .pm-message-form-wrap, .milestone .pm-milestone-form-wrap {
+    padding: 0;
+}
+.pm-message-form .notify-users, .pm-message-form .notify-users {
+    border: none!important;
+    box-shadow: none!important;
+    margin-bottom: 15px!important;
+}
+
+.pm .notify-users .pm-user-list {
+    padding: 0!important;
+}
+
+.notify-users h2.pm-box-title {
+    margin-bottom: 0!important;
+    padding-left: 0!important;
+    border: none;
+    margin-top: 15px!important;
+}
+
+.pm-message-form .pm-attachment-area {
+    border: none!important;
+    margin-left: -1px!important;
+}
+.pm .mce-tinymce {
+    border-radius: var(--bb-input-radius);
+}
+
+div.mce-toolbar-grp {
+    border-top-left-radius: var(--bb-input-radius)!important;
+    border-top-right-radius: var(--bb-input-radius)!important;
+}
+
+div.mce-statusbar {
+    border-bottom-left-radius: var(--bb-input-radius);
+    border-bottom-right-radius: var(--bb-input-radius);
+}
+ul.pm-user-list li {
+    margin-bottom: 7px;
+}
+.pm .pm-message-page .pm-message-list ul, .pm .pm-message-page .pm-message-list li {
+    overflow: hidden!important;
+}
+.pm .pm-message-page .pm-message-list ul {
+    border: none!important;
+    background: transparent!important;
+}
+
+.pm .pm-message-page .pm-message-list li {
+    border: none!important;
+    padding: 20px!important;
+    border-radius: 10px!important;
+    background: #fff!important;
+    margin-bottom: 15px!important;
+}
+
+.pm .pm-message-page .pm-message-list {
+    margin: 0!important;
+    border: none!important;
+    box-shadow: none!important;
+    background: transparent!important;
+}
+
+.pm .pm-message-page {
+    background: transparent!important;
+}
+
+.pm .pm-message-page .pm-message-list li:hover {
+    border-left: 0px!important;
+    background: #fff!important;
+}
+.pm .pm-message-page .pm-message-list li .comment-count {
+    background: none!important;
+    padding-left: 0!important;
+}
+
+.pm .pm-message-page .pm-message-list li .pm-messge-link {
+    margin-bottom: 0!important;
+    margin-right: 0!important;
+}
+
+.pm .pm-message-page .pm-message-list li .pm-messge-link .pm-messege-wrapper {
+    margin: 0;
+}
+
+.pm .pm-message-page .pm-message-list li .comment-count i, .pm .pm-message-page .pm-message-list li .comment-count a {
+    color: #a0a0a0;
+}
+
+.pm .pm-message-page .pm-message-list li .comment-count i {
+    position: relative;
+    top: 3px;
+}
+.pm .pm-message-page .pm-message-list , li .pm-message-action i, .pm .pm-message-page .pm-message-list , li .pm-message-action span.dashicons {
+    color: #a0a0a0;
+}
+.pm-message-form-wrap .submit {
+    padding-bottom: 0;
+}
+.pm .pm-message-page .pm-message-list .pm-user-list li {
+    padding: 1px!important;
+    margin-bottom: 7px!important;
+}
+.pm .pm-message-page .pm-message-list .pm-box-title {
+    color: var(--bb-headings-color)!important;
+    background: none!important;
+}
+.pm-comment-area.pm-box-shadow {
+    box-shadow: none;
+    border: none;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.pm-comment-area.pm-box-shadow h3 {
+    display: none;
+}
+
+.pm .pm-comment-form-wrap {
+    padding: 0;
+    border: none;
+}
+
+.pm-comment-form-wrap .pm-comment-form {
+    padding: 0;
+}
+
+.pm-individual-discussion .pm-comment-form .message {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 20px!important;
+}
+
+.pm-comment-form .notify-users, .pm-message-form .notify-users {
+    border: none!important;
+    box-shadow: none!important;
+}
+
+.pm-comment-form .pm-attachment-area {
+    border: none!important;
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+}
+
+.pm-individual-discussion .pm-comment-form h2.pm-box-title {
+    margin-top: 0!important;
+}
+.pm-comment-form .pm-attachment-area {
+    margin-left: -5px;
+}
+.pm-single .pm-entry-detail {
+    padding: 30px!important;
+    border: none!important;
+    border-radius: 10px!important;
+    box-shadow: none!important;
+}
+
+.pm-single {
+    border: none!important;
+    box-shadow: none!important;
+    background: transparent!important;
+}
+#pm-signle-message h3.pm-box-title {
+    padding: 0;
+    border: none;
+    font-size: 18px;
+    color: #000;
+}
+
+#pm-signle-message .pm-small-title {
+    margin-top: 4px!important;
+}
+.pm-individual-discussion form {
+    margin-bottom: 0;
+}
+
+.pm-individual-discussion .submit {
+    padding-bottom: 0!important;
+}
+#pm-signle-message .pm-entry-detail div p:last-child {
+    margin-bottom: 0!important;
+}
+.comment-lists-wrapper ul.pm-comment-wrap li.pm-comment, .pm-milestone-data .pm-milestone {
+    border: none;
+    padding: 30px!important;
+    background: #fff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.comment-lists-wrapper ul.pm-comment-wrap {
+    border: none;
+}
+
+.comment-lists-wrapper ul.pm-comment-wrap li:last-child {
+    margin-bottom: 0px;
+}
+.pm .milestone .pm-content, .pm-milestone .pm-milestone-form{
+    max-width: inherit!important;
+    width: 100%;
+}
+.milestone .pm-content h3 {
+    text-align: left;
+}
+
+.milestone .pm-content .pm-new-milestone-form .item, .pm-milestone-form .item {
+    margin-bottom: 15px;
+}
+.pm-milestone-data {
+    margin-top: 50px;
+}
+
+.pm-milestone-data h2.group-title {
+    margin-bottom: 20px!important;
+}
+.pm-milestone-data .pm-milestone h3.milestone-head {
+    margin: 0!important;
+}
+
+.pm-milestone-data .pm-milestone h3.milestone-head span.time-left {
+    font-size: 13px;
+    color: #a0a0a0;
+}
+.pm-milestone-data .pm-milestone h3.milestone-head ul.pm-links.pm-right {
+    display: flex;
+    align-items: center;
+}
+
+.pm-milestone-data .pm-milestone h3.milestone-head ul.pm-links.pm-right a {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    color: #a0a0a0;
+}
+.pm-milestone-edit-form {
+    margin-top: 30px;
+}
+
+.pm-milestone-edit-form form.pm-milestone-form {
+    margin-bottom: 0;
+}
+
+.pm-milestone-edit-form .submit {
+    padding-bottom: 0;
+}
+
+/*Activity Module*/
+.pm-activities.pm-activities-container {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+.pm .pm-activity-list li.pm-row .pm-activity-date, .pm .pm-activity-list li.pm-row .pm-activity-body {
+    box-shadow: none!important;
+    border: none!important;
+}
+
+.pm .pm-activity-list li.pm-row .pm-activity-body ul li {
+    overflow: hidden;
+    padding: 0!important;
+    background: transparent!important;
+    border: none;
+    margin-bottom: 5px!important;
+}
+
+.pm .pm-activity-list li.pm-row .pm-activity-body ul li .date {
+    background: none!important;
+    padding: 0!important;
+}
+
+.pm .pm-activity-list li.pm-row .pm-activity-body ul li .date i {
+    font-size: 13px;
+    font-style: normal;
+}
+
+.pm .pm-activity-list li.pm-row .pm-activity-body ul li:last-child {
+    margin-bottom: 0px;
+}
+
+.pm .pm-activity-list li.pm-row {
+    background: #fff;
+    padding: 30px!important;
+    border-radius: 10px;
+}
+
+.pm .pm-activity-list li.pm-row .pm-activity-date {
+    min-width: 100px!important;
+}
+
+.pm .pm-activity-list li.pm-row .pm-activity-body .pm-col-8 {
+    width: 45%;
+}
+.pm .pm-front-end .button{
+    text-shadow: none!important;
 }

@@ -17,25 +17,27 @@
         </div>
 
         <div class="pm-individual-discussion" v-else>
-            <div v-if="discuss" id="pm-signle-message"> 
-                <div class="pm-single">
-                    <h3 class="pm-box-title">
-                        <span v-html="discuss.title"></span>         
-                        <span class="pm-right pm-edit-link">
-                            <span v-if="can_edit_message(discuss)" >
-                                <a @click.prevent="showHideDiscussForm('toggle', discuss)" href="#"  class="pm-msg-edit dashicons dashicons-edit"></a>
-                            </span>
-                            
-                            <span v-if="PM_Vars.is_pro && user_can('view_private_message')" @click.prevent="lockUnlock(discuss)"  :class="privateClass( discuss )"></span>
+            <div v-if="discuss" id="pm-signle-message">
+                <h3 class="pm-box-title">
+                    <span v-html="discuss.title"></span>         
+                    <!-- <span class="pm-right pm-edit-link">
+                        <span v-if="can_edit_message(discuss)" >
+                            <a @click.prevent="showHideDiscussForm('toggle', discuss)" href="#"  class="pm-msg-edit dashicons dashicons-edit">
+                                <i class="bb-icon-edit bb-icon-l"></i>
+                            </a>
                         </span>
+                        
+                        <span v-if="PM_Vars.is_pro && user_can('view_private_message')" @click.prevent="lockUnlock(discuss)"  :class="privateClass( discuss )"></span>
+                    </span> -->
 
-                        <div class="pm-small-title">
-                            {{ __( 'By', 'wedevs-project-manager') }}
-                            <a :href="myTaskRedirect(discuss.creator.data.id)" :title="discuss.creator.data.display_name">
-                                {{ discuss.creator.data.display_name }}
-                            </a> {{ __( 'on', 'wedevs-project-manager') }} {{ taskDateFormat(discuss.created_at.date) }}, {{ dateTimeFormat(discuss.created_at.datetime) }}            
-                        </div>
-                    </h3>
+                    <div class="pm-small-title">
+                        {{ __( 'By', 'wedevs-project-manager') }}
+                        <a :href="myTaskRedirect(discuss.creator.data.id)" :title="discuss.creator.data.display_name">
+                            {{ discuss.creator.data.display_name }}
+                        </a> {{ __( 'on', 'wedevs-project-manager') }} {{ taskDateFormat(discuss.created_at.date) }}, {{ dateTimeFormat(discuss.created_at.datetime) }}            
+                    </div>
+                </h3>
+                <div class="pm-single">
                     <div class="pm-entry-detail">
                         <div v-html="discuss.description"></div>
 
@@ -51,11 +53,8 @@
                     </transition>
                 </div>
             </div>
-
-            <div v-if="discuss" class="pm-comment-area pm-box-shadow">
-                <h3> {{ discuss.meta.total_comments }} {{ __( 'Comments', 'wedevs-project-manager') }}</h3>
-                <ul class="pm-comment-wrap" v-if="comments.length">
-
+            <div class="comment-lists-wrapper" v-if="comments.length">
+                <ul class="pm-comment-wrap">
                     <li v-for="comment in comments" class="pm-comment clearfix even" :id="'pm-comment-' + comment.id" :key="comment.id">
                         <div class="pm-avatar ">
                             <a :href="myTaskRedirect(comment.creator.data.id)" :title="comment.creator.data.display_name">
@@ -72,7 +71,7 @@
                                 {{ __( 'on', 'wedevs-project-manager') }}           
                                 <span class="pm-date">
 
-                                     <time :datetime="getFullDate( comment.created_at.datetime )" :title="getFullDate( comment.created_at.datetime )">{{ relativeDate(comment.created_at.datetime) }}</time>
+                                    <time :datetime="getFullDate( comment.created_at.datetime )" :title="getFullDate( comment.created_at.datetime )">{{ relativeDate(comment.created_at.datetime) }}</time>
                                     
                                 </span>
 
@@ -98,12 +97,14 @@
                             </div>
 
                             <transition name="slide" v-if="can_edit_comment(comment)" >
-                               <comment-form v-if="comment.edit_mode" :comment="comment" :discuss="discuss"></comment-form> 
+                            <comment-form v-if="comment.edit_mode" :comment="comment" :discuss="discuss"></comment-form> 
                             </transition>
                         </div>
                     </li>
-                </ul>
-                
+                    </ul>
+            </div>
+            <div v-if="discuss" class="pm-comment-area pm-box-shadow">
+                <h3> {{ discuss.meta.total_comments }} {{ __( 'Comments', 'wedevs-project-manager') }}</h3>
                 <div class="pm-comment-form-wrap">
                     <div class="pm-avatar">
                         <a :href="myTaskRedirect(current_user.ID)" :title="current_user.data.display_name">

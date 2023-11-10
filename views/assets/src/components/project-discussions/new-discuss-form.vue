@@ -10,17 +10,16 @@
                 <text-editor :editor_id="editor_id" :content="content"></text-editor>
             </div>
 
-            <div class="item milestone">
+            <!-- <div class="item milestone">
                 <select v-model="milestone_id">
                     <option value="-1">
                      {{ __( '- Milestone -', 'wedevs-project-manager') }}
                     </option>
                     <option v-for="milestone in milestones" :key="milestone.id" :value="milestone.id" v-html="milestone.title"></option>
                 </select>
-
-            </div>
-            <pm-do-action hook="pm_discuss_form" :actionData="discuss" ></pm-do-action>
+            </div> -->
             <file-uploader :files="files" :delete="deleted_files"></file-uploader>
+            <pm-do-action hook="pm_discuss_form" :actionData="discuss" ></pm-do-action>
 
             <notify-user v-model="notify_users"></notify-user>
 
