@@ -1,109 +1,114 @@
 <template>
-	<div class="my-task-filter-wrap">
-		<form class="form" action="" @submit.prevent="find()">
-			<div class="field">
-				<input type="text" :placeholder="__('Search by Task Title', 'wedevs-project-manager')" name="task_title" v-model="search.title">
+	
+		<div class="my-task-filter-wrap">
+			<div class="my-task-filter-with-header">
+				<my-task-menu></my-task-menu>
+				<form class="form" action="" @submit.prevent="find()">
+					<!-- <div class="field">
+						<input type="text" :placeholder="__('Search by Task Title', 'wedevs-project-manager')" name="task_title" v-model="search.title">
+					</div> -->
+					<div class="field project-dropdown-wrap">
+						<multiselect
+							v-model="search.projects"
+							:options="projects"
+							:show-labels="false"
+							:multiple="false"
+							:searchable="true"
+							:loading="asyncProjectLoading"
+							:placeholder="__('All Projects', 'wedevs-project-manager')"
+							@search-change="asyncProjectFind($event)"
+							@input="changeCountry($event)"
+							label="title"
+							track-by="id">
+							<span slot="noResult">{{ __( 'No project found.', 'wedevs-project-manager' ) }}</span>
+		
+						</multiselect>
+					</div>
+					<!-- <div>
+						<multiselect
+							v-model="search.lists"
+							:options="lists"
+							:show-labels="false"
+							:searchable="true"
+							:loading="asyncListLoading"
+							:placeholder="__('All Lists', 'pm-pro')"
+							@search-change="asyncListFind($event)"
+							label="title"
+							track-by="id">
+							<span slot="noResult">{{ __( 'No project found.', 'wedevs-project-manager' ) }}</span>
+		
+						</multiselect>
+					</div> -->
+		
+					<div class="field" v-if="parseInt(PM_Vars.is_pro)==1">
+						<pm-date-range-picker 
+							:startDate="search.start_at"
+							:endDate="search.due_date"
+							:options="calendarOptions"
+							@apply="calendarOnChange"
+							@cancel="calendarCancel"
+							:autoUpdateInput="false"
+						/>
+		
+					</div>
+		
+					<div class="field">
+						<select v-model="search.status" @change="changeStatus()">
+							<option value="current">{{ __( 'Current Task', 'wedevs-project-manager' ) }}</option>
+							<option value="outstanding">{{ __( 'Outstanding Task', 'wedevs-project-manager' ) }}</option>
+							<option value="completed">{{ __( 'Completed', 'wedevs-project-manager' ) }}</option>
+						</select>
+					</div>
+		
+					<!-- <div>
+						<input class="button button-primary submit-button" type="submit" :value="__('Filter', 'wedevs-project-manager')">
+					</div> -->
+				</form>
+				
 			</div>
-			<div class="field project-dropdown-wrap">
-                <multiselect
-                    v-model="search.projects"
-                    :options="projects"
-                    :show-labels="false"
-                    :multiple="false"
-                    :searchable="true"
-                    :loading="asyncProjectLoading"
-                    :placeholder="__('All Projects', 'wedevs-project-manager')"
-                    @search-change="asyncProjectFind($event)"
-                    @input="changeCountry($event)"
-                    label="title"
-                    track-by="id">
-                    <span slot="noResult">{{ __( 'No project found.', 'wedevs-project-manager' ) }}</span>
-
-                </multiselect>
-            </div>
-            <!-- <div>
-                <multiselect
-                    v-model="search.lists"
-                    :options="lists"
-                    :show-labels="false"
-                    :searchable="true"
-                    :loading="asyncListLoading"
-                    :placeholder="__('All Lists', 'pm-pro')"
-                    @search-change="asyncListFind($event)"
-                    label="title"
-                    track-by="id">
-                    <span slot="noResult">{{ __( 'No project found.', 'wedevs-project-manager' ) }}</span>
-
-                </multiselect>
-            </div> -->
-
-            <div class="field" v-if="parseInt(PM_Vars.is_pro)==1">
-	            <pm-date-range-picker 
-	            	:startDate="search.start_at"
-	            	:endDate="search.due_date"
-	            	:options="calendarOptions"
-	            	@apply="calendarOnChange"
-	            	@cancel="calendarCancel"
-	            	:autoUpdateInput="false"
-	            />
-
-	        </div>
-
-            <div class="field">
-                <select v-model="search.status" @change="changeStatus()">
-                	<option value="current">{{ __( 'Current Task', 'wedevs-project-manager' ) }}</option>
-                	<option value="outstanding">{{ __( 'Outstanding Task', 'wedevs-project-manager' ) }}</option>
-                	<option value="completed">{{ __( 'Completed', 'wedevs-project-manager' ) }}</option>
-                </select>
-            </div>
-
-	        <div>
-            	<input class="button button-primary submit-button" type="submit" :value="__('Filter', 'wedevs-project-manager')">
-            </div>
-		</form>
-
-		<div :class="getContentClass()">
-			<div class="loadmoreanimation-mytask">
-	            <div class="load-spinner">
-	                <div class="rect1"></div>
-	                <div class="rect2"></div>
-	                <div class="rect3"></div>
-	                <div class="rect4"></div>
-	                <div class="rect5"></div>
-	            </div>
-	        </div>
-			<div class="tasks-wrap">
-				<current-task 
-					@columnSorting="sortQuery"
-					@afterCloseTaskModal="afterCloseTaskModal"
-					v-if="component == 'current'" 
-					:tasks="tasks">
-						
-				</current-task>
-				<outstanding-task 
-					@columnSorting="sortQuery"
-					@afterCloseTaskModal="afterCloseTaskModal"
-					v-if="component == 'outstanding'" 
-					:tasks="tasks">
-						
-				</outstanding-task>
-				<completed-task 
-					@columnSorting="sortQuery"
-					@afterCloseTaskModal="afterCloseTaskModal"
-					v-if="component == 'completed'" 
-					:tasks="tasks">
-						
-				</completed-task>
+	
+			<div :class="getContentClass()">
+				<div class="loadmoreanimation-mytask">
+					<div class="load-spinner">
+						<div class="rect1"></div>
+						<div class="rect2"></div>
+						<div class="rect3"></div>
+						<div class="rect4"></div>
+						<div class="rect5"></div>
+					</div>
+				</div>
+				<div class="tasks-wrap">
+					<current-task 
+						@columnSorting="sortQuery"
+						@afterCloseTaskModal="afterCloseTaskModal"
+						v-if="component == 'current'" 
+						:tasks="tasks">
+							
+					</current-task>
+					<outstanding-task 
+						@columnSorting="sortQuery"
+						@afterCloseTaskModal="afterCloseTaskModal"
+						v-if="component == 'outstanding'" 
+						:tasks="tasks">
+							
+					</outstanding-task>
+					<completed-task 
+						@columnSorting="sortQuery"
+						@afterCloseTaskModal="afterCloseTaskModal"
+						v-if="component == 'completed'" 
+						:tasks="tasks">
+							
+					</completed-task>
+				</div>
 			</div>
+	
+			<pm-pagination v-if="parseInt($route.params.user_id)"
+				:total_pages="total_task_page" 
+				:current_page_number="current_page_number" 
+				component_name='my_task_pagination'>
+				
+			</pm-pagination> 
 		</div>
-
-		<pm-pagination v-if="parseInt($route.params.user_id)"
-            :total_pages="total_task_page" 
-            :current_page_number="current_page_number" 
-            component_name='my_task_pagination'>
-            
-        </pm-pagination> 
-	</div>
 </template>
 
 <style lang="less">
@@ -186,6 +191,7 @@
 
 
 <script>
+	import myTaskMenu from './my-task-menu.vue';
 	import CurrentTask from './current-task.vue'
 	import Outstanding from './outstanding-task.vue'
 	import Completed from './complete-task.vue'
@@ -238,6 +244,7 @@
 			}
 		},
 		components: {
+			'myTaskMenu': myTaskMenu,
 			'multiselect': pm.Multiselect.Multiselect,
 			'current-task': CurrentTask,
 			'outstanding-task': Outstanding,

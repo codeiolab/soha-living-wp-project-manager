@@ -1,7 +1,7 @@
 <template>
     <div class="mytask-current">
-        <table class="wp-list-table widefat fixed striped posts completed-task-table">
-            <thead>
+        <table class="wp-list-table widefat posts current-task-table">
+            <!-- <thead>
                 <tr>
                     <td @click.prevent="activeSorting('title')" class="pointer">
                         {{ __('Tasks', 'wedevs-project-manager') }}
@@ -37,10 +37,23 @@
                     </td>
                     
                 </tr>
-            </thead>
+            </thead> -->
             <tbody>
                 <tr v-if="tasks.length" v-for="task in tasks">
+                    <td>
+                        <my-task-checkbox :task="task"></my-task-checkbox>
+                    </td>
                     <td><a href="#" @click.prevent="popuSilgleTask(task)">{{ task.title }}</a></td>
+                    <td>
+                        <div class="my-tasks-assignee">
+                            <div v-if="task.assignees.data.length" class="task-activity assigned-users-content">
+                                <a class="image-anchor" v-for="user in task.assignees.data" :key="user.id" :href="myTaskRedirect(user.id)" :title="user.display_name">
+                                    <img class="image" :src="user.avatar_url" :alt="user.display_name" height="48" width="48">
+                                </a>
+                            </div>
+                            <div v-html="getRelativeDueDate(task)"></div>
+                        </div>
+                    </td>
                     <td>
                         <!-- <router-link
                           :to="{
@@ -75,7 +88,7 @@
                             {{ task.project_title }}
                         </a>
                     </td>
-                    <td>{{ getDate(task) }}</td>
+                    <!-- <td>{{ getDate(task) }}</td> -->
                 </tr>
                 <tr v-if="!tasks.length">
                     <td colspan="4">{{ __('No task found!', 'wedevs-project-manager') }}</td>
@@ -134,6 +147,7 @@
     }
 </style>
 <script>
+    import myTaskCheckbox from './my-task-checkbox.vue';
     export default {
         props: {
             tasks: {
@@ -171,6 +185,7 @@
 
         components: {
             'single-task': pm.SingleTask,
+            myTaskCheckbox
         },
 
         created () {
@@ -179,6 +194,15 @@
         },
 
         methods: {
+            getRelativeDueDate (task) {
+                
+                if(typeof task.due_date.date != 'undefined' && task.due_date.date != '' && task.due_date.date) {
+                    let dueDate = pm.Moment( task.due_date.date ).format( 'MMM DD, YYYY' );
+                    return this.relativeDate(dueDate);
+                }
+
+                return '&ndash;';
+            },
             closeTaskModal (task) {
                 this.$emit('afterCloseTaskModal', task);
             },

@@ -1,6 +1,6 @@
 
 /*Project task list page*/
-.pm-project-menu .menu-item a {
+.pm-project-menu .menu-item a, #wedevs-project-manager .pm-my-tasks .pm-project-header.pm-project-head .pm-my-task-menu a {
 	border: none!important;
 	color: var(--bb-body-text-color);
 	display: block;
@@ -9,8 +9,8 @@
 	font-size: 14px;
 	line-height: 1;
 }
-.task-group .pm-todo-wrap .todo-content .pm-current-date{
-    color: var(--bb-primary-color)!important;
+.task-group .pm-todo-wrap .todo-content .pm-current-date, .my-tasks-assignee{
+    color: var(--pm-headings-color)!important;
 }
 .pm-project-menu {
 	border: none;
@@ -20,10 +20,10 @@
 .pm-project-menu .menu-item a span.logo {
 	display: none;
 }
-.pm-project-menu .menu-item {
+.pm-project-menu .menu-item, #wedevs-project-manager .pm-my-tasks .pm-project-header.pm-project-head .pm-my-task-menu li {
 	padding-right: 30px;
 }
-.pm-project-menu .menu-item .router-link-active.active {
+.pm-project-menu .menu-item .router-link-active.active, #wedevs-project-manager .pm-my-tasks .pm-project-header.pm-project-head .pm-my-task-menu li a.router-link-active{
 	border-bottom: 2px solid var(--bb-primary-color)!important;
 	font-weight: 500;
 	color: var(--bb-headings-color);
@@ -946,4 +946,138 @@ ul.pm-user-list li {
 }
 .pm .pm-front-end .button{
     text-shadow: none!important;
+}
+
+/*My Tasks*/
+#wedevs-project-manager .pm-my-tasks .pm-project-header.pm-project-head {
+    border: none!important;
+    background: transparent;
+    box-shadow: none!important;
+}
+
+#wedevs-project-manager .pm-my-tasks .pm-project-header.pm-project-head .pm-row.pm-no-padding.pm-border-bottom, #wedevs-project-manager .pm-my-tasks .pm-project-header.pm-project-head .pm-user-select {
+    display: none!important;
+}
+
+#wedevs-project-manager .pm-my-tasks .pm-project-header.pm-project-head .pm-my-task-menu a {
+    background-image: none!important;
+    padding-left: 0!important;
+    height: auto!important;
+    min-height: auto!important;
+}
+.button-secondary .bb-icon-plus {
+    font-size: 12px;
+}
+
+.pm-my-tasks h1 {
+    margin-right: 15px!important;
+}
+.mytask-current .assigned-users-content img, .mytask-current .assigned-users-content a.image-anchor {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+.mytask-current .assigned-users-content a.image-anchor {
+    margin-right: 3px;
+    display: flex;
+}
+
+.mytask-current .assigned-users-content {
+    width: 80px;
+}
+.my-tasks-assignee {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.mytask-current a {
+    font-size: 14px;
+    color: #848484;
+}
+.my-task-filter-wrap .tasks-wrap {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.my-task-filter-wrap .tasks-wrap table {
+    margin-bottom: 0px;
+    border: none;
+}
+
+.my-task-filter-wrap .tasks-wrap table tr td:first-child {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 30px;
+}
+.my-task-filter-wrap .tasks-wrap table tr td:first-child a{
+    color: var(--pm-headings-color);
+}
+
+.my-task-filter-wrap .tasks-wrap table tr td:last-child {
+    padding-right: 0;
+}
+
+.my-task-filter-wrap .tasks-wrap table td {
+    border-color: #f0f0f0;
+}
+
+.my-task-filter-wrap .tasks-wrap table tr:first-child td {
+    padding-top: 0;
+}
+.my-task-filter-wrap .tasks-wrap table tr:last-child td{
+    padding-bottom: 0px;
+}
+.my-task-filter-with-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.my-task-filter-with-header form.form {
+    margin-bottom: 0;
+}
+
+.my-task-filter-with-header .pm-project-header.pm-project-head {
+    margin-bottom: 0;
+}
+
+.my-task-filter-with-header {
+    margin-bottom: 15px;
+}
+
+.my-task-filter-with-header .multiselect__tags {
+    height: 43px;
+    border: none;
+    border-radius: var(--bb-input-radius)!important;
+    padding: 9px!important;
+}
+
+.my-task-filter-with-header .multiselect__tags span.multiselect__single {
+    font-size: 12px;
+}
+
+.my-task-filter-with-header input, .my-task-filter-with-header select {
+    height: 42px!important;
+    border: none!important;
+}
+
+input.multiselect__input {
+    margin-top: -5px;
+}
+
+.my-task-filter-wrap .form .project-dropdown-wrap .multiselect__tags input.multiselect__input {
+    margin-top: -10px;
+    margin-left: -10px;
+}
+.pm-overview-wrap .pm-mytask-overview-page .date-range-picker{
+    width: auto;
+}
+.pm-overview-wrap .pm-mytask-overview-page .date-range-picker .filter-form-wrap .title {
+    border: none;
+    display: flex;
+    align-items: center;
+    border-radius: var(--bb-input-radius);
 }

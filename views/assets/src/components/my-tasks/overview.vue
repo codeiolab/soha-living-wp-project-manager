@@ -14,18 +14,21 @@
 
         <div v-if="isloaded" id="pm-mytask-page-content">
             <div class="pm-mytask-overview-page">
-                <div class="field date-range-picker" v-if="parseInt(PM_Vars.is_pro)==1">
-                    <div class="my-task-overview">{{ __( 'My Task Overview', 'wedevs-project-manager' ) }}</div>
-                    <div class="filter-form-wrap">
-                        <div class="title">{{ __( 'Activity Filter', 'wedevs-project-manager' ) }}</div>
-                        <pm-date-range-picker 
-                            :startDate="search.start_at"
-                            :endDate="search.due_date"
-                            :options="calendarOptions"
-                            @apply="calendarOnChange"
-                            @cancel="calendarCancel">
-                            
-                        </pm-date-range-picker>
+                <div class="my-task-filter-with-header">
+                    <my-task-menu></my-task-menu>
+                    <div class="field date-range-picker" v-if="parseInt(PM_Vars.is_pro)==1">
+                        <!-- <div class="my-task-overview">{{ __( 'My Task Overview', 'wedevs-project-manager' ) }}</div> -->
+                        <div class="filter-form-wrap">
+                            <div class="title">{{ __( 'Activity Filter', 'wedevs-project-manager' ) }}</div>
+                            <pm-date-range-picker 
+                                :startDate="search.start_at"
+                                :endDate="search.due_date"
+                                :options="calendarOptions"
+                                @apply="calendarOnChange"
+                                @cancel="calendarCancel">
+                                
+                            </pm-date-range-picker>
+                        </div>
                     </div>
                 </div>
 
@@ -193,6 +196,7 @@
 </style>
 
 <script>
+    import myTaskMenu from './my-task-menu.vue';
     import directives from './directives';
     import Mixins from './mixin';
     import myTaskCalender from './calendar.vue';
@@ -255,7 +259,8 @@
         },
         mixins: [Mixins],
         components: {
-            myTaskCalender
+            myTaskCalender,
+            myTaskMenu,
         },
         computed: {
 
