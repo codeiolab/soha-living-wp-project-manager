@@ -26,7 +26,9 @@
                                     'project_id': project_id
                                 }
                             }">
-                                <div class="icon"></div>
+                                <div class="icon">
+                                    <i class="bb-icon-checkbox bb-icon-l"></i>
+                                </div>
                                 <div class="count">
                                     <span>{{ meta.total_discussion_boards }}</span>
                                     {{ __( 'Discussions', 'wedevs-project-manager') }}
@@ -41,7 +43,9 @@
                                     'project_id': project_id
                                 }
                             }">
-                                <div class="icon"></div>
+                                <div class="icon">
+                                    <i class="bb-icon-file-checklist bb-icon-l"></i>
+                                </div>
                                 <div class="count">
                                     <span>{{ meta.total_task_lists }}</span>
                                     {{ __( 'Task Lists', 'wedevs-project-manager') }}
@@ -52,7 +56,9 @@
                         <li class="todos">
                             <a>
 
-                                <div class="icon"></div>
+                                <div class="icon">
+                                    <i class="bb-icon-comment bb-icon-l"></i>
+                                </div>
                                 <div class="count">
                                     <span>{{ meta.total_tasks }}</span>
                                     {{ __( 'Tasks', 'wedevs-project-manager') }}
@@ -63,7 +69,9 @@
 
                         <li class="comments">
                             <a>
-                                <div class="icon"></div>
+                                <div class="icon">
+                                    <i class="bb-icon-user-friends bb-icon-l"></i>
+                                </div>
                                 <div class="count">
                                     <span>{{ meta.total_comments }}</span>
                                     {{ __( 'Comments', 'wedevs-project-manager') }}
@@ -77,7 +85,9 @@
                                     'project_id': project_id
                                 }
                             }">
-                                <div class="icon"></div>
+                                <div class="icon">
+                                    <i class="bb-icon-folder-open bb-icon-l"></i>
+                                </div>
                                 <div class="count">
                                     <span>{{ meta.total_files }}</span>
                                     {{ __( 'Files', 'wedevs-project-manager') }}
@@ -92,7 +102,9 @@
                                     'project_id': project_id
                                 }
                             }">
-                                <div class="icon"></div>
+                                <div class="icon">
+                                    <i class="bb-icon-flag bb-icon-l"></i>
+                                </div>
                                 <div class="count">
                                     <span>{{ meta.total_milestones }}</span>
                                     {{  __( 'Milestones', 'wedevs-project-manager') }}
