@@ -1,6 +1,8 @@
 <template>
     <div class="mytask-activity">
-
+    <div class="my-task-filter-with-header">
+        <my-task-menu></my-task-menu>
+    </div>
     <div v-if="!isloaded" class="pm-data-load-before" >
         <div class="loadmoreanimation">
             <div class="load-spinner">
@@ -50,6 +52,7 @@
 
 <script>
     import Mixins from './mixin';
+    import myTaskMenu from './my-task-menu.vue';
 
     export default {
         data () {
@@ -58,6 +61,9 @@
                 show_spinner:false,
                 loading: false,
             }
+        },
+        components: {
+            myTaskMenu,
         },
         watch:{
             '$route' (route) {

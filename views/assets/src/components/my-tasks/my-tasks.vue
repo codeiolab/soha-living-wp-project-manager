@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="pm-wrap pm my-tasks pm-my-tasks">
-            <h1 class="wp-heading-inline">
+            <h1 class="wp-heading-inline pm-d-inline">
                 {{ __( 'Tasks', 'wedevs-project-manager') }}
             </h1>
-            <a href="#" @click.prevent="openTaskForm()" class="page-title-action">{{ __( 'Add New', 'wedevs-project-manager') }}</a>
-            <my-task-header></my-task-header>
+            <a href="#" @click.prevent="openTaskForm()" class="page-title-action button-secondary"><i aria-hidden="true" class="bb-icon-plus bb-icon-l"></i>&nbsp;&nbsp;{{ __( 'Add New', 'wedevs-project-manager') }}</a>
+            <!-- <my-task-header></my-task-header> -->
             <router-view></router-view>
             <new-task-form v-if="taskForm" @disableTaskForm="closeTaskForm" :users="[$route.params.user_id]"></new-task-form>
         </div>
