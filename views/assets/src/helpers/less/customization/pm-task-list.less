@@ -948,6 +948,7 @@ ul.pm-user-list li {
     text-shadow: none!important;
 }
 
+
 /*My Tasks*/
 #wedevs-project-manager .pm-my-tasks .pm-project-header.pm-project-head {
     border: none!important;
@@ -1080,4 +1081,65 @@ input.multiselect__input {
     display: flex;
     align-items: center;
     border-radius: var(--bb-input-radius);
+
+/*Overview Design*/
+.project-overview.pm-project-overview-container {
+    padding: 0;
+    border: 0;
+}
+
+#wedevs-project-manager .project-overview .overview-menu ul {
+    margin: 0px!important;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+.pm .project-overview .overview-menu ul li {
+    padding: 0!important;
+    background: transparent;
+}
+
+.pm .project-overview .overview-menu ul .clearfix {
+    display: none;
+}
+
+.pm .project-overview .overview-menu ul li a {
+    border: none!important;
+    background: #fff;
+    border-radius: 10px;
+}
+.pm .project-overview .overview-menu ul .icon {
+    background: transparent!important;
+    display: flex!important;
+    align-items: center;
+}
+
+.pm .project-overview .overview-menu ul .icon i {
+    color: var(--bb-headings-color);
+    font-size: 30px;
+}
+
+.pm .project-overview .overview-menu ul .icon {
+    background-image: none!important;
+}
+.pm .project-overview .overview-menu ul li .count span{
+    color: var(--pm-primary-color)!important;
+}
+.pm .project-overview .pm-chart, .pm .project-overview .pm-right-part {
+    padding: 30px!important;
+    border-radius: 10px!important;
+    border: none!important;
+    box-shadow: none!important;
+}
+.pm .project-overview .pm-right-part{
+    border-radius: 10px;
+}
+.project-overview .users-header {
+    border-top-left-radius: 10px!important;
+    border-top-right-radius: 10px!important;
+    padding-left: 0px!important;
+}
+.pm .project-overview .pm-right-part .user_list li {
+    padding-left: 0!important;
+    padding-right: 0!important;
 }
