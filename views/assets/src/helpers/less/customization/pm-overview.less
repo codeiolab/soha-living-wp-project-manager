@@ -383,12 +383,14 @@ i {
 .pm-files.pm-files-container-pro {
 	border: none;
 	.pm-pro-file-container {
-		.pm-previous-back ul {
-			background: none;
-			li:first-child a {
-				font-size: x-large;
+		.pm-previous-back {
+			ul {
+				background: none;
+				li a {
+					color: var(--pm-secondary-button-text-regular) !important;
+				}
 			}
-			li a {
+			.breadcrumb>li+li:before {
 				color: var(--pm-secondary-button-text-regular) !important;
 			}
 		}
