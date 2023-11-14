@@ -21,7 +21,7 @@
                     <span>{{ actiivtyGroupDate(group.date, 'DD') }}</span>
                     <br>
                     {{ actiivtyGroupDate(group.date, 'MMMM') }}
-
+sss
                 </div>
                 <div class="pm-activity-body pm-col-11 pm-sm-col-12 pm-right pm-last-col">
                     <ul>
