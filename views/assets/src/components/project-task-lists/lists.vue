@@ -21,8 +21,8 @@
                         <div class="left-side">
                             <div class="new-list-btn" >
                                 <a v-if="can_create_list  && !isArchivedPage" @click.prevent="showHideListForm('toggle')" href="#" class="list-action-group add-list">
-                                    <span class="plus">+</span>
-                                    <span>{{ __('Add Section', 'wedevs-project-manager') }}</span>
+                                    <i class="bb-icon-plus bb-icon-l"></i>&nbsp;&nbsp;
+                                    <span>{{ __('Add Task List', 'wedevs-project-manager') }}</span>
                                 </a>
 
                                 <new-task-list-form v-if="is_active_list_form && can_create_list  && !isArchivedPage"></new-task-list-form>

@@ -38,7 +38,6 @@
 </template>
 
 <script>
-
     import project_header_menu from './project-header-menu.vue';
     import project_view from './project-view.vue';
     import project_filter_by_category from './project-filter-by-category.vue';

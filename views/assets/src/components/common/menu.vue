@@ -297,7 +297,7 @@ export default {
                 project_id: this.project_id,
               },
 
-              name: this.__( 'Task Lists', 'wedevs-project-manager'),
+              name: this.__( 'Lists', 'wedevs-project-manager'),
               count: project.meta.data.total_task_lists,
               class: 'to-do-list pm-sm-col-12',
               order: 1
@@ -365,17 +365,25 @@ export default {
           ]
       );
 
+      
+
       items = items.filter( item => {
-        if ( item.meta != undefined && item.meta.permission != undefined ) {
-          return item.meta.permission( project );
-        }
+          if ( item.meta != undefined && item.meta.permission != undefined ) {
+            return item.meta.permission( project );
+          }
 
         return true;
       } );
 
       items = sortBy( items, ['order'] );
 
-      this.moreMenu = [...items.slice(7,items.length)];
+      // this.moreMenu = [...items.slice(7,items.length)];
+
+      items = items.filter( item => {
+          if ( item.route && item.route.name != 'invoice' ) {
+            return item;
+          }
+      } );
 
       return items.slice(0,7);
     }
