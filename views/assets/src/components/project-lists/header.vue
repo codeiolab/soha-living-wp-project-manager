@@ -4,6 +4,9 @@
         <div class="pm-header">
             <h1 style="display: none;"></h1>
             <div class="pm-container">
+                <div class="project-header-panel-main-menu">
+                    <project-header-top-menu/>
+                </div>
                 <div class="pm-header-row">
                     <!-- header-left -->
                     <div class="pm-header-left">
@@ -29,6 +32,7 @@
 </template>
 
 <script>
+    import project_header_top_menu from './project-header-top-menu.vue';
     import project_new_project_btn from './project-new-project-btn.vue';
     import project_filter_by_category from './project-filter-by-category.vue';
     import project_search_by_client from './project-search-by-client.vue';
@@ -50,6 +54,7 @@
             'project-header-menu': project_header_menu,
             'project-view': project_view,
             'project-create-form': project_create_form,
+            'project-header-top-menu': project_header_top_menu
         },
         data () {
             return {

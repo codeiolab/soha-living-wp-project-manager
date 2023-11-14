@@ -1,5 +1,4 @@
 
-/*Project task list page*/
 .pm-project-menu .menu-item a, #wedevs-project-manager .pm-my-tasks .pm-project-header.pm-project-head .pm-my-task-menu a {
 	border: none!important;
 	color: var(--bb-body-text-color);
@@ -39,7 +38,7 @@
 }
 
 .pm-task-list-wrap{
-	.list-content-body .content .lists-content ul.pm-todolists, .list-content-body .content .task-field{
+	.list-content-body .content .lists-content ul.pm-todolists li.pm-list-sortable, .list-content-body .content .task-field{
 		background: var(--bb-content-background-color);
 		padding: 20px 0px 20px!important;
 		margin-bottom: 30px!important;
@@ -126,8 +125,23 @@
         justify-content: flex-end;
 	}
 }
-.recurrent-task{
-	margin-left: 10px;
+
+.task-time-recurrent {
+    display: flex;
+    align-items: center;
+    min-width: 120px;
+}
+
+.task-comment-total {
+    font-size: 12px;
+}
+
+.task-comment-total i {
+    font-size: 17px;
+}
+.task-comment-total span {
+    display: inline-block;
+    min-width: 18px;
 }
 
 
@@ -140,7 +154,7 @@
 	border-radius: var(--bb-button-radius)!important;
 	transition: .3s!important;
 }
-.task-group .more-task-wrap .group-action-btn.show-completed-task .anchor-btn:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a:hover, .single-list-back-wrapper a.list-back-btn:hover, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel:hover, .comment-action-chunk a.pm-button.pm-secondary:hover, .pm-btn.pm-plus-white:hover, .button-secondary:hover {
+.task-group .more-task-wrap .group-action-btn.show-completed-task .anchor-btn:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a:hover, .single-list-back-wrapper a.list-back-btn:hover, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel:hover, .comment-action-chunk a.pm-button.pm-secondary:hover, .pm-btn.pm-plus-white:hover, .button-secondary:hover, .pm-page-wrapper .pm-header .pm-header-left #pm-create-project:hover {
 	background-color: var(--bb-secondary-button-background-hover)!important;
 	color: var(--bb-secondary-button-text-hover)!important;
 	border: 1px solid var(--bb-secondary-button-border-hover)!important;
@@ -202,6 +216,7 @@
 	background-color: var(--bb-primary-button-background-regular)!important;
 }
 .pm-task-list-wrap .list-content-body .content .task-field.new-task-form-field {
+    display: none;
     padding: 0!important;
     border-radius: 0px!important;
 	background: none!important;
@@ -1142,4 +1157,61 @@ input.multiselect__input {
 .pm .project-overview .pm-right-part .user_list li {
     padding-left: 0!important;
     padding-right: 0!important;
+}}
+
+#wedevs-project-manager .pm-header, .pm-page-wrapper .pm-overview-panel .pm-panel-header, #wedevs-project-manager .pm-header-menu-wrap {
+    background: #fff!important;
+    padding-left: 20px!important;
+    padding-right: 20px!important;
+    padding-top: 0px!important;
+
+}
+#wedevs-project-manager .pm-header{
+    border-radius: var(--bb-block-radius) var(--bb-block-radius) 0 0 !important;
+}
+
+.pm-page-wrapper .pm-header .pm-header-row {
+    margin-bottom: 0px!important;
+}
+.pm-page-wrapper .pm-overview-panel .pm-panel-header, #wedevs-project-manager .pm-header-menu-wrap {
+    border-radius: 0 0 var(--bb-block-radius) var(--bb-block-radius) !important;
+}
+.pm-page-wrapper .pm-header .pm-header-left h2, .pm-page-wrapper .pm-header .pm-header-right form.pm-search-form {
+    margin-bottom: 5px!important;
+}
+.pm-page-wrapper .pm-view-style-container .pm-view-style-group li a {
+    padding-right: 0!important;
+}
+.pm-page-wrapper .pm-filter-selection select {
+    background: #ECECEC;
+    border-color: #ECECEC;
+}
+.pm-tab-item .count{
+    display: none;
+}
+.pm-page-wrapper .pm-overview-panel .pm-panel-header .pm-grid-row{
+    align-items: flex-end;
+}
+.pm-page-wrapper .pm-project-search input.pm-search {
+    border-radius: var(--bb-input-radius)!important;
+}
+.pm-header-top-menu ul li a {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: var(--bb-button-radius);
+    background: transparent;
+    color: var(--pm-body-text-color);
+}
+.project-header-panel-main-menu {
+    border-bottom: 1px solid var(--bb-content-border-color);
+    margin-bottom: 25px;
+    padding: 10px 0;
+}
+.pm-header-top-menu ul li a.router-link-exact-active {
+    background: var(--bb-secondary-button-background-regular);
+    color: var(--pm-headings-color);
+}
+#wedevs-project-manager .pm-header-menu-wrap{
+    margin-top: 0px;
+    padding-top: 15px!important;
 }
