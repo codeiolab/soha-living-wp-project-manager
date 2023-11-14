@@ -1,29 +1,44 @@
 <template>
- <ul class="pm-links pm-right" v-if="can_edit_milestone(milestone)">
-    <li>
-        <a @click.prevent="showHideMilestoneForm('toggle', milestone)" class="pm-icon-edit" :title="edit_milestone">
-            <i class="bb-icon-edit bb-icon-l"></i>
-        </a>
-    </li>
-    <li>
-        <a @click.prevent="deleteSelfMilestone()" class="pm-milestone-delete" :title="delete_milestone" href="#">
-            <i class="bb-icon-trash bb-icon-l"></i>
-        </a>
-    </li>
-
-    <li>
-        <a v-if="is_complete" @click.prevent="milestoneMarkUndone(milestone)" class="pm-milestone-open" :title="mark_as_incomplete" href="#"><i class="bb-icon-repeat bb-icon-l"></i></a>
-    </li>
-    <li>
-        <a v-if="!is_complete" @click.prevent="milestoneMarkDone(milestone)" class="pm-milestone-complete" :title="mark_as_complete" href="#"><i class="bb-icon-check bb-icon-l"></i></a>
-    </li>
-    <li>
-        <a href="#" @click.prevent="milestoneLockUnlock(milestone)" v-if="PM_Vars.is_pro && user_can('view_private_milestone')">
-            <i class="bb-icon-lock-alt-open bb-icon-l" v-if="milestone.meta.privacy == 0"></i>
-            <i class="bb-icon-lock-alt bb-icon-l" v-else></i>
-        </a>
-    </li>
-</ul>
+    <div v-if="can_edit_milestone(milestone)" class="milestone-more-menu">
+        <!-- popper -->
+        <pm-popper trigger="click" :options="popperOptions">
+            <div class="pm-popper popper">
+                <div class="more-menu-ul-wrap">
+                    <ul>
+                        <li>
+                            <a @click.prevent="showHideMilestoneForm('toggle', milestone)" class="pm-icon-edit" :title="edit_milestone" href="#">
+                                <span>{{ __('Edit', 'wedevs-project-manager') }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a @click.prevent="deleteSelfMilestone()" class="pm-milestone-delete" :title="delete_milestone" href="#">
+                                <span>{{ __('Delete', 'wedevs-project-manager') }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a v-if="is_complete" @click.prevent="milestoneMarkUndone(milestone)" class="pm-milestone-open" :title="mark_as_incomplete" href="#">
+                                <span>{{ __('Mark as Incomplete', 'wedevs-project-manager') }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a v-if="!is_complete" @click.prevent="milestoneMarkDone(milestone)" class="pm-milestone-complete" :title="mark_as_complete" href="#">
+                                <span>{{ __('Mark as Complete', 'wedevs-project-manager') }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" @click.prevent="milestoneLockUnlock(milestone)" v-if="PM_Vars.is_pro && user_can('view_private_milestone')">
+                                <span v-if="milestone.meta.privacy == 0">{{ __('Lock', 'wedevs-project-manager') }}</span>
+                                <span v-else>{{ __('Public', 'wedevs-project-manager') }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- popper trigger element -->
+            <span slot="reference" title="Assign user" class="pm-popper-ref popper-ref icon-pm-more-options"></span>
+        </pm-popper>
+    </div>
 </template>
 
 <script>
@@ -52,6 +67,12 @@
             }
         },
         methods:{
+            popperOptions () {
+                return {
+                    placement: 'bottom-end',
+                    modifiers: { offset: { offset: '0, 3px' } },
+                }
+            },
             milestoneMarkDone (milestone) {
                 var args = {
                     data: {

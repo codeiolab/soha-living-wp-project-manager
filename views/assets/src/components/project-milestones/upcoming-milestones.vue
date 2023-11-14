@@ -1,56 +1,57 @@
 <template>
     <div v-if="upComingMileStones.length" class="pm-upcomming-milestone pm-milestone-data">
-        <h2 class="group-title">{{ __( 'Upcoming Milestones', 'wedevs-project-manager')}}</h2>
+        <span class="group-title">{{ __( 'Upcoming Milestones', 'wedevs-project-manager')}}</span>
+        <div class="pm-milestone-list">
+            <div v-for="milestone in upComingMileStones" class="pm-milestone late">
+                <div class="milestone-detail ">
+                    <h3 class="milestone-head">
+                        <div class="milestone-detail-top">
+                            <span v-html="milestone.title"></span>
+                            <action :milestone="milestone"></action>
+                        </div>
+                        <span class="time-left">
+                            ({{ humanDate(milestone) }} {{ __( 'left -', 'wedevs-project-manager') }} 
+                            <time :datetime="momentFormat(milestone)" :title="momentFormat(milestone)">
+                                {{ getDueDate(milestone) }}
+                            </time>
+                            )
+                        </span>
+                    </h3>
 
-        <div v-for="milestone in upComingMileStones" class="pm-milestone late">
-            <div class="milestone-detail ">
-                <h3 class="milestone-head">
-                   <div><span v-html="milestone.title"></span></div>
-                    <span class="time-left">
-                        ({{ humanDate(milestone) }} {{ __( 'left -', 'wedevs-project-manager') }} 
-                        <time :datetime="momentFormat(milestone)" :title="momentFormat(milestone)">
-                            {{ getDueDate(milestone) }}
-                        </time>
-                        )
-                    </span>
-                    
-                    <action :milestone="milestone"></action>
-                </h3>
+                    <div class="detail">
+                        <div v-html="milestone.content"></div>
+                    </div>
+                </div>
 
-                <div class="detail">
-                    <div v-html="milestone.content"></div>
-                </div>
-            </div>
+                <transition name="slide" v-if="can_edit_milestone(milestone)">
+                    <div class="pm-milestone-edit-form" style="float:none;" v-if="milestone.edit_mode" >
+                        <new-milestone-form section="milestones" :milestone="milestone"></new-milestone-form>
+                    </div>
+                </transition>
+                <div class="pm-milestone-items-details">
+                    <div v-if="milestone.task_lists.data.length"  class="pm-col-6 pm-milestone-todo pm-sm-col-12">
+                        <h3>{{ __( 'Task Lists', 'wedevs-project-manager') }}</h3>
 
-            <transition name="slide" v-if="can_edit_milestone(milestone)">
-                <div class="pm-milestone-edit-form" style="float:none;" v-if="milestone.edit_mode" >
-                    <new-milestone-form section="milestones" :milestone="milestone"></new-milestone-form>
+                        <ul>
+                            <li v-for="list in milestone.task_lists.data">
+                                <list :list="list"></list>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div v-if="milestone.discussion_boards.data.length"  class="pm-col-6 pm-milestone-discussion pm-last-col pm-sm-col-12">
+                        <h3>{{  __( 'Discussions', 'wedevs-project-manager') }}</h3>
+                        <ul>
+                            <li v-for="discuss in milestone.discussion_boards.data">
+                                <discuss :discuss="discuss"></discuss>
+                            </li>
+    
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-            </transition>
-            <div class="pm-milestone-items-details">
-                <div v-if="milestone.task_lists.data.length"  class="pm-col-6 pm-milestone-todo pm-sm-col-12">
-                    <h3>{{ __( 'Task Lists', 'wedevs-project-manager') }}</h3>
-
-                    <ul>
-                        <li v-for="list in milestone.task_lists.data">
-                            <list :list="list"></list>
-                        </li>
-                    </ul>
-                </div>
-               
-                <div v-if="milestone.discussion_boards.data.length"  class="pm-col-6 pm-milestone-discussion pm-last-col pm-sm-col-12">
-                    <h3>{{  __( 'Discussions', 'wedevs-project-manager') }}</h3>
-                    <ul>
-                        <li v-for="discuss in milestone.discussion_boards.data">
-                            <discuss :discuss="discuss"></discuss>
-                        </li>
-  
-                    </ul>
-                </div>
-                <div class="clearfix"></div>
             </div>
         </div>
-        
     </div>
 </template>
 

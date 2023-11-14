@@ -13,7 +13,7 @@
                 }">
 
                 <span class="icon-pm-left-arrow"></span>
-                <span class="title">{{ __( 'Back to Section List', 'wedevs-project-manager') }}</span>
+                <span class="title">{{ __( 'Back to List', 'wedevs-project-manager') }}</span>
             </router-link>
         </div>
         <div v-if="!loading" class="single-list-content">

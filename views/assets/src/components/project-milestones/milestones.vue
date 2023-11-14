@@ -15,22 +15,19 @@
             </div>
         </div>
         <div class="pm-milestone-link clearfix" v-if="user_can('create_milestone')">
-            <a @click.prevent="showHideMilestoneForm('toggle')" id="pm-add-milestone" href="#" class="pm-btn pm-btn-blue pm-plus-white pm-margin-bottom add-milestone pm-btn-uppercase"> <i aria-hidden="true" class="bb-icon-plus bb-icon-l"></i>{{ __( 'Add Milestone', 'wedevs-project-manager') }}</a>
+            <a @click.prevent="showHideMilestoneForm('toggle')" id="pm-add-milestone" href="#" class="pm-btn pm-btn-blue pm-plus-white pm-margin-bottom add-milestone pm-btn-uppercase"> <i aria-hidden="true" class="bb-icon-plus bb-icon-l"></i>&nbsp; &nbsp;{{ __( 'New Milestone', 'wedevs-project-manager') }}</a>
         </div>
         <div class="pm-milestone pm-milestone-container" v-if="isFetchMilestone">
             <div class="pm-blank-template milestone" v-if="blankTemplate">
                 <div class="pm-content" >
-                    <h3>  {{ __( 'Create a new milestones', 'wedevs-project-manager') }}</h3>
-                        
-
-                        <transition name="slide" v-if="can_create_milestone">
-
-                            <div class="pm-new-milestone-form" v-if="is_milestone_form_active">
-                                <div class="pm-milestone-form-wrap">
-                                    <new-milestone-form section="milestones" :milestone="{}"></new-milestone-form>
-                                </div>
+                    <transition name="slide" v-if="can_create_milestone">
+                        <div class="pm-new-milestone-form" v-if="is_milestone_form_active">
+                            <h3>  {{ __( 'Create a new milestones', 'wedevs-project-manager') }}</h3>
+                            <div class="pm-milestone-form-wrap">
+                                <new-milestone-form section="milestones" :milestone="{}"></new-milestone-form>
                             </div>
-                        </transition>
+                        </div>
+                    </transition>
 
                     <!-- <div class="pm-list-content">
                         <h3 class="pm-page-title pm-why-for"> {{ __( 'When to use Milestones?', 'wedevs-project-manager') }}</h3>
@@ -43,13 +40,12 @@
                     </div> -->
 
                 </div>
-
             </div>
             <div v-if="!blankTemplate">
                 <div class="pm-row pm-milestone-details" >
-                    <h3>  {{ __( 'Create a new milestones', 'wedevs-project-manager') }}</h3>
-                     <transition name="slide" v-if="can_create_milestone">
+                    <transition name="slide" v-if="can_create_milestone">
                         <div  class="pm-new-milestone-form" style="float:none;" v-if="is_milestone_form_active">
+                            <h3>  {{ __( 'Create a new milestones', 'wedevs-project-manager') }}</h3>
                             <div class="pm-milestone-form-wrap">
                                 <new-milestone-form section="milestones" :milestone="{}"></new-milestone-form>
                             </div>
@@ -57,9 +53,11 @@
                         </div>
                     </transition>
                 </div>
-                <late-milestones></late-milestones>
-                <upcomming-milestone></upcomming-milestone>
-                <completed-milestones></completed-milestones>
+                <div class="milestones-type">
+                    <late-milestones></late-milestones>
+                    <upcomming-milestone></upcomming-milestone>
+                    <completed-milestones></completed-milestones>
+                </div>
 
                 <pm-pagination 
                     :total_pages="total_milestone_page" 

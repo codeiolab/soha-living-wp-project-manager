@@ -24,18 +24,17 @@
                                     <time :datetime="dateISO8601Format( comment.created_at.datetime )" :title="getFullDate( comment.created_at.datetime)">{{ relativeDate(comment.created_at.datetime) }}</time>
                                 </span>
                             </div>
-                            <div v-if="!comment.edit_mode && can_edit_comment(comment)" @click.prevent="showActionMenu(comment)" class="icon-pm-down-arrow comment-action-arrow">
+                            <div v-if="!comment.edit_mode && can_edit_comment(comment)" class="comment-action-arrow">
+                                <span class="icon-pm-more-options pm-font-size-16" @click.prevent="showActionMenu(comment)"></span>
                                 <div v-if="comment.actionMode" class="pm-popup-menu comment-action">
                                     <ul class="comment-action-ul">
                                         <li>
                                             <a  href="#" @click.prevent="showHideTaskCommentForm( comment )">
-                                                <span class="icon-pm-pencil"></span>
                                                 <span class="comment-action-edit">{{ __('Edit', 'wedevs-project-manager') }}</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#" @click.prevent="deleteTaskComment( comment.id )">
-                                                <span class="icon-pm-delete"></span>
                                                 <span class="comment-action-delete">{{ __('Delete', 'wedevs-project-manager') }}</span>
                                             </a>
                                         </li>
