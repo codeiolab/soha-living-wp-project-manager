@@ -20,17 +20,12 @@
                 </div> 
                 
                 <div class="task-right task-action-wrap">
-
-                    
                     <div class="task-time-recurrent">
                         <div v-if="taskTimeWrap(task)" :title="getTaskFullDate(task)" :class="'task-activity task-time '+taskDateWrap(task.due_date.date)">
-                            <!-- <span v-if="task.due_date.date" class="icon-pm-calendar"></span> -->
                             <span v-if="task_start_field && task.due_date.date">{{ taskDateFormat( task.start_at.date ) }}</span>
                             <span v-if="isBetweenDate( task_start_field, task.start_at.date, task.due_date.date )">&ndash;</span>
                             <span>{{ taskDateFormat(task.due_date.date) }}</span>
                         </div>
-
-                    
                         <div v-if="!taskTimeWrap(task)" @click.prevent="getSingleTask(task)" class="task-activity task-time"><i class="bb-icon-calendar bb-icon-l"></i></div>
                         <div v-if="task.recurrent && task.recurrent > 0" class="recurrent-task"><i class="bb-icon-repeat bb-icon-l"></i></div>
                     </div>
@@ -42,22 +37,13 @@
                     </div>
                     <div v-else class="no-task-assigne task-activity assigned-users-content"></div>
 
-                   <div class="task-activity" v-if="isPrivateTask(task.meta.privacy)">
-                        <span  class="icon-pm-private"></span>
-                    </div>
                     <div class="task-comment-total" v-if="task.meta.total_comment > 0">
                         <span>{{ task.meta.total_comment }}</span>
                         <i class="bb-icon-comment bb-icon-l"></i>
                     </div>
-
-                    
-                    <!--  <a href="#" @click.prevent="getSingleTask(task)" v-if="parseInt(task.meta.total_comment) > 0" class="task-activity comment">
-                        <span class="icon-pm-comment"></span>
-                        <span>{{ task.meta.total_comment }}</span>
-                    </a> 
-                    <div class="task-activity">
-                        <do-action :hook="'task_inline'" :actionData="doActionData"></do-action>
-                    </div> -->
+                    <div class="task-activity" v-if="isPrivateTask(task.meta.privacy)">
+                        <span class="bb-icon-lock-alt bb-icon-l"></span>
+                    </div>
                 </div>  
 
                 <div v-if="can_edit_task(task) && !isArchivedTaskList(task)" class="nonSortableTag more-menu task-more-menu">

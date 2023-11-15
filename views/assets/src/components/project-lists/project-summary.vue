@@ -100,6 +100,16 @@
                                     <span class="pm-tooltip-label">{{ parseInt( project.meta.data.total_discussion_boards ) + tooltipLabels.discussions }}</span>
                                 </router-link>
                             </li>
+                            <li class="pm-meta-flag pm-has-tooltip">
+                                <router-link :to="{
+                                    name: 'milestones',
+                                    params: {
+                                        project_id: project.id
+                                    }}">
+                                    <i class="bb-icon-flag bb-icon-l"></i>
+                                    <span class="pm-tooltip-label">{{ parseInt( project.meta.data.total_milestones ) + tooltipLabels.milestones }}</span>
+                                </router-link>
+                            </li>
                             <li class="pm-meta-files pm-has-tooltip">
                                 <router-link :to="{
                                     name: 'pm_files',
@@ -110,16 +120,6 @@
                                     <span class="pm-tooltip-label">{{ parseInt( project.meta.data.total_files ) + tooltipLabels.files }}</span>
                                 </router-link>
                             </li>
-                            <!-- <li class="pm-meta-flag pm-has-tooltip">
-                                <router-link :to="{
-                                    name: 'milestones',
-                                    params: {
-                                        project_id: project.id
-                                    }}">
-                                    <i class="pm-icon flaticon-flag"></i>
-                                    <span class="pm-tooltip-label">{{ parseInt( project.meta.data.total_milestones ) + tooltipLabels.milestones }}</span>
-                                </router-link>
-                            </li> -->
                         </ul>
 
                         <!-- progress -->

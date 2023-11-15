@@ -72,7 +72,7 @@
                                                 slot="reference" 
                                                 v-pm-tooltip 
                                                 :title="__('Assign user', 'wedevs-project-manager')"  
-                                                class="pm-popper-ref popper-ref task-user-multiselect icon-pm-single-user pm-dark-hover"
+                                                class="pm-popper-ref popper-ref task-user-multiselect bb-icon-user-avatar bb-icon-l pm-dark-hover"
                                                 @click.prevent="focusAssignUserInput()"
                                             >
 

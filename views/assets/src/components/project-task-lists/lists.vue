@@ -126,7 +126,7 @@
                                                 <div class="after-title">
                                                     <!-- v-pm-tooltip -->
                                                     <div class="view-single-list"  :title="__('Single List', 'wedevs-project-manager')">
-                                                        <span @click.prevent="goToSigleList(list)" class="icon-pm-eye"></span>
+                                                        <span @click.prevent="goToSigleList(list)" class="bb-icon-eye bb-icon-l"></span>
                                                     </div>
                                                     <div class="list-title-action progress-bar">
                                                         <div :style="getProgressStyle( list )" class="bar completed"></div>

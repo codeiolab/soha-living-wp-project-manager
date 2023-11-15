@@ -145,7 +145,7 @@
 }
 
 
-.task-group .more-task-wrap .group-action-btn.show-completed-task .anchor-btn, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a, .single-list-back-wrapper a.list-back-btn, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel, .comment-action-chunk a.pm-button.pm-secondary, .pm-btn.pm-plus-white, .button-secondary{
+.task-group .more-task-wrap .group-action-btn.show-completed-task .anchor-btn, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a, .single-list-back-wrapper a.list-back-btn, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel, .comment-action-chunk a.pm-button.pm-secondary, .pm-btn.pm-plus-white, .button-secondary, .buddypress .buddypress-wrap button.fc-button{
 	background: var(--bb-secondary-button-background-regular)!important;
 	color: var(--bb-secondary-button-text-regular)!important;
 	border: 1px solid var(--bb-secondary-button-border-regular)!important;
@@ -154,10 +154,13 @@
 	border-radius: var(--bb-button-radius)!important;
 	transition: .3s!important;
 }
-.task-group .more-task-wrap .group-action-btn.show-completed-task .anchor-btn:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a:hover, .single-list-back-wrapper a.list-back-btn:hover, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel:hover, .comment-action-chunk a.pm-button.pm-secondary:hover, .pm-btn.pm-plus-white:hover, .button-secondary:hover, .pm-page-wrapper .pm-header .pm-header-left #pm-create-project:hover {
+.task-group .more-task-wrap .group-action-btn.show-completed-task .anchor-btn:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a:hover, .single-list-back-wrapper a.list-back-btn:hover, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel:hover, .comment-action-chunk a.pm-button.pm-secondary:hover, .pm-btn.pm-plus-white:hover, .button-secondary:hover, .pm-page-wrapper .pm-header .pm-header-left #pm-create-project:hover, .buddypress .buddypress-wrap button.fc-button:hover {
 	background-color: var(--bb-secondary-button-background-hover)!important;
 	color: var(--bb-secondary-button-text-hover)!important;
 	border: 1px solid var(--bb-secondary-button-border-hover)!important;
+}
+.item.submit {
+    gap: 5px;
 }
 .pm-btn i{
     font-size: 13px;
@@ -189,6 +192,11 @@
 }
 .task-group .pm-todo-wrap .todo-content .task-action-wrap .task-activity.task-time {
     width: 60px;
+}
+.task-comment-total {
+    width: 50px;
+    margin-left: 20px;
+    margin-right: 50px;
 }
 .task-group .incomplete-task-ul.has-items, .task-group .complete-task-ul {
     padding-left: 52px!important;
@@ -1334,4 +1342,150 @@ form.pm-comment-form-vue.pm-comment-form .message {
 
 .pm-row.pm-milestone-details {
     margin-bottom: 20px;
+}
+.task-group .pm-todo-wrap .todo-content .task-action-wrap .task-activity.assigned-users-content a:not(:first-child) {
+    margin-left: -8px;
+}
+
+/*Task List*/
+.pm-task-form .input-area .input-action-wrap .task-create-form .task-submit-wrap.process-content-2 {
+    display: none;
+}
+
+.pm-task-form .input-area .input-action-wrap .task-create-form .action-icons.process-fields {
+    background: transparent!important;
+}
+
+.pm-task-form .input-area .input-action-wrap .task-create-form .fields {
+    display: flex;
+    justify-content: space-between;
+}
+.task-group .more-task-wrap {
+    margin-bottom: 0!important;
+}
+
+.task-group .more-task-wrap .group-action-btn.show-completed-task {
+    margin-bottom: 20px;
+}
+.pm-task-form .input-area .input-action-wrap .task-create-form .fields .process-fields .process-field {
+    margin-right: 0;
+    margin-left: 15px;
+}
+#wedevs-project-manager .single-list-content .title-wrp {
+    margin-right: 52px;
+}
+
+.single-list-content-inner .list-task-form {
+    margin-left: 52px!important;
+    margin-right: 52px!important;
+}
+.popup-body .subtask-create-form .pm-button-wrap {
+    display: none!important;
+}
+
+.fc-toolbar.fc-header-toolbar .fc-left {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 5px;
+}
+
+.buddypress .buddypress-wrap button.fc-button {
+    height: 34px;
+    box-shadow: none!important;
+    margin-left: 0!important;
+}
+
+.fc-toolbar.fc-header-toolbar .fc-right .fc-button-group {
+    display: flex;
+    gap: 5px;
+}
+
+.fc-toolbar.fc-header-toolbar .fc-left .fc-button-group .fc-button {
+    background: transparent!important;
+    border: none!important;
+    padding: 8px 8px!important;
+}
+
+.fc-unthemed .fc-row, .fc-unthemed tbody, .fc-unthemed td, .fc-unthemed th, .fc-unthemed thead {
+    border-color: transparent!important;
+}
+
+
+.fc-row.fc-widget-header table {
+    margin-bottom: 0;
+    border-bottom: 1px solid #ddd!important;
+}
+
+.fc-row.fc-widget-header table th {
+    padding-bottom: 10px!important;
+    border: none!important;
+}
+
+.fc-row.fc-week.fc-widget-content .fc-content-skeleton {
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 25px;
+}
+.pm-calendar a {
+    padding: 5px;
+    border: none!important;
+    border-radius: 6px;
+}
+
+.pm-calendar a img {
+    border-radius: 50%;
+}
+
+.fc-event .fc-content span.fc-title {
+    margin-left: 5px;
+}
+#wedevs-project-manager .pm-my-tasks .pm-mycalender {
+    box-shadow: none;
+    border: none;
+}
+
+#wedevs-project-manager .pm-my-tasks .pm-mycalender h3.pm-box-title {
+    display: none;
+}
+
+#wedevs-project-manager .pm-my-tasks .pm-mycalender .pm-calender-content {
+    padding: 30px;
+}
+
+#wedevs-project-manager .pm-my-tasks .pm-mycalender .pm-col-12 {
+    border-radius: 10px!important;
+}
+#wedevs-project-manager .pm-my-tasks .pm-mycalender .pm-calender-content div#icon-themes {
+    display: none;
+}
+#wedevs-project-manager .pm-my-tasks #pm-mytask-page-content .pm-mytask-overview-page .pm-mytask-chart-statistics, #wedevs-project-manager .pm-my-tasks #pm-mytask-page-content .pm-mytask-overview-page .pm-mytask-chart-overview {
+    box-shadow: none!important;
+    border: none!important;
+    border-radius: 10px;
+}
+
+#wedevs-project-manager .pm-my-tasks #pm-mytask-page-content .pm-mytask-overview-page h3.pm-box-title {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding: 30px 30px 10px;
+}
+
+#wedevs-project-manager .pm-my-tasks #pm-mytask-page-content .pm-mytask-overview-page .pm-mytask-chart-statistics canvas {
+    padding: 10px 30px 30px;
+}
+
+#wedevs-project-manager .pm-my-tasks #pm-mytask-page-content .pm-mytask-overview-page .pm-mytask-chart-overview #cart-at-glance {
+    margin-top: 20px;
+}
+
+#wedevs-project-manager .pm-my-tasks #pm-mytask-page-content .pm-mytask-overview-page .pm-mytask-chart-overview ul li {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#wedevs-project-manager .pm-my-tasks #pm-mytask-page-content .pm-mytask-overview-page .pm-mytask-chart-overview ul li .task-count {
+    margin-right: 0;
+}
+
+#wedevs-project-manager .pm-my-tasks #pm-mytask-page-content .pm-mytask-overview-page .pm-mytask-chart-overview {
+    padding-bottom: 30px;
 }
