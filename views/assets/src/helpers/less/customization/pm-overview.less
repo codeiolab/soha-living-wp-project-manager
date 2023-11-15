@@ -522,7 +522,7 @@ i {
 							color: var(--pm-secondary-button-text-regular) !important;
 						}
 						.pm-created-doc .pm-modal-conetnt {
-							padding: 0px;
+							padding:  0px 0px 100px 0px;
 							background: var(--pm-body-background-color);
 							.doc_contents {
 								border: none;
@@ -533,6 +533,9 @@ i {
 								}
 							}
 							.doc_attach_comments {
+								background: var(--pm-body-background-color);
+							}
+							.pm-revision {
 								background: var(--pm-body-background-color);
 							}
 						}
@@ -556,6 +559,17 @@ i {
 	}
 }
 
+.modal-wrapper .modal-container {
+	.close-single-file-modal {
+		margin-top: 10px;
+		a {
+			cursor: pointer;
+			padding-left: 5px;
+			color: var(--pm-secondary-button-text-regular) !important;
+		}
+	}
+}
+
 .modal-container .modal-body .folder-image i {
 	font-size: xxx-large;
 	color: var(--pm-secondary-button-text-regular) !important;
@@ -564,6 +578,36 @@ i {
 .pm-modal-conetnt .doc_contents div h3 span a {
 	display: flex !important;
 	align-items: center !important;
+}
+
+.doc_contents {
+	.document-details, h3 {
+		border: none !important;
+	}
+	.document-details .online_doc_link	{
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		.pm-box {
+			border: none !important;
+			box-shadow: none !important;
+			min-width: 400px;
+		}
+		div a span {
+			color: var(--pm-secondary-button-text-regular);
+			font-size: xx-large;
+		}
+	}
+	h3 .sub-title {
+		color: var(--pm-secondary-button-text-regular) !important;
+		a {
+			color: var(--pm-primary-color);
+		}
+		small {
+			color: var(--pm-secondary-button-text-regular) !important;
+		}
+	}
 }
 
 /*Kanban View Page*/
