@@ -18,21 +18,20 @@
         <ul class="pm-activity-list">
             <li v-for="group in activities" :key="group.id" class="pm-row">
                 <div class="pm-activity-date pm-col-1 pm-sm-col-12">
-                    <span>{{ actiivtyGroupDate(group.date, 'DD') }}</span>
-                    <br>
-                    {{ actiivtyGroupDate(group.date, 'MMMM') }}
-sss
+                    <span>{{ actiivtyGroupDate(group.date, 'MMM DD Y') }}</span>
                 </div>
                 <div class="pm-activity-body pm-col-11 pm-sm-col-12 pm-right pm-last-col">
                     <ul>
                         <li v-for="(activity, key) in group.activities" :key="key">
-                            <div class="pm-col-8 pm-sm-col-12">
-                                <activity-parser :activity="activity"></activity-parser>
-                            </div>
-                            <div class="date pm-col-4 pm-sm-col-12">
-                                <time :datetime="pmDateISO8601Format(activity.committed_at.date, activity.committed_at.time)" :title="pmDateISO8601Format(activity.committed_at.date, activity.committed_at.time)">
-                                    <i>{{ taskDateFormat(activity.committed_at.date) }}, {{ dateTimeFormat(activity.committed_at.datetime) }}</i>
-                                </time>
+                            <div class="pm-col-12 pm-sm-col-12">
+                                <span class="activity-project-label">{{ activity.project.data.title }}</span>
+                                <span class="acitivity-action-type">{{ activity.action_type }}</span>
+                                <activity-parser :activity="activity" :page="'project'"></activity-parser>
+                                <span>
+                                    <time :datetime="pmDateISO8601Format(activity.committed_at.date, activity.committed_at.time)" :title="pmDateISO8601Format(activity.committed_at.date, activity.committed_at.time)">
+                                        <i>{{ taskDateFormat(activity.committed_at.date) }}, {{ dateTimeFormat(activity.committed_at.datetime) }}</i>
+                                    </time>
+                                </span>
                             </div>
                             <div class="clear"></div>
                         </li>

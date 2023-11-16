@@ -43,48 +43,70 @@
                     <div class="pm-message-list">
                         <ul class="dicussion-list">        
                             <li v-for="discuss in discussion" :key="discuss.id">
-                                <router-link 
-                                    class="pm-col-9 pm-messge-link" 
-                                    :to="{ name: 'individual_discussions',  params: { discussion_id: discuss.id }}">
-                                    
-                                    <div class="pm-message-inner">
-                                        <a class="pm-col-1" :href="myTaskRedirect(discuss.creator.data.id)" :title="discuss.creator.data.display_name" >
-                                            <img :alt="discuss.creator.data.display_name" :src="discuss.creator.data.avatar_url" class="avatar avatar-48 photo" height="48" width="48">
-                                        </a>
-                                        <div class="pm-messege-wrapper pm-col-11">
-                                            <div v-html="discuss.title" />
-                                            
-                                            <div class="dicussion-meta">
-                                                {{ __( 'By', 'wedevs-project-manager') }}
-                                                <a :href="myTaskRedirect(discuss.creator.data.id)" :title="discuss.creator.data.display_name" >
-                                                    {{ discuss.creator.data.display_name }}
-                                                </a> 
-                                                {{ __( 'on', 'wedevs-project-manager') }}
-                                                {{ taskDateFormat(discuss.created_at.date) }}, {{ dateTimeFormat(discuss.created_at.datetime) }}                  
-                                                <div class="comment-count">
-                                                    <i class="bb-icon-comment bb-icon-l"></i>
-                                                    <router-link 
-                                                        class="pm-link" 
-                                                        :to="{ name: 'individual_discussions',  params: { discussion_id: discuss.id }}">
-                                                        {{ discuss.meta.total_comments }} {{ __( 'Comments', 'wedevs-project-manager') }} 
-                                                    </router-link>           
+                                <div class="discuss-list-content" v-if="!discuss.edit_mode">
+                                    <router-link 
+                                        class="pm-col-9 pm-messge-link" 
+                                        :to="{ name: 'individual_discussions',  params: { discussion_id: discuss.id }}">
+                                        
+                                        <div class="pm-message-inner">
+                                            <a class="pm-col-1" :href="myTaskRedirect(discuss.creator.data.id)" :title="discuss.creator.data.display_name" >
+                                                <img :alt="discuss.creator.data.display_name" :src="discuss.creator.data.avatar_url" class="avatar avatar-48 photo" height="48" width="48">
+                                            </a>
+                                            <div class="pm-messege-wrapper pm-col-11">
+                                                <div v-html="discuss.title" />
+                                                
+                                                <div class="dicussion-meta">
+                                                    {{ __( 'By', 'wedevs-project-manager') }}
+                                                    <a :href="myTaskRedirect(discuss.creator.data.id)" :title="discuss.creator.data.display_name" >
+                                                        {{ discuss.creator.data.display_name }}
+                                                    </a> 
+                                                    {{ __( 'on', 'wedevs-project-manager') }}
+                                                    {{ taskDateFormat(discuss.created_at.date) }}, {{ dateTimeFormat(discuss.created_at.datetime) }}                  
+                                                    <div class="comment-count">
+                                                        <i class="bb-icon-comment bb-icon-l"></i>
+                                                        <router-link 
+                                                            class="pm-link" 
+                                                            :to="{ name: 'individual_discussions',  params: { discussion_id: discuss.id }}">
+                                                            {{ discuss.meta.total_comments }} {{ __( 'Comments', 'wedevs-project-manager') }} 
+                                                        </router-link>           
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                    </router-link>
+
+                                    <div v-if="can_edit_message(discuss)">
+                                        <div class="discuss-more-menu milestone-more-menu">
+                                            <!-- popper -->
+                                            <pm-popper trigger="click" :options="popperOptions">
+                                                <div class="pm-popper popper">
+                                                    <div class="more-menu-ul-wrap">
+                                                        <ul>
+                                                            <li>
+                                                                <a :title="edit" @click.prevent="showHideDiscussForm('toggle', discuss)" class="pm-icon-edit" href="#">
+                                                                    <span>{{ __('Edit', 'wedevs-project-manager') }}</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a @click.prevent="deleteSelfDiscuss(discuss.id)" class="pm-milestone-delete" :title="delete_this_message" href="#">
+                                                                    <span>{{ __('Delete', 'wedevs-project-manager') }}</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a :title="make_it_private" v-if="PM_Vars.is_pro && user_can('view_private_message')" @click.prevent="lockUnlock(discuss)" class="pm-milestone-open" href="#">
+                                                                    <span v-if="privateClass( discuss ) == 'dashicons dashicons-lock'">{{ __('Public', 'wedevs-project-manager') }}</span>
+                                                                    <span v-else>{{ __('Lock', 'wedevs-project-manager') }}</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- popper trigger element -->
+                                                <span slot="reference" title="Assign user" class="pm-popper-ref popper-ref icon-pm-more-options"></span>
+                                            </pm-popper>
+                                        </div>
                                     </div>
-                                </router-link>
-
-                                <div class="pm-col-3" v-if="can_edit_message(discuss)">
-                                    <span class="pm-message-action pm-right">
-                                        <a :title="edit" @click.prevent="showHideDiscussForm('toggle', discuss)" class="pm-msg-edit">
-                                            <i class="bb-icon-edit bb-icon-l"></i>
-                                        </a>
-                                        <a href="" @click.prevent="deleteSelfDiscuss(discuss.id)" class="delete-message" :title="delete_this_message">
-                                            <i class="bb-icon-trash bb-icon-l"></i>
-                                        </a>
-
-                                        <span :title="make_it_private" v-if="PM_Vars.is_pro && user_can('view_private_message')" @click.prevent="lockUnlock(discuss)" :class="privateClass( discuss )"></span>
-                                    </span>
                                 </div>
 
                                 <div class="clear"></div>
@@ -148,10 +170,6 @@
                 header: 'this is custom header'
             }
         },
-        
-        mounted: function () {
-            return this.$store.state.projectDiscussions.is_discuss_form_active = true;
-        },
 
         watch: {
             '$route' (route) {
@@ -193,6 +211,12 @@
         },
         
         methods: {
+            popperOptions () {
+                return {
+                    placement: 'bottom-end',
+                    modifiers: { offset: { offset: '0, 3px' } },
+                }
+            },
             discussQuery () {
                 var self = this;
                 

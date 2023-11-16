@@ -25,7 +25,7 @@
     border-color: transparent;
 }
 
-.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .title-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .description-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .milestone-field, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item input[type='text'], .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item select, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item textarea, #wedevs-project-manager input[type='text'], #wedevs-project-manager textarea {
+.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .title-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .description-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .milestone-field, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item input[type='text'], .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item select, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item textarea, #wedevs-project-manager input[type='text'], #wedevs-project-manager textarea, #wedevs-project-manager select {
     padding: 10px 15px;
     height: 42px;
     border-radius: var(--bb-input-radius);
@@ -133,4 +133,40 @@ div#wedevs-project-manager {
 }
 .pm-project-menu .menu-item .active{
     background: transparent;
+}
+
+/*Project List*/
+.pm-page-wrapper .pm-project-item .pm-project-item-body .pm-project-info .pm-project-meta-counters li a i {
+    font-size: 17px!important;
+}
+
+.pm-page-wrapper .pm-project-item .pm-project-item-body .pm-project-info .pm-project-meta-counters li a {
+    width: 28px!important;
+    height: 28px!important;
+}
+
+.pm-page-wrapper .pm-project-item .pm-project-item-body .pm-project-info .pm-project-meta-counters li:not(:last-child) {
+    margin: 0 6px 10px 0!important;
+}
+
+.pm-page-wrapper .project-list-view .pm-project-item .pm-project-item-body .pm-project-info .pm-project-meta-counters li a i {
+    font-size: 20px!important;
+}
+
+.pm-page-wrapper .project-list-view .pm-project-item .pm-project-item-body .pm-project-info .pm-project-meta-counters li a {
+    width: 32px!important;
+    height: 32px!important;
+}
+
+.pm-page-wrapper .project-list-view .pm-project-item .pm-project-item-body .pm-project-info .pm-project-meta-counters li:not(:last-child) {
+    margin: 0 10px 10px 0!important;
+}
+.pm-page-wrapper .pm-project-item .pm-project-item-body .pm-project-progress-wrapper {
+    min-width: 170px!important;
+}
+.more-menu-ul-wrap span[class^="icon-"], .more-menu-ul-wrap span[class^="flaticon-"], .more-menu-ul-wrap [class*=" icon-"] {
+    display: none!important;
+}
+.more-menu-ul-wrap ul {
+    padding-bottom: 5px!important;
 }
