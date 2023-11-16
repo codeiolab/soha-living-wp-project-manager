@@ -308,7 +308,7 @@
     justify-content: space-between;
 }
 
-#wedevs-project-manager #pm-single-task-wrap .pm-single-task-header .task-action .icon-pm-more-options, .comment-action-arrow span.icon-pm-more-options, .milestone-detail-top span.pm-popper-ref.popper-ref.icon-pm-more-options {
+#wedevs-project-manager #pm-single-task-wrap .pm-single-task-header .task-action .icon-pm-more-options, .comment-action-arrow span.icon-pm-more-options, .milestone-detail-top span.pm-popper-ref.popper-ref.icon-pm-more-options, .discuss-more-menu span.pm-popper-ref.popper-ref.icon-pm-more-options {
     transform: rotate(90deg);
     position: relative;
     display: flex;
@@ -1488,4 +1488,69 @@ form.pm-comment-form-vue.pm-comment-form .message {
 
 #wedevs-project-manager .pm-my-tasks #pm-mytask-page-content .pm-mytask-overview-page .pm-mytask-chart-overview {
     padding-bottom: 30px;
+}
+.pm-page-wrapper .pm-overview-panel .pm-panel-header .pm-tab-item.pm-item-favourite {
+    display: none;
+}
+.pm-projects-row .pm-project-column{
+    flex-basis: 25%!important;
+    max-width: 25%!important;
+}
+.pm-individual-discussion .single-list-back-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+#pm-signle-message .pm-discussion.pm-discussion-container .pm-new-message-form {
+    margin-bottom: 20px!important;
+    margin-top: 0!important;
+}
+.pm #pm-milestone-page .pm-milestone-details {
+    margin-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.pm #pm-milestone-page .pm-milestone-details .pm-new-milestone-form {
+    margin-bottom: 30px;
+}
+.pm .pm-message-page .pm-message-list .more-menu-ul-wrap li {
+    padding: 0!important;
+    margin: 0!important;
+}
+
+.more-menu-ul-wrap {
+    text-align: left;
+    min-width: 150px;
+}
+.discuss-more-menu{
+    text-align: right;
+}
+.discuss-list-content {
+    display: flex;
+    justify-content: space-between;
+}
+.pm .pm-comment-wrap .discuss-more-menu li {
+    list-style: none!important;
+}
+.pm-comment-wrap li.pm-comment .pm-comment-container .pm-comment-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.single-list-back-wrapper a.list-back-btn:hover .icon-pm-left-arrow::before {
+    color: #fff!important;
+}
+.pm-complete-milestone span.group-title i {
+    width: 30px;
+    height: 30px;
+    background: #97DCBE;
+    border-radius: 50%;
+    color: #848484;
+    padding: 2px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+.pm-milestone-data .group-title .bb-icon-flag {
+    color: var(--bb-headings-color);
+    margin-right: 10px;
 }

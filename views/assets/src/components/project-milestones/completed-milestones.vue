@@ -1,6 +1,6 @@
 <template>
     <div  v-if="completedMilestones.length" class="pm-complete-milestone pm-milestone-data">
-        <span class="group-title">{{ __( 'Completed Milestones', 'wedevs-project-manager') }}</span>
+        <span class="group-title"><i class="bb-icon-check bb-icon-l"></i>{{ __( 'Completed Milestones', 'wedevs-project-manager') }}</span>
         <div class="pm-milestone-list">
             <div v-for="milestone in completedMilestones" class="pm-milestone complete">
                 <div class="milestone-detail ">

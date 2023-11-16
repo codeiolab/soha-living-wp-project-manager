@@ -105,9 +105,9 @@
                 current_page_number: 1,
             }
         },
-        mounted: function () {
-            return this.$store.state.projectMilestones.is_milestone_form_active = true;
-        },
+        // mounted: function () {
+        //     return this.$store.state.projectMilestones.is_milestone_form_active = true;
+        // },
         watch: {
             '$route' (route) {
                 this.getSelfMilestones(this);

@@ -15,30 +15,58 @@
                 </div>
             </div>
         </div>
-
         <div class="pm-individual-discussion" v-else>
-            <div v-if="discuss" id="pm-signle-message">
-                <h3 class="pm-box-title">
-                    <span v-html="discuss.title"></span>         
-                    <!-- <span class="pm-right pm-edit-link">
-                        <span v-if="can_edit_message(discuss)" >
-                            <a @click.prevent="showHideDiscussForm('toggle', discuss)" href="#"  class="pm-msg-edit dashicons dashicons-edit">
-                                <i class="bb-icon-edit bb-icon-l"></i>
-                            </a>
-                        </span>
-                        
-                        <span v-if="PM_Vars.is_pro && user_can('view_private_message')" @click.prevent="lockUnlock(discuss)"  :class="privateClass( discuss )"></span>
-                    </span> -->
+            <div class="single-list-back-wrapper">
+                <router-link  
+                    class="list-back-btn pm-button pm-secondary"
+                    :to="{
+                        name: 'discussions',
+                        params: {
+                            'project_id': $route.params.project_id
+                        }
+                    }">
 
-                    <div class="pm-small-title">
-                        {{ __( 'By', 'wedevs-project-manager') }}
-                        <a :href="myTaskRedirect(discuss.creator.data.id)" :title="discuss.creator.data.display_name">
-                            {{ discuss.creator.data.display_name }}
-                        </a> {{ __( 'on', 'wedevs-project-manager') }} {{ taskDateFormat(discuss.created_at.date) }}, {{ dateTimeFormat(discuss.created_at.datetime) }}            
+                    <span class="icon-pm-left-arrow"></span>
+                    <span class="title">{{ __( 'Back to Disussions', 'wedevs-project-manager') }}</span>
+                </router-link>
+                <div v-if="can_create_message()">
+                    <a @click.prevent="showHideDiscussForm('toggle')" class="pm-btn pm-plus-white pm-new-message-btn pm-btn-uppercase" href="" id="pm-add-message"> <i aria-hidden="true" class="bb-icon-plus bb-icon-l"></i>
+                        {{ __( 'New Discussion', 'wedevs-project-manager') }} 
+                    </a>
+                </div>
+            </div>
+            <div v-if="discuss" id="pm-signle-message">
+                <div class="pm-discussion pm-discussion-container">
+                    <div class="discussion">
+                        <transition name="slide" v-if="can_create_message()">
+                            <div class="pm-new-message-form" v-if="is_discuss_form_active">
+                                <h3>{{ __( 'Create a New Discussion', 'wedevs-project-manager') }}</h3>
+                                <new-discuss-form  :discuss="{}"></new-discuss-form>
+                            </div>
+                        </transition>
                     </div>
-                </h3>
+                </div>
                 <div class="pm-single">
                     <div class="pm-entry-detail">
+                        <h3 class="pm-box-title">
+                            <span v-html="discuss.title"></span>         
+                            <!-- <span class="pm-right pm-edit-link">
+                                <span v-if="can_edit_message(discuss)" >
+                                    <a @click.prevent="showHideDiscussForm('toggle', discuss)" href="#"  class="pm-msg-edit dashicons dashicons-edit">
+                                        <i class="bb-icon-edit bb-icon-l"></i>
+                                    </a>
+                                </span>
+                                
+                                <span v-if="PM_Vars.is_pro && user_can('view_private_message')" @click.prevent="lockUnlock(discuss)"  :class="privateClass( discuss )"></span>
+                            </span> -->
+
+                            <div class="pm-small-title">
+                                {{ __( 'By', 'wedevs-project-manager') }}
+                                <a :href="myTaskRedirect(discuss.creator.data.id)" :title="discuss.creator.data.display_name">
+                                    {{ discuss.creator.data.display_name }}
+                                </a> {{ __( 'on', 'wedevs-project-manager') }} {{ taskDateFormat(discuss.created_at.date) }}, {{ dateTimeFormat(discuss.created_at.datetime) }}            
+                            </div>
+                        </h3>
                         <div v-html="discuss.description"></div>
 
                         <ul class="pm-attachments" v-if="discuss.files.data.length">
@@ -63,26 +91,45 @@
                         </div>
                         <div class="pm-comment-container">
                             <div class="pm-comment-meta">
-                                <span class="pm-author">
-                                    <a :href="myTaskRedirect(comment.creator.data.id)" :title="comment.creator.data.display_name">
-                                        {{ comment.creator.data.display_name }}
-                                    </a>
-                                </span>
-                                {{ __( 'on', 'wedevs-project-manager') }}           
-                                <span class="pm-date">
-
-                                    <time :datetime="getFullDate( comment.created_at.datetime )" :title="getFullDate( comment.created_at.datetime )">{{ relativeDate(comment.created_at.datetime) }}</time>
-                                    
-                                </span>
-
-                                <div class="pm-comment-action" v-if="can_edit_comment(comment)" >
-                                    <span class="pm-edit-link">
-                                        <a @click.prevent="showHideDiscussCommentForm('toggle', comment)" href="#" class="pm-edit-comment-link dashicons dashicons-edit "></a>
+                                <div>
+                                    <span class="pm-author">
+                                        <a :href="myTaskRedirect(comment.creator.data.id)" :title="comment.creator.data.display_name">
+                                            {{ comment.creator.data.display_name }}
+                                        </a>
                                     </span>
+                                    {{ __( 'on', 'wedevs-project-manager') }}           
+                                    <span class="pm-date">
 
-                                    <span class="pm-delete-link">
-                                        <a href="#" class="pm-delete-comment-link dashicons dashicons-trash" @click.prevent="deleteSelfComment(comment.id, discuss.id)"></a>
+                                        <time :datetime="getFullDate( comment.created_at.datetime )" :title="getFullDate( comment.created_at.datetime )">{{ relativeDate(comment.created_at.datetime) }}</time>
+                                        
                                     </span>
+                                </div>
+
+                                <div class="pm-comment-actions" v-if="can_edit_comment(comment)" >
+                                    <div class="discuss-more-menu milestone-more-menu">
+                                        <!-- popper -->
+                                        <pm-popper trigger="click" :options="popperOptions">
+                                            <div class="pm-popper popper">
+                                                <div class="more-menu-ul-wrap">
+                                                    <ul>
+                                                        <li>
+                                                            <a @click.prevent="showHideDiscussCommentForm('toggle', comment)" class="pm-icon-edit" href="#">
+                                                                <span>{{ __('Edit', 'wedevs-project-manager') }}</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a @click.prevent="deleteSelfComment(comment.id, discuss.id)" class="pm-milestone-delete" href="#">
+                                                                <span>{{ __('Delete', 'wedevs-project-manager') }}</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- popper trigger element -->
+                                            <span slot="reference" title="Assign user" class="pm-popper-ref popper-ref icon-pm-more-options"></span>
+                                        </pm-popper>
+                                    </div>
                                 </div>
                             </div>
                             <div class="pm-comment-content">
@@ -164,6 +211,9 @@
             //console.log(this.$route);
         },
         computed: {
+            is_discuss_form_active () {
+                return this.$store.state.projectDiscussions.is_discuss_form_active;
+            },
             discuss () {
                 if ( this.$store.state.projectDiscussions.discussion.length ) {
                     const txt = document.createElement( 'textarea' );
