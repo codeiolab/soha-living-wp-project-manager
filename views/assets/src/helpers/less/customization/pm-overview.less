@@ -498,7 +498,7 @@ i {
 			border-radius: 5px;
 			.pm-folders-list {
 				display: flex;
-				justify-content: space-evenly;
+				justify-content: space-between;
 				.pm-file-li {
 					padding-left: 0px;
 					padding-right: 10px;
@@ -543,8 +543,7 @@ i {
 											box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1); 
 											float: right;
 											li {
-												padding-left: 20px !important;
-												padding-right: 20px !important;
+												padding: 5px 20px 5px 20px !important;
 												cursor: pointer;
 												a {
 													color: var(--pm-secondary-button-text-regular) !important;
@@ -574,8 +573,7 @@ i {
 										box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1); 
 										float: right;
 										li {
-											padding-left: 20px !important;
-											padding-right: 20px !important;
+											padding: 5px 20px 5px 20px !important;
 											cursor: pointer;
 											a {
 												color: var(--pm-secondary-button-text-regular) !important;
@@ -588,6 +586,9 @@ i {
 										}
 									}
 								}
+							}
+							.pm-pro-single-file-content {
+								margin-top: 50px;
 							}
 							.doc_attach_comments {
 								background: var(--pm-body-background-color);
@@ -620,8 +621,7 @@ i {
 								float: right;
 								background: var(--pm-content-background-color);
 								li {
-									padding-left: 20px !important;
-									padding-right: 20px !important;
+									padding: 5px 20px 5px 20px !important;
 									list-style: none !important;
 									cursor: pointer;
 									a {
@@ -635,12 +635,17 @@ i {
 								}
 							}
 						}
-						.pm-comment-content .pm-attachments li {
-							border: none;
-							.pm-file a img {
+						.pm-comment-content {
+							div p {
+								color: var(--pm-secondary-button-text-regular) !important;
+							}
+							.pm-attachments li {
 								border: none;
-								border-radius: 0px;
-							} 
+								.pm-file a img {
+									border: none;
+									border-radius: 0px;
+								} 
+							}
 						}
 					}
 				}
@@ -677,9 +682,10 @@ i {
 	}
 	.document-details .online_doc_link	{
 		display: flex;
-		justify-content: center;
+		justify-content: space-between;
 		flex-direction: column;
 		align-items: center;
+		min-height: 350px;
 		.pm-box {
 			display: flex;
 			justify-content: center;
