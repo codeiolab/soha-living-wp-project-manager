@@ -403,6 +403,7 @@ i {
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
+				height: 150px;
 				i {
 					font-size: xxx-large;
 				}
@@ -418,6 +419,7 @@ i {
 				align-items: center;
 				margin-bottom: 10px;
 				background: none;
+				height: 150px;
 				.bb-icon-file-doc, .bb-icon-link {
 					font-size: xxx-large;
 					color: var(--pm-secondary-color-bg) !important;
@@ -504,16 +506,22 @@ i {
 					padding-left: 0px;
 					padding-right: 10px;
 					height: auto;
+					min-width: 15% !important;
+					width: 15% !important;
 				}
 			}
 		}
 		.pm-doc-modal {
 			.modal-wrapper .modal-container {
 				padding: 0px;
+				width: 40%;
 				.close-single-file-modal a {
 					cursor: pointer;
 					padding-left: 5px;
 					color: var(--pm-secondary-button-text-regular) !important;
+					span::before {
+						margin-left: 10px;
+					}
 				}
 				.modal-body.pm-doc-read-mod {
 					.pm-doc-content {
@@ -521,6 +529,9 @@ i {
 							cursor: pointer;
 							padding-left: 5px;
 							color: var(--pm-secondary-button-text-regular) !important;
+							span::before {
+								margin-left: 10px;
+							}
 						}
 						.pm-created-doc .pm-modal-conetnt {
 							padding:  0px 0px 100px 0px;
