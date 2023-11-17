@@ -1640,3 +1640,31 @@ form.pm-comment-form-vue.pm-comment-form .message {
 .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .pm-make-privacy.pm-make-task-privacy input[type="checkbox"]:checked + label:after{
     top: 0;
 }
+
+/*Search Box Result*/
+.pm-search-project .result-box ul.item-select {
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center!important;
+}
+
+.pm-search-project .result-box ul.item-select li {
+    margin: 0;
+    border: none;
+    background: var(--bb-secondary-button-background-regular) !important;
+    padding: 3px 5px!important;
+}
+
+.pm-search-project .result-box ul.item-select li label {
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.pm-search-project .result-box ul.item-select li.selected {
+    background: var(--bb-secondary-button-background-hover) !important;
+    border: none;
+}
+
+.pm-search-project .result-box ul.item-select li.selected label {
+    color: #fff;
+}
