@@ -145,7 +145,7 @@
 }
 
 
-.task-group .more-task-wrap .group-action-btn.show-completed-task .anchor-btn, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a, .single-list-back-wrapper a.list-back-btn, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel, .comment-action-chunk a.pm-button.pm-secondary, .pm-btn.pm-plus-white, .button-secondary, .buddypress .buddypress-wrap button.fc-button{
+.task-group .more-task-wrap .group-action-btn .anchor-btn, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a, .single-list-back-wrapper a.list-back-btn, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel, .comment-action-chunk a.pm-button.pm-secondary, .pm-btn.pm-plus-white, .button-secondary, .buddypress .buddypress-wrap button.fc-button, .pm-page-wrapper .pm-header .pm-header-left #pm-create-project{
 	background: var(--bb-secondary-button-background-regular)!important;
 	color: var(--bb-secondary-button-text-regular)!important;
 	border: 1px solid var(--bb-secondary-button-border-regular)!important;
@@ -154,7 +154,7 @@
 	border-radius: var(--bb-button-radius)!important;
 	transition: .3s!important;
 }
-.task-group .more-task-wrap .group-action-btn.show-completed-task .anchor-btn:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a:hover, .single-list-back-wrapper a.list-back-btn:hover, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel:hover, .comment-action-chunk a.pm-button.pm-secondary:hover, .pm-btn.pm-plus-white:hover, .button-secondary:hover, .pm-page-wrapper .pm-header .pm-header-left #pm-create-project:hover, .buddypress .buddypress-wrap button.fc-button:hover {
+.task-group .more-task-wrap .group-action-btn .anchor-btn:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a:hover, .single-list-back-wrapper a.list-back-btn:hover, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel:hover, .comment-action-chunk a.pm-button.pm-secondary:hover, .pm-btn.pm-plus-white:hover, .button-secondary:hover, .pm-page-wrapper .pm-header .pm-header-left #pm-create-project:hover, .buddypress .buddypress-wrap button.fc-button:hover {
 	background-color: var(--bb-secondary-button-background-hover)!important;
 	color: var(--bb-secondary-button-text-hover)!important;
 	border: 1px solid var(--bb-secondary-button-border-hover)!important;
@@ -211,9 +211,9 @@
     margin-left: 0px!important;
     margin-right: 0px!important;
 }
-.group-action-btn.show-completed-task {
-    margin-top: 10px;
-}
+// .group-action-btn.show-completed-task {
+//     margin-top: 10px;
+// }
 .list-task-form .pm-task-form .input-area .input-action-wrap .task-create-form .fields .input-field {
     border: none;
 }
@@ -260,7 +260,7 @@
     border-bottom-right-radius: 0px;
 }
 
-.new-task-form-field input.pm-single-button.pm-button-primary, .subtask-create-form input.pm-single-button.pm-button-primary {
+.new-task-form-field input.pm-single-button.pm-button-primary, .subtask-create-form input.pm-single-button.pm-button-primary, .pm-form.pm-project-form input#add_project{
     height: 40px!important;
 }
 
@@ -1364,8 +1364,9 @@ form.pm-comment-form-vue.pm-comment-form .message {
     margin-bottom: 0!important;
 }
 
-.task-group .more-task-wrap .group-action-btn.show-completed-task {
+.task-group .more-task-wrap .group-action-btn {
     margin-bottom: 20px;
+    margin-top: 10px;
 }
 .pm-task-form .input-area .input-action-wrap .task-create-form .fields .process-fields .process-field {
     margin-right: 0;
@@ -1614,4 +1615,28 @@ form.pm-comment-form-vue.pm-comment-form .message {
 }
 .pm-files.pm-files-container-pro {
     padding: 0;
+}
+#buddypress input[type=submit]{
+    line-height: 37px;
+}
+.pm-form.pm-project-form input#add_project {
+    font-size: 15px;
+    font-weight: 500!important;
+}
+
+.pm-ui-dialog .pm-project-form .submit {
+    text-align: right;
+}
+.ui-dialog .ui-dialog-titlebar-close {
+    box-shadow: none;
+    border: none;
+}
+.pm-ui-dialog .pm-project-form .pm-form-item, .pm-ui-dialog .pm-form .item{
+    margin-right: 0px;
+}
+.pm-project-form .pm-checkbox input[type="checkbox"]:checked + label:after {
+    top: 6px;
+}
+.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .pm-make-privacy.pm-make-task-privacy input[type="checkbox"]:checked + label:after{
+    top: 0;
 }
