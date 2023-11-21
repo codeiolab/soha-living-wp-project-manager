@@ -871,3 +871,65 @@ i {
     border-radius: 4px;
     box-shadow: 0px 2px 40px 0px rgba(214, 214, 214, 0.6);
 }
+
+/*Project modal*/
+.project-add-modal{
+	position: relative;
+	display: inline-block;
+}
+.new-project-form {
+    position: absolute;
+    top: 47px;
+    width: 400px;
+    left: auto;
+    z-index: 999;
+    background: #fff;
+    box-shadow: 0px 2px 40px 0px rgba(214, 214, 214, 0.6);
+    padding: 30px;
+    border-radius: 4px;
+}
+
+.new-project-form::before {
+    border-color: transparent transparent #ffffff transparent;
+    position: absolute;
+    border-style: solid;
+    top: -7px;
+    left: 28px;
+    content: "";
+    z-index: 9999;
+    border-width: 0 8px 7px 8px;
+}
+form.pm-form.pm-project-form {
+    margin-bottom: 0;
+}
+
+.new-project-form i.bb-icon-times.bb-icon-l::before {
+	font-size: 22px!important;
+}
+.new-pm-header{
+	margin-bottom: 22px!important;
+}
+
+.new-pm-header h2 {
+	line-height: 1;
+}
+
+.new-project-form .item {
+    margin-right: 0;
+}
+
+.new-project-form i.bb-icon-times.bb-icon-l {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+	cursor: pointer;
+}
+.actions-wrap .context .single-task-type.context .process-text-wrap {
+    position: relative;
+}
+
+.actions-wrap .context .single-task-type.context .process-text-wrap i.bb-icon-angle-down.bb-icon-l {
+    position: absolute;
+    right: 0;
+    top: 1px;
+}

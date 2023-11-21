@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div class="new-pm-header">
+            <h2>{{ __( 'Start a New Project', 'wedevs-project-manager') }}</h2>
+        </div>
         <form action="" method="post" class="pm-form pm-project-form" @submit.prevent="projectFormAction();">
 
             <div class="item project-name">
@@ -10,7 +13,7 @@
             <div class="pm-form-item item project-category">
                 <!-- v-model="project_cat" -->
                 <select v-model="project_category"  id='project_cat' class='chosen-select'>
-                    <option value="0">{{ __( '- Project Category -', 'wedevs-project-manager') }}</option>
+                    <option value="0">{{ __( 'Project Type', 'wedevs-project-manager') }}</option>
                     <option v-for="category in categories" :value="category.id" :key="category.id" >{{ category.title }}</option>
                 </select>
             </div>
@@ -46,18 +49,20 @@
             </div>
 
             <pm-do-action hook="pm_project_form" :actionData="project"></pm-do-action>
-
-            <div class="pm-form-item item project-notify">
-                <div class="pm-checkbox">
-                    <input type="checkbox" v-model="project_notify" name="project_notify" id="project-notify" value="yes" />
-                    <label for="project-notify">{{ __( 'Notify Co-Workers', 'wedevs-project-manager') }}</label>
-                </div>
-            </div>
-
             <div class="submit">
-                <a @click.prevent="closeForm()" class="pm-button pm-secondary project-cancel" href="#">{{ __( 'Close', 'wedevs-project-manager') }}</a>
-                <input v-if="project.id" type="submit" name="update_project" id="update_project" class="pm-button pm-primary" :value="update_project">
-                <input v-if="!project.id" type="submit" name="add_project" id="add_project" class="pm-button pm-primary" :value="add_new_project">
+                <div class="add-new-project-row">
+                    <div class="pm-form-item item project-notify">
+                        <div class="pm-checkbox">
+                            <input type="checkbox" v-model="project_notify" name="project_notify" id="project-notify" value="yes" />
+                            <label for="project-notify">{{ __( 'Notify Co-Workers', 'wedevs-project-manager') }}</label>
+                        </div>
+                    </div>
+                    <div>
+                        <input v-if="project.id" type="submit" name="update_project" id="update_project" class="pm-button pm-primary" :value="update_project">
+                        <input v-if="!project.id" type="submit" name="add_project" id="add_project" class="pm-button pm-primary" :value="add_new_project">
+                    </div>
+                </div>
+                <!-- <a @click.prevent="closeForm()" class="pm-button pm-secondary project-cancel" href="#">{{ __( 'Close', 'wedevs-project-manager') }}</a> -->
                 <span v-show="show_spinner" class="pm-loading"></span>
             </div>
 
@@ -121,8 +126,8 @@
                 project_notify: false,
                 assignees: [],
                 show_spinner: false,
-                name_of_the_project: __('Name of the project', 'wedevs-project-manager'),
-                details_of_project: __( 'Some details about the project (optional)', 'wedevs-project-manager'),
+                name_of_the_project: __('Name', 'wedevs-project-manager'),
+                details_of_project: __( 'Project Description', 'wedevs-project-manager'),
                 search_user: __( 'Search users...', 'wedevs-project-manager'),
                 create_new_user: __( 'Create a new user', 'wedevs-project-manager'),
                 add_new_project: __( 'Add New Project', 'wedevs-project-manager'),

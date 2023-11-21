@@ -118,7 +118,7 @@
                                         </pm-date-range-picker> -->
 
                                         <pm-vue2-daterange-picker
-                                            :opens="'right'"
+                                            :opens="'left'"
                                             :singleDatePicker="task_start_field ? false : true"
                                             :startDate="getStartDate()"
                                             :endDate="getEndDate()"

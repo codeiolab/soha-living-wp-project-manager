@@ -2,12 +2,13 @@
     <form action="" method="get" class="pm-filter-selection" id="pm-project-filters">
         <select @change="categoryFilter()" v-model="categorie_id" class="form-control">
             <option value="-1">
-               {{ __( '- All Categories -', 'wedevs-project-manager') }}
+                {{ __( 'All Categories', 'wedevs-project-manager') }}
             </option>
             <option v-for="categorie in categories" :value="categorie.id" :key="categorie.id">
                 {{ categorie.title }}
             </option>
         </select>
+        <i class="bb-icon-angle-down bb-icon-l"></i>
     </form>
 </template>
 

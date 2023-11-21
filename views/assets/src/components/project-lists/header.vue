@@ -10,7 +10,7 @@
                 <div class="pm-header-row">
                     <!-- header-left -->
                     <div class="pm-header-left">
-                        <h2 class="pm-d-inline"> {{ __('Project Manager', 'wedevs-project-manager') }}</h2>
+                        <h2 class="pm-d-inline"> {{ __('Projects', 'wedevs-project-manager') }}</h2>
                         <project-new-project-btn v-if="userCanAccess( PM_Vars.manager_cap_slug )"></project-new-project-btn>
 
                     </div> <!-- end header-left -->
@@ -58,7 +58,7 @@
         },
         data () {
             return {
-                start_new_project: __( 'Start a new project', 'wedevs-project-manager'),
+                start_new_project: __( 'Start a New Project', 'wedevs-project-manager'),
             }
         },
 

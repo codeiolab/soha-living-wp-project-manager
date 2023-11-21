@@ -19,23 +19,18 @@
             <div class="pm-col-10 pm-sm-col-12 user-lists">
                 <div class="overview-menu">
                     <ul>
-                        <li class="message">
-                            <router-link :to="{
-                                name: 'discussions',
-                                params: {
-                                    'project_id': project_id
-                                }
-                            }">
+                        <li class="todos">
+                            <a>
+
                                 <div class="icon">
                                     <i class="bb-icon-checkbox bb-icon-l"></i>
                                 </div>
                                 <div class="count">
-                                    <span>{{ meta.total_discussion_boards }}</span>
-                                    {{ __( 'Discussions', 'wedevs-project-manager') }}
+                                    <span>{{ meta.total_tasks }}</span>
+                                    {{ __( 'Tasks', 'wedevs-project-manager') }}
                                 </div>
-                            </router-link>
+                            </a>
                         </li>
-
                         <li class="todo">
                             <router-link :to="{
                                 name: 'task_lists',
@@ -52,29 +47,30 @@
                                 </div>
                             </router-link>
                         </li>
-
-                        <li class="todos">
-                            <a>
-
+                        <li class="message">
+                            <router-link :to="{
+                                name: 'discussions',
+                                params: {
+                                    'project_id': project_id
+                                }
+                            }">
                                 <div class="icon">
                                     <i class="bb-icon-comment bb-icon-l"></i>
                                 </div>
                                 <div class="count">
-                                    <span>{{ meta.total_tasks }}</span>
-                                    {{ __( 'Tasks', 'wedevs-project-manager') }}
+                                    <span>{{ meta.total_discussion_boards }}</span>
+                                    {{ __( 'Discussions', 'wedevs-project-manager') }}
                                 </div>
-                            </a>
-
+                            </router-link>
                         </li>
-
                         <li class="comments">
                             <a>
                                 <div class="icon">
                                     <i class="bb-icon-user-friends bb-icon-l"></i>
                                 </div>
                                 <div class="count">
-                                    <span>{{ meta.total_comments }}</span>
-                                    {{ __( 'Comments', 'wedevs-project-manager') }}
+                                    <span>{{ users.length }}</span>
+                                    {{ __( 'Members', 'wedevs-project-manager') }}
                                 </div>
                             </a>
                         </li>

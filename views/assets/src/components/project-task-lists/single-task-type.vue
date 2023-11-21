@@ -71,7 +71,7 @@
                         <div v-if="!hasTaskType" class="helper-text">{{ __( 'Add Task Type', 'wedevs-project-manager' ) }}</div>
                     </div>
                 </pm-popper>
-
+                <i class="bb-icon-angle-down bb-icon-l"></i>
                 <div v-if="!has_task_permission()">
                     <div
                         class="process-results task-type"
