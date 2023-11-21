@@ -31,9 +31,19 @@
                     </div>
 
                     <div v-if="task.assignees.data.length" class="task-activity assigned-users-content">
-                        <a class="image-anchor" v-for="user in task.assignees.data" :key="user.id" :href="myTaskRedirect(user.id)" :title="user.display_name">
+                        <a class="image-anchor" v-for="(user, key) in task.assignees.data" :key="user.id" :href="myTaskRedirect(user.id)" :title="user.display_name">
                             <img class="image" :src="user.avatar_url" :alt="user.display_name" height="48" width="48">
                         </a>
+                        <!-- more user button and their markup -->
+                        <!-- <span v-if="task.assignees.data.length > 2" class="pm-more-users pm-has-dropdown">
+                            <a @click.prevent="showMoreUser(task)" href="#" class="pm-dropdown-trigger">+{{ task.assignees.data.length - 2 }}</a>
+                            <ul :class="'pm-dropdown-menu '+ pmDropDownOpen(task)">
+                                <li v-for="(user, key) in task.assignees.data" v-if="key > 1" :key="key" class="pm-has-tooltip">
+                                    <img class="pm-img-circle" :src="user.avatar_url" :alt="user.display_name">
+                                    <span class="pm-tooltip-label">{{ user.display_name }}</span>
+                                </li>
+                            </ul>
+                        </span> -->
                     </div>
                     <div v-else class="no-task-assigne task-activity assigned-users-content"></div>
 
@@ -239,6 +249,16 @@
         },
         
         methods: {
+            showMoreUser(task){
+                if (task.showMoreUser) {
+                    return "pm-dropdown-open";
+                }
+
+                return "";
+            },
+            pmDropDownOpen(task){
+                task.showMoreUser = task.showMoreUser ? false : true;
+            },
             closeTaskForm () {
                 this.task.edit_mode = false;
             },
