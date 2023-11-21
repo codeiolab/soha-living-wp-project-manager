@@ -1553,14 +1553,28 @@ form.pm-comment-form-vue.pm-comment-form .message {
     color: #fff!important;
 }
 .pm-complete-milestone span.group-title i {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     background: #97DCBE;
     border-radius: 50%;
     color: #848484;
     padding: 2px;
     font-size: 14px;
     margin-right: 10px;
+    display: inline-block;
+}
+.pm-complete-milestone span.group-title i::before {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.pm .pm-front-end .project-overview .pm-col-10.pm-sm-col-12 .overview-menu{
+    margin-bottom: 30px!important;
+}
+.pm .pm-front-end .project-overview .pm-col-10.pm-sm-col-12 .overview-menu .message{
+    margin-bottom: 0!important;
+}
+.project-overview.pm-project-overview-container{
+    background: transparent;
 }
 .pm-milestone-data .group-title .bb-icon-flag {
     color: var(--pm-headings-color);
