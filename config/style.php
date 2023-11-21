@@ -21,6 +21,12 @@ return [
         'dependency' => false,
         'path'       => $view_path . '/assets/css/fontawesome/font-awesome.min.css',
     ],
+    'pm-buddyboss-icon' => [
+        'id'         => 'pm-buddyboss-icon',
+        'url'        => plugin_dir_url( dirname( __FILE__ ) ) . 'views/assets/css/bb-icons/css/bb-icons.min.css',
+        'dependency' => false,
+        'path'       => $view_path . '/assets/css/bb-icons/css/bb-icons.min.css',
+    ],
     'pm-toastr' => [
         'id'         => 'pm-toastr',
         'url'        => plugin_dir_url( dirname( __FILE__ ) ) . 'views/assets/css/toastr/toastr.min.css',
@@ -138,6 +144,7 @@ return [
             'pm-vue-multiselect',
             'pm-nprogress',
             'pm-fontawesome',
+            'pm-buddyboss-icon',
             'pm-toastr',
             'pm-jquery-ui',
             'pm-fullcalendar',
