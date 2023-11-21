@@ -25,7 +25,7 @@
     border-color: transparent;
 }
 
-.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .title-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .description-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .milestone-field, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item input[type='text'], .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item select, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item textarea, #wedevs-project-manager input[type='text'], #wedevs-project-manager textarea, #wedevs-project-manager select, .pm-form .item input[type="text"], .pm-form .item select, .pm-form .item textarea {
+.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .title-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .description-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .milestone-field, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item input[type='text'], .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item select, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item textarea, #wedevs-project-manager input[type='text'], #wedevs-project-manager textarea, #wedevs-project-manager select, .pm-form .item input[type="text"], .pm-form .item select, .pm-form .item textarea, .pm-task-list-wrap .list-content-body .list-search-menu .multiselect__tags {
     padding: 10px 15px!important;
     height: 42px!important;
     border-radius: var(--bb-input-radius);
@@ -35,6 +35,18 @@
     height: auto;
     min-height: 100px!important;
     padding: 15px!important;
+}
+.pm-task-list-wrap .list-content-body .list-search-menu .multiselect__tags {
+    padding-right: 24px!important;
+}
+
+.pm-task-list-wrap .list-content-body .list-search-menu .multiselect__select {
+    top: 2px;
+}
+#wedevs-project-manager .pm-task-list-wrap .list-content-body .list-search-menu .multiselect__tags input[type='text'] {
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .milestone-field{

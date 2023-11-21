@@ -4,9 +4,9 @@
         <div class="pm-header">
             <h1 style="display: none;"></h1>
             <div class="pm-container">
-                <div class="project-header-panel-main-menu">
+                <!-- <div class="project-header-panel-main-menu">
                     <project-header-top-menu/>
-                </div>
+                </div> -->
                 <div class="pm-header-row">
                     <!-- header-left -->
                     <div class="pm-header-left">

@@ -1,9 +1,9 @@
 <template>
     <div class="pm-header">
         <div class="pm-header-title-content" v-if="isProjectLoaded">
-            <div class="project-header-panel-main-menu">
+            <!-- <div class="project-header-panel-main-menu">
                 <project-header-top-menu/>
-            </div>
+            </div> -->
             <div class="header-row-1">
                 <div class="project-title">
                     <span class="title">{{ project.title }}</span>

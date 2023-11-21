@@ -19,26 +19,29 @@
                 <div class="content">
                     <div class="list-action-btn-wrap">
                         <div class="left-side">
-                            <div class="new-list-btn" >
-                                <a v-if="can_create_list  && !isArchivedPage" @click.prevent="showHideListForm('toggle')" href="#" class="list-action-group add-list">
-                                    <i class="bb-icon-plus bb-icon-l"></i>&nbsp;&nbsp;
-                                    <span>{{ __('Add Task List', 'wedevs-project-manager') }}</span>
-                                </a>
+                            <div class="task-new-list-btn-filter">
+                                <div class="new-list-btn" >
+                                    <a v-if="can_create_list  && !isArchivedPage" @click.prevent="showHideListForm('toggle')" href="#" class="list-action-group add-list">
+                                        <i class="bb-icon-plus bb-icon-l"></i>&nbsp;&nbsp;
+                                        <span>{{ __('Add Task List', 'wedevs-project-manager') }}</span>
+                                    </a>
 
-                                <new-task-list-form v-if="is_active_list_form && can_create_list  && !isArchivedPage"></new-task-list-form>
-                                
+                                    <new-task-list-form v-if="is_active_list_form && can_create_list  && !isArchivedPage"></new-task-list-form>
+                                    
+                                </div>
+                                <div>
+                                    <a :class="isActiveTaskFilter() + ' list-action-group task-filter-btn'" v-pm-tooltip :title="__('Task Filter', 'wedevs-project-manager')" @click.prevent="showFilter()" href="#">
+                                        <i class="bb-icon-filter-alt bb-icon-l"></i>&nbsp;&nbsp;
+                                        <span>{{__('Filter', 'wedevs-project-manager')}}</span>
+                                    </a>
+                                </div>
                             </div>
                             <pm-do-slot :hook="'pm-inline-left-side-list-button'"></pm-do-slot>
                         </div>
                         
                         <div class="right-side">
                             <pm-do-slot :hook="'pm-inline-list-button'"></pm-do-slot>
-                            <div>
-                                <a :class="isActiveTaskFilter() + ' list-action-group task-filter-btn'" v-pm-tooltip :title="__('Task Filter', 'wedevs-project-manager')" @click.prevent="showFilter()" href="#">
-                                    <span class="icon-pm-filter"></span>
-                                    <span>{{__('Filter', 'wedevs-project-manager')}}</span>
-                                </a>
-                            </div>
+                            
                         </div>
                     </div>
 
@@ -213,10 +216,8 @@
 
                 <div class="list-search-menu" v-if="isActiveFilter">
                     <div class="filter-title">
-                        <div>
-                            <a @click.prevent="showFilter()" href="#" class="icon-pm-cross"></a>
-                            <span class="active-task-filter">{{__('Task Filter', 'wedevs-project-manager')}}</span>
-                        </div>
+                        <h2>{{__('Task Filter', 'wedevs-project-manager')}}</h2>
+                        <a @click.prevent="showFilter()" href="#" class="icon-pm-cross"></a>
                     </div>
                     
                     <div class="search-content">
@@ -248,12 +249,11 @@
                             <div class="margin-top">
                                 <div class="margin-title">{{__('Status', 'wedevs-project-manager')}}</div>
                                 <div class="status-elements">
-                                    <a :class="'complete-btn ' + completeBoder()" @click.prevent="changeFilterStatus('complete')" href="#">
-                                        {{__('Completed', 'wedevs-project-manager')}}
-                                    </a>
-                                    <a :class="'on-going-btn ' + onGoingBorder()" @click.prevent="changeFilterStatus('incomplete')" href="#">
-                                        {{__('On-going', 'wedevs-project-manager')}}
-                                    </a>
+                                    <select name="" id="" class="title-field" v-model="filterStatus">
+                                        <option value="">All</option>
+                                        <option value="complete">{{__('Completed', 'wedevs-project-manager')}}</option>
+                                        <option value="incomplete">{{__('On-going', 'wedevs-project-manager')}}</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="margin-top">
