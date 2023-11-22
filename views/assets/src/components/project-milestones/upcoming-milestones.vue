@@ -39,7 +39,7 @@
                         </ul>
                     </div>
                 
-                    <div v-if="milestone.discussion_boards.data.length"  class="pm-col-6 pm-milestone-discussion pm-last-col pm-sm-col-12">
+                    <div v-if="milestone.discussion_boards.data.length"  class="pm-col-8 pm-milestone-discussion pm-sm-col-12">
                         <h3>{{  __( 'Discussions', 'wedevs-project-manager') }}</h3>
                         <ul>
                             <li v-for="discuss in milestone.discussion_boards.data">

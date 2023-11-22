@@ -21,6 +21,10 @@
                         <new-milestone-form section="milestones" v-if="milestone.edit_mode" :milestone="milestone"></new-milestone-form>
                     </transition>
                 </div>
+                <div class="pm-milestone-completed">
+                    {{ __( 'Completed on:', 'wedevs-project-manager') }}
+                    <time :datetime="milestone.achieved_at.date +' '+ milestone.achieved_at.time" :title="milestone.achieved_at.date +' '+ milestone.achieved_at.time">{{milestone.achieved_at.date}} {{milestone.achieved_at.time}}</time>            
+                </div>
                 <div class="pm-milestone-items-details">
                     <div v-if="milestone.task_lists.data.length"  class="pm-col-6 pm-milestone-todo pm-sm-col-12">
                         <h3>{{ __( 'Task Lists', 'wedevs-project-manager') }}</h3>
@@ -31,7 +35,7 @@
                         </ul>
                     </div>
 
-                    <div v-if="milestone.discussion_boards.data.length"  class="pm-col-6 pm-milestone-discussion pm-last-col pm-sm-col-12">
+                    <div v-if="milestone.discussion_boards.data.length"  class="pm-col-8 pm-milestone-discussion pm-sm-col-12">
                         <h3>{{ __( 'Discussions', 'wedevs-project-manager')}}</h3>
                         <ul>
                             <li v-for="discuss in milestone.discussion_boards.data">
@@ -41,10 +45,6 @@
                     </div>
 
                     <div class="clearfix"></div>
-                </div>
-                <div class="pm-milestone-completed">
-                    {{ __( 'Completed on:', 'wedevs-project-manager') }}
-                    <time :datetime="milestone.achieved_at.date +' '+ milestone.achieved_at.time" :title="milestone.achieved_at.date +' '+ milestone.achieved_at.time">{{milestone.achieved_at.date}} {{milestone.achieved_at.time}}</time>            
                 </div>
             </div>
         </div>

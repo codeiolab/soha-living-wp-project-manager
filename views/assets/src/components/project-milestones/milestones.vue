@@ -22,7 +22,7 @@
                 <div class="pm-content" >
                     <transition name="slide" v-if="can_create_milestone">
                         <div class="pm-new-milestone-form" v-if="is_milestone_form_active">
-                            <h3>  {{ __( 'Create a new milestones', 'wedevs-project-manager') }}</h3>
+                            <h3>  {{ __( 'Create a New Milestone', 'wedevs-project-manager') }}</h3>
                             <div class="pm-milestone-form-wrap">
                                 <new-milestone-form section="milestones" :milestone="{}"></new-milestone-form>
                             </div>
@@ -45,7 +45,7 @@
                 <div class="pm-row pm-milestone-details" >
                     <transition name="slide" v-if="can_create_milestone">
                         <div  class="pm-new-milestone-form" style="float:none;" v-if="is_milestone_form_active">
-                            <h3>  {{ __( 'Create a new milestones', 'wedevs-project-manager') }}</h3>
+                            <h3>  {{ __( 'Create a New Milestone', 'wedevs-project-manager') }}</h3>
                             <div class="pm-milestone-form-wrap">
                                 <new-milestone-form section="milestones" :milestone="{}"></new-milestone-form>
                             </div>

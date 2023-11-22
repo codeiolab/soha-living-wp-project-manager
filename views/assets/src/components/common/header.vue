@@ -16,13 +16,18 @@
                                 <edit-project v-if="is_manager()" class="project-edit-form" :project="project" @makeFromClose="makeFromClose"></edit-project>
                             </div>
                             <!-- popper trigger element -->
-                            <a href="#" @click.prevent="checkFormStatus" slot="reference" :title="__( 'action', 'wedevs-project-manager')" class="pm-project-update-wrap pm-popper-ref popper-ref icon-pm-pencil project-update-btn"></a>
-                            
+                            <a href="#" @click.prevent="checkFormStatus" slot="reference" :title="__( 'action', 'wedevs-project-manager')" class="pm-project-update-wrap pm-popper-ref popper-ref">{{ __( 'Edit Projects Details', 'wedevs-project-manager') }}</a>
                         </pm-popper>
                     </div>
+                    <div class="settings header-settings">
+                        <a href="#" class="pm-project-update-wrap pm-popper-ref popper-ref">{{ __( 'Share with Group', 'wedevs-project-manager') }}</a>
+                    </div>
+                    <div class="settings header-settings">
+                        <a href="#" class="pm-project-update-wrap pm-popper-ref popper-ref">{{ __( 'Copy Link', 'wedevs-project-manager') }}</a>
+                    </div>
                     <div class="action-settings settings header-settings" v-if="is_manager()">
-                        <pm-popper trigger="click" :options="popperOptions">
-                            <div class="pm-popper popper">
+                        <!-- <pm-popper trigger="click" :options="popperOptions"> -->
+                            <!-- <div class="pm-popper popper"> -->
                                 <div v-if="is_manager()" class="pm-action-menu-container">
                                     <ul class="action-ul">
                                         <li>
@@ -34,7 +39,9 @@
                                                 <span v-if="project.status === 'complete'">{{ __( 'Restore', 'wedevs-project-manager') }}</span>
                                             </a>
                                         </li>
-                                    
+                                        <li>
+                                            <pm-do-action :hook="'project_action_menu'" :actionData="project" ></pm-do-action>
+                                        </li>
                                         <li>
                                             <a href="#" @click.prevent="deleteProject(project.id)" :title="__( 'Delete project', 'wedevs-project-manager')">
 
@@ -46,21 +53,21 @@
                                     </ul>
 
                                 </div>
-                            </div>
+                            <!-- </div> -->
                             <!-- popper trigger element -->
-                            <a href="#" @click.prevent="" slot="reference" :title="__( 'action', 'wedevs-project-manager')" class="pm-popper-ref popper-ref icon-pm-settings header-settings-btn"></a>
-                        </pm-popper>
+                            <!-- <a href="#" @click.prevent="" slot="reference" :title="__( 'action', 'wedevs-project-manager')" class="pm-popper-ref popper-ref icon-pm-settings header-settings-btn"></a> -->
+                        <!-- </pm-popper> -->
 
                         <!-- <a href="#" v-if="is_manager()" @click.prevent="showHideSettings()" class="icon-pm-settings header-settings-btn"></a> -->
                     </div>
-                    <div class="settings last header-settings">
+                    <!-- <div class="settings last header-settings">
                         <a 
                             v-tooltip.top-center="__( 'Project Description', 'wedevs-project-manager' )"
                             href="#" 
                             class="flaticon-text-document"
                             @click.prevent="updateDescriptionVisibility()"
                         />
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="project-search-box-container">

@@ -11,12 +11,14 @@
         <div class="item detail">
             <text-editor :editor_id="editor_id" :content="content"></text-editor>
         </div>
-        <pm-do-action hook="pm_milestone_form" :actionData="milestone" ></pm-do-action>
-        <div class="submit">
-            <input v-if="!milestone.id" type="submit" name="create_milestone" id="create_milestone" class="button-primary" :value="add_milestone">
-            <input v-if="milestone.id" type="submit" name="update_milestone" id="update_milestone" class="button-primary" :value="update_milestone">
-            <a @click.prevent="showHideMilestoneForm(false, milestone)" class="milestone-cancel button-secondary">{{  __( 'Cancel', 'wedevs-project-manager') }}</a>
-            <span v-show="show_spinner" class="pm-spinner"></span>
+        <div class="milestone-submission-section">
+            <pm-do-action hook="pm_milestone_form" :actionData="milestone" ></pm-do-action>
+            <div class="submit">
+                <a @click.prevent="showHideMilestoneForm(false, milestone)" class="milestone-cancel button-secondary">{{  __( 'Cancel', 'wedevs-project-manager') }}</a>
+                <input v-if="!milestone.id" type="submit" name="create_milestone" id="create_milestone" class="button-primary" :value="add_milestone">
+                <input v-if="milestone.id" type="submit" name="update_milestone" id="update_milestone" class="button-primary" :value="update_milestone">
+                <span v-show="show_spinner" class="pm-spinner"></span>
+            </div>
         </div>
         
     </form>

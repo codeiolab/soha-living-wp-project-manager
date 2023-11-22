@@ -601,7 +601,7 @@
 /*Single task list page*/
 #wedevs-project-manager .single-list-content {
     background: var(--pm-content-background-color);
-    padding: 20px 0px 20px!important;
+    padding: 30px!important;
     margin-bottom: 30px!important;
     border-radius: 10px;
     border: navajowhite;
@@ -612,8 +612,11 @@
     margin-left: 0;
 }
 
-#wedevs-project-manager .single-list-content .title-wrp, #wedevs-project-manager .single-list-content .description, #wedevs-project-manager .single-list-content .more-task-wrap {
-    margin-left: 52px;
+#wedevs-project-manager .single-list-content .description, #wedevs-project-manager .single-list-content .more-task-wrap {
+    margin-left: 0px;
+}
+.single-list-content-inner .task-group .incomplete-task-ul.has-items, .single-list-content-inner .task-group .complete-task-ul {
+    padding-left: 0!important;
 }
 .single-list-back-wrapper {
     margin-bottom: 20px;
@@ -1384,7 +1387,8 @@ form.pm-comment-form-vue.pm-comment-form .message {
     margin-left: 15px;
 }
 #wedevs-project-manager .single-list-content .title-wrp {
-    margin-right: 52px;
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .single-list-content-inner .list-task-form {
@@ -1775,4 +1779,140 @@ form.pm-comment-form-vue.pm-comment-form .message {
 
 .pm-task-list-wrap .list-content-body .list-search-menu .filter-title h2 {
     margin-bottom: 15px!important;
+}
+.pm-task-list-wrap .list-content-body .content .list-items .list-content .progress-bar{
+    min-width: 120px;
+}
+.notify-users{
+    position: relative;
+}
+.pm-discussion-container .pm-message-form-wrap .pm-make-privacy.pm-checkbox {
+    display: none;
+}
+.discuss-actions, .discuss-notifier{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.discuss-actions{
+    position: relative;
+}
+.discuss-notifier .notify-users{
+    margin-bottom: 0px!important;
+}
+.pm-attachment-area-minimal .pm-upload-filelist {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: #fff;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 40px 0px rgba(214, 214, 214, 0.6);
+    top: 65px;
+}
+.pm-attachment-area-minimal div#pm-upload-container {
+    position: inherit!important;
+}
+
+.pm-discussion.pm-discussion-container .discussion {
+    overflow: unset;
+}
+.pm-attachment-area-minimal i {
+    color: var(--pm-alternate-text-color);
+}
+
+.pm .pm-front-end .pm-discussion-container .pm-new-message-form .pm-message-form .item {
+    margin-right: 0;
+}
+.discuss-actions a.message-cancel, .milestone-submission-section a.milestone-cancel.button-secondary {
+    background: transparent!important;
+    border-color: #fff!important;
+    color: #a0a0a0!important;
+}
+.pm-individual-discussion ul.pm-user-list label {
+    font-size: 15px;
+}
+.pm-milestone-items-details .pm-milestone-discussion {
+    background: #f3f4f5;
+    padding: 25px;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.pm-milestone-items-details .pm-milestone-discussion h3 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    line-height: 1;
+}
+
+.pm-milestone-items-details .pm-milestone-discussion ul li div {
+    margin: 0;
+}
+.milestone-discuss-member {
+    display: flex;
+    align-items: center;
+}
+
+.milestone-discuss-member a {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.pm-milestone-items-details .pm-milestone-discussion ul li {
+    margin: 15px 0;
+    color: var(--bb-headings-color);
+}
+.pm-milestone-items-details .pm-milestone-discussion ul li:first-child{
+    margin-top: 0px;
+}
+.pm-milestone-items-details .pm-milestone-discussion ul li:last-child{
+    margin-bottom: 0px;
+}
+.pm-milestone-items-details .pm-milestone-discussion ul li a{
+    color: var(--bb-headings-color);
+    font-weight: 500;
+}
+.pm-milestone-items-details .pm-milestone-discussion ul li>div {
+    display: flex;
+    align-items: center;
+}
+.milestone-submission-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.milestone-submission-section .pm-make-privacy {
+    margin-bottom: 0;
+}
+
+.milestone-submission-section .submit {
+    padding: 0;
+}
+.pm-doc-modal-action {
+    padding: 0 25px;
+}
+
+.pm-files.pm-files-container-pro .pm-pro-file-container .pm-doc-modal .modal-wrapper .modal-container .modal-body.pm-doc-read-mod .pm-doc-content .close-single-file-modal a {
+    padding-left: 0;
+    margin-left: -16px;
+}
+
+.file-dropdown{
+    position: absolute;
+    z-index: 1;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+    float: right;
+    right: 20px;
+}
+.file-dropdown li{
+    padding: 5px 20px 5px 20px !important;
+    cursor: pointer;
+}
+
+.file-dropdown li a{
+    color: var(--pm-body-text-color);
 }
