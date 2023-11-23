@@ -1893,8 +1893,11 @@ form.pm-comment-form-vue.pm-comment-form .message {
 .pm-doc-modal-action {
     padding: 0 25px;
 }
+.pm-doc-modal-action.pm-doc-modal-doc-margin{
+    padding: 0 18px;
+}
 
-.pm-files.pm-files-container-pro .pm-pro-file-container .pm-doc-modal .modal-wrapper .modal-container .modal-body.pm-doc-read-mod .pm-doc-content .close-single-file-modal a {
+.pm-files.pm-files-container-pro .pm-pro-file-container .pm-doc-modal .modal-wrapper .modal-container .pm-doc-content .close-single-file-modal a, .modal-wrapper .modal-container .pm-doc-modal-doc-margin .close-single-file-modal {
     padding-left: 0;
     margin-left: -16px;
 }
@@ -1907,6 +1910,7 @@ form.pm-comment-form-vue.pm-comment-form .message {
     box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
     float: right;
     right: 20px;
+    background: #fff;
 }
 .file-dropdown li{
     padding: 5px 20px 5px 20px !important;
@@ -1915,4 +1919,30 @@ form.pm-comment-form-vue.pm-comment-form .message {
 
 .file-dropdown li a{
     color: var(--pm-body-text-color);
+}
+.pm .pm-activity-list li.pm-row .pm-activity-body {
+    padding-top: 100px;
+}
+
+#wedevs-project-manager .pm-new-doc-comment-form .pm-multiselect-top {
+    left: 0;
+}
+
+#wedevs-project-manager .pm-new-doc-comment-form .pm-multiselect-top::before {
+    left: 10px;
+    right: auto;
+}
+
+#wedevs-project-manager .pm-new-doc-comment-form .pm-multiselect-top::after {
+    left: 10px;
+    right: auto;
+}
+.pm-created-doc .pm-modal-conetnt span.pm-right {
+    display: none;
+}
+.pm-doc-modal-doc-margin{
+    margin-top: 20px;
+}
+.pm-doc-modal-action span.bb-icon-ellipsis-h {
+    cursor: pointer;
 }
