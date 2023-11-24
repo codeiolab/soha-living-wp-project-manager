@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="new-pm-header">
-            <h2>{{ __( 'Project Details', 'wedevs-project-manager') }}</h2>
+            <h2 v-if="project.id">{{ __( 'Project Details', 'wedevs-project-manager') }}</h2>
+            <h2 v-else>{{ __( 'Start a New Project', 'wedevs-project-manager') }}</h2>
         </div>
         <form action="" method="post" class="pm-form pm-project-form" @submit.prevent="projectFormAction();">
 
