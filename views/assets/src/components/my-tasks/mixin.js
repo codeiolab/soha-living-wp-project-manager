@@ -167,6 +167,6 @@ export default {
             var args = jQuery.extend(true, pre_define, args );
             var conditions = this.generatequeryString(args.data);
             window.location.href = args.url + conditions;
-        }
+        },
 	}
 };

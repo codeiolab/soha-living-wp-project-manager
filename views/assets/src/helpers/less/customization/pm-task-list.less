@@ -145,7 +145,7 @@
 }
 
 
-.task-group .more-task-wrap .group-action-btn .anchor-btn, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a, .single-list-back-wrapper a.list-back-btn, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel, .comment-action-chunk a.pm-button.pm-secondary, .pm-btn.pm-plus-white, .button-secondary, .buddypress .buddypress-wrap button.fc-button, .pm-page-wrapper .pm-header .pm-header-left #pm-create-project, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .task-filter, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .active-task-filter{
+.task-group .more-task-wrap .group-action-btn .anchor-btn, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a, .single-list-back-wrapper a.list-back-btn, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel, .comment-action-chunk a.pm-button.pm-secondary, .pm-btn.pm-plus-white, .button-secondary, .buddypress .buddypress-wrap button.fc-button, .pm-page-wrapper .pm-header .pm-header-left #pm-create-project, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .task-filter, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .active-task-filter, .fc-button-group .fc-button.fc-state-default, .fc-button.fc-state-default, a.button.pm-load-more{
 	background: var(--pm-secondary-button-background-regular)!important;
 	color: var(--pm-secondary-button-text-regular)!important;
 	border: 1px solid var(--pm-secondary-button-border-regular)!important;
@@ -154,7 +154,11 @@
 	border-radius: var(--pm-button-radius)!important;
 	transition: .3s!important;
 }
-.task-group .more-task-wrap .group-action-btn .anchor-btn:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a:hover, .single-list-back-wrapper a.list-back-btn:hover, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel:hover, .comment-action-chunk a.pm-button.pm-secondary:hover, .pm-btn.pm-plus-white:hover, .button-secondary:hover, .pm-page-wrapper .pm-header .pm-header-left #pm-create-project:hover, .buddypress .buddypress-wrap button.fc-button:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .task-filter:hover {
+.fc-button-group .fc-button.fc-state-default, .fc-button.fc-state-default {
+    box-shadow: none;
+    height: auto;
+}
+.task-group .more-task-wrap .group-action-btn .anchor-btn:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a:hover, .single-list-back-wrapper a.list-back-btn:hover, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel:hover, .comment-action-chunk a.pm-button.pm-secondary:hover, .pm-btn.pm-plus-white:hover, .button-secondary:hover, .pm-page-wrapper .pm-header .pm-header-left #pm-create-project:hover, .buddypress .buddypress-wrap button.fc-button:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .task-filter:hover, a.button.pm-load-more:hover {
 	background-color: var(--pm-secondary-button-background-hover)!important;
 	color: var(--pm-secondary-button-text-hover)!important;
 	border: 1px solid var(--pm-secondary-button-border-hover)!important;
@@ -947,7 +951,7 @@ ul.pm-user-list li {
     border: none;
     padding: 0;
 }
-.pm .pm-activity-list li.pm-row .pm-activity-date, .pm .pm-activity-list li.pm-row .pm-activity-body {
+.pm .pm-activity-list li.pm-row .pm-activity-date, .pm .pm-activity-list li.pm-row .pm-activity-body, #pm-progress-wrap .pm-activity-heads {
     box-shadow: none!important;
     border: none!important;
 }
@@ -982,10 +986,12 @@ ul.pm-user-list li {
 .pm .pm-activity-list li.pm-row .pm-activity-date span {
     font-size: 16px;
 }
-.pm .pm-activity-list li.pm-row .pm-activity-date {
+.pm .pm-activity-list li.pm-row .pm-activity-date, #wedevs-project-manager #pm-progress-wrap .pm-activity-heads {
     width: 100px!important;
     height: 100px;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
 }
 
 .pm .pm-activity-list li.pm-row .pm-activity-body .pm-col-8 {
@@ -1001,6 +1007,8 @@ ul.pm-user-list li {
     border: none!important;
     background: transparent;
     box-shadow: none!important;
+    position: relative;
+    bottom: -9px;
 }
 
 #wedevs-project-manager .pm-my-tasks .pm-project-header.pm-project-head .pm-row.pm-no-padding.pm-border-bottom, #wedevs-project-manager .pm-my-tasks .pm-project-header.pm-project-head .pm-user-select {
@@ -1192,27 +1200,53 @@ input.multiselect__input {
     padding-right: 0!important;
 }
 
-#wedevs-project-manager .pm-header, .pm-page-wrapper .pm-overview-panel .pm-panel-header, #wedevs-project-manager .pm-header-menu-wrap {
+#wedevs-project-manager .pm-header, .pm-page-wrapper .pm-overview-panel .pm-panel-header, #wedevs-project-manager .pm-header-menu-wrap, #wedevs-project-manager .pm-common-header, #wedevs-project-manager .my-task-filter-with-header {
     background: #fff!important;
     padding-left: 20px!important;
     padding-right: 20px!important;
     padding-top: 0px!important;
 
 }
-#wedevs-project-manager .pm-header{
+#wedevs-project-manager .pm-header, #wedevs-project-manager .pm-common-header{
     border-radius: var(--pm-block-radius) var(--pm-block-radius) 0 0 !important;
     padding-top: 20px!important;
+}
+#wedevs-project-manager .pm-common-header{
+    padding-top: 26px!important;
+    padding-bottom: 6px;
+}
+#wedevs-project-manager .pm-wrap.pm.my-tasks.pm-my-tasks {
+    margin-top: 0;
 }
 
 .pm-page-wrapper .pm-header .pm-header-row {
     margin-bottom: 0px!important;
 }
-.pm-page-wrapper .pm-overview-panel .pm-panel-header, #wedevs-project-manager .pm-header-menu-wrap {
+.pm-page-wrapper .pm-overview-panel .pm-panel-header, #wedevs-project-manager .pm-header-menu-wrap, #wedevs-project-manager .my-task-filter-with-header {
     border-radius: 0 0 var(--pm-block-radius) var(--pm-block-radius) !important;
 }
-.pm-page-wrapper .pm-header .pm-header-left h2, .pm-page-wrapper .pm-header .pm-header-right form.pm-search-form {
+.pm-page-wrapper .pm-header .pm-header-right form.pm-search-form {
     margin-bottom: 5px!important;
 }
+.pm-page-wrapper .pm-header .pm-header-left h2, .pm-common-header h1{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 15px 0 0;
+    padding: 0;
+}
+.pm-common-header {
+    display: flex;
+    align-items: center;
+}
+.pm-common-header .button-secondary {
+    height: 39px;
+    padding: 6px 16px!important;
+    display: inline-block;
+    margin: 0!important;
+    position: relative;
+    top: 1px;
+}
+
 .pm-page-wrapper .pm-view-style-container .pm-view-style-group li a {
     padding-right: 0!important;
 }
@@ -1280,12 +1314,13 @@ span.acitivity-action-type{
     background: #ddd;
     z-index: -1;
 }
-.pm .pm-activity-list li.pm-row .pm-activity-date span {
+.pm .pm-activity-list li.pm-row .pm-activity-date span, #wedevs-project-manager #pm-progress-wrap .pm-activity-heads span {
     font-size: 16px!important;
     font-weight: 500!important;
     padding: 5px;
     text-align: center;
     display: inline-block;
+    color: #000;
 }
 
 .single-task-list-comments {
@@ -1399,12 +1434,36 @@ form.pm-comment-form-vue.pm-comment-form .message {
     display: none!important;
 }
 
-.fc-toolbar.fc-header-toolbar .fc-left {
+// .fc-toolbar.fc-header-toolbar .fc-left {
+//     display: flex;
+// }
+.fc-toolbar.fc-header-toolbar {
     display: flex;
-    flex-direction: row-reverse;
-    gap: 5px;
+    align-items: center;
 }
 
+.fc-toolbar.fc-header-toolbar .fc-clear {
+    display: none;
+}
+
+.fc-toolbar.fc-header-toolbar  .fc-center {
+    order: 1;
+    width: 200px;
+}
+
+.fc-toolbar.fc-header-toolbar .fc-left {
+    order: 2;
+    width: calc(100% - 500px);
+}
+
+.fc-toolbar.fc-header-toolbar .fc-right {
+    order: 3;
+    float: none;
+    text-align: right;
+    width: 300px;
+    display: flex;
+    justify-content: end;
+}
 .buddypress .buddypress-wrap button.fc-button {
     height: 34px;
     box-shadow: none!important;
@@ -1736,7 +1795,7 @@ form.pm-comment-form-vue.pm-comment-form .message {
 }
 
 .pm-page-wrapper .pm-view-style-container .pm-view-style-group li a {
-    padding-right: 12px!important;
+    padding-right: 10px!important;
     border-radius: 4px;
     transition: .3s;
 }
@@ -1945,4 +2004,111 @@ form.pm-comment-form-vue.pm-comment-form .message {
 }
 .pm-doc-modal-action span.bb-icon-ellipsis-h {
     cursor: pointer;
+}
+#wedevs-project-manager #pm-progress-wrap ul.pm-activity ul{
+    margin-left: 47px;
+}
+#wedevs-project-manager #pm-progress-wrap ul.pm-activity ul li {
+    padding-left: 80px;
+}
+
+#wedevs-project-manager #pm-progress-wrap .pm-progress-label {
+    border: none;
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #000;
+}
+
+#wedevs-project-manager #pm-progress-wrap span.pm-progress-label {
+    background: var(--pm-secondary-button-background-regular) !important;
+}
+
+#wedevs-project-manager #pm-progress-wrap ul.pm-activity ul li span.date {
+    font-style: normal;
+}
+div#pm-progress-wrap {
+    margin-top: 35px;
+}
+.pm-wrap.pm-front-end, .pm-wrap.pm.pm-kanboard {
+    margin-top: 0!important;
+}
+#pm-calender-page div#pm-calendar {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+}
+.fc-today-button.fc-button.fc-state-default {
+    text-transform: capitalize;
+    color: var(--pm-secondary-button-text-regular) !important;
+}
+.fc-event .fc-content {
+    display: flex;
+    align-items: center;
+}
+
+.pm-calendar a {
+    margin: 5px;
+    padding: 8px 10px;
+}
+.fc-ltr .fc-basic-view .fc-day-top .fc-day-number {
+    font-weight: 500;
+}
+.fc-row.fc-week.fc-widget-content .fc-content-skeleton{
+    min-height: 180px;
+}
+.pm-calender-page .calendar-color-plate {
+    background: #fff;
+    margin-bottom: 30px;
+    border-radius: 0 0 var(--pm-block-radius) var(--pm-block-radius) !important;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.pm-calender-page .calendar-color-plate p {
+    margin-right: 15px;
+}
+
+/*My task list*/
+.my-task-filter-wrap table thead td {
+    font-weight: 600;
+    padding: 0 10px 10px!important;
+}
+
+.mytask-current .current-task-table tbody td {
+    padding: 10px!important;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.mytask-current .current-task-table tbody td .task-activity.assigned-users-content {
+    display: flex;
+}
+
+.mytask-current .current-task-table tbody td .task-activity.assigned-users-content a:not(:first-child) {
+    margin-left: -5px;
+}
+
+.mytask-current .current-task-table tbody tr:last-child td {
+    border-bottom: none;
+}
+#wedevs-project-manager .my-task-filter-wrap .pm-checkbox label::before {
+    top: 0;
+}
+.comment-action-arrow .pm-popup-menu.comment-action ul li a span {
+    margin: 0!important;
+}
+
+.comment-action-arrow .pm-popup-menu.comment-action ul li {
+    padding: 0!important;
+}
+
+.comment-action-arrow .pm-popup-menu.comment-action ul li a {
+    display: block;
+    padding: 6px 10px;
+    line-height: 1;
+}
+
+.comment-action-arrow .pm-popup-menu.comment-action ul {
+    padding: 8px 0!important;
 }

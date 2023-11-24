@@ -1,42 +1,16 @@
 <template>
     <div class="mytask-outstanding mytask-current">
         <table class="wp-list-table widefat posts current-task-table">
-            <!-- <thead>
+            <thead>
                 <tr>
-                    <td @click.prevent="activeSorting('title')" class="pointer">
-                        {{ __('Tasks', 'wedevs-project-manager') }}
-                        <span class="sort-wrap">
-                            <i 
-                                :class="sorting.title.asc ? 'active-sorting pm-icon flaticon-caret-down' : 'pm-icon flaticon-caret-down'" 
-                                aria-hidden="true">
-                                
-                            </i>
-                            <i 
-                                :class="sorting.title.desc ? 'active-sorting pm-icon flaticon-sort' : 'pm-icon flaticon-sort'" 
-                                aria-hidden="true">
-                                    
-                            </i>
-                        </span>
-                    </td>
+                    <td>&nbsp;</td>
+                    <td>{{ __('Task', 'wedevs-project-manager') }}</td>
+                    <td>{{ __('Due Date', 'wedevs-project-manager') }}</td>
+                    <td>{{ __('Assignee', 'wedevs-project-manager') }}</td>
+                    <td>{{ __('Project', 'wedevs-project-manager') }}</td>
                     <td>{{ __('Task List', 'wedevs-project-manager') }}</td>
-                    <td>{{ __('Projects', 'wedevs-project-manager') }}</td>
-                    <td @click.prevent="activeSorting('due_date')" class="pointer">
-                        {{ __('Overdue', 'wedevs-project-manager') }}
-                        <span class="sort-wrap">
-                            <i 
-                                :class="sorting.due_date.asc ? 'active-sorting pm-icon flaticon-caret-down' : 'pm-icon flaticon-caret-down'" 
-                                aria-hidden="true">
-                                    
-                            </i>
-                            <i 
-                                :class="sorting.due_date.desc ? 'active-sorting pm-icon flaticon-sort' : 'pm-icon flaticon-sort'" 
-                                aria-hidden="true">
-                                    
-                            </i>
-                        </span>
-                    </td>
                 </tr>
-            </thead> -->
+            </thead>
             <tbody>
                 <tr v-if="tasks.length" v-for="task in tasks">
                     <td>
@@ -44,48 +18,32 @@
                     </td>
                     <td><a href="#" @click.prevent="popuSilgleTask(task)">{{ task.title }}</a></td>
                     <td>
+                        <div class="task-time-recurrent">
+                            <div :class="'task-activity task-time'">
+                                <span v-if="task.due_date.date">{{ taskDateFormat(task.due_date.date) }}</span>
+                                <span v-else @click.prevent="popuSilgleTask(task)"><i class="bb-icon-calendar bb-icon-l"></i></span>
+                            </div>
+                            <div v-if="task.recurrent && task.recurrent > 0" class="recurrent-task"><i class="bb-icon-repeat bb-icon-l"></i></div>
+                        </div>
+                    </td>
+                    <td>
                         <div class="my-tasks-assignee">
                             <div v-if="task.assignees.data.length" class="task-activity assigned-users-content">
                                 <a class="image-anchor" v-for="user in task.assignees.data" :key="user.id" :href="myTaskRedirect(user.id)" :title="user.display_name">
                                     <img class="image" :src="user.avatar_url" :alt="user.display_name" height="48" width="48">
                                 </a>
                             </div>
-                            <div>{{ getOverdueValue(task) }}</div>
+                            <!-- <div v-html="getRelativeDueDate(task)"></div> -->
                         </div>
                     </td>
                     <td>
-                        <!-- <router-link
-                          :to="{
-                            name: 'single_list',
-                            params: {
-                                project_id: task.project_id,
-                                list_id: task.task_list_id
-                            }
-                        }">
-                            {{ task.task_list.data.title }}
-                        </router-link> -->
-
-                        <!-- For ERP Integration -->
-                        <a :href="`${PM_Vars.project_page}#/projects/${task.project_id}/task-lists/${task.task_list_id}`">
-                            {{ task.task_list.data.title }}
-                        </a>
-
-                    </td>
-                    <td>
-                       <!--  <router-link
-                          :to="{
-                            name: 'task_lists',
-                            params: {
-                                project_id: task.project_id,
-                            }
-                        }">
-                            {{ task.project_title }}
-                        </router-link> -->
-                        
-                        <!-- For ERP Integration -->
                         <a :href="`${PM_Vars.project_page}#/projects/${task.project_id}/task-lists`">
                             {{ task.project_title }}
                         </a>
+                    </td>
+                    <td>
+                        <!-- For ERP Integration -->
+                        <a :href="`${PM_Vars.project_page}#/projects/${task.project_id}/task-lists/${task.task_list_id}`" v-html="task.task_list.data.title"></a>
                     </td>
                 </tr>
                  <tr v-if="!tasks.length">
@@ -182,9 +140,13 @@
         created () {
             pmBus.$on('pm_after_close_single_task_modal', this.afterCloseSingleTaskModal);
             pmBus.$on('pm_generate_task_url', this.generateTaskUrl);
+            pmBus.$on('pm_after_complete_current_task', this.removeCompletedTaskFromList);
         },
 
         methods: {
+            removeCompletedTaskFromList(task){
+                this.$emit('afterCloseTaskModal', task);
+            },
             closeTaskModal (task) {
                 this.$emit('afterCloseTaskModal', task);
             },
