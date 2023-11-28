@@ -216,7 +216,7 @@
 
                 <div class="list-search-menu" v-if="isActiveFilter">
                     <div class="filter-title">
-                        <h2>{{__('Task Filter', 'wedevs-project-manager')}}</h2>
+                        <h2>{{__('Filter', 'wedevs-project-manager')}}</h2>
                         <a @click.prevent="showFilter()" href="#" class="icon-pm-cross"></a>
                     </div>
                     

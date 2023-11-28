@@ -3,7 +3,6 @@
 </template>
 
 <script>
-    
     export default {
         props :{
             activity: {
@@ -37,7 +36,8 @@
                     }
                 }
 
-                return obj.message;
+                var fullMessage = obj.message;
+                return fullMessage.slice(0, -1) + ',';
             },
         },
 

@@ -31,7 +31,7 @@
                                 <activity-parser :activity="activity" :page="'project'"></activity-parser>
                                 <span>
                                     <time :datetime="pmDateISO8601Format(activity.committed_at.date, activity.committed_at.time)" :title="pmDateISO8601Format(activity.committed_at.date, activity.committed_at.time)">
-                                        <i>{{ taskDateFormat(activity.committed_at.date) }}, {{ dateTimeFormat(activity.committed_at.datetime) }}</i>
+                                        <i>{{ taskDateFormat(activity.committed_at.date) }} {{ dateTimeFormat(activity.committed_at.datetime) }}</i>
                                     </time>
                                 </span>
                             </div>

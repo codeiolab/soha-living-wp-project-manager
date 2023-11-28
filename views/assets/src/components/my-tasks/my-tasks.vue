@@ -5,7 +5,7 @@
                 <h1 class="wp-heading-inline pm-d-inline">
                     {{ __( 'Tasks', 'wedevs-project-manager') }}
                 </h1>
-                <a href="#" @click.prevent="openTaskForm()" class="page-title-action button-secondary"><i aria-hidden="true" class="bb-icon-plus bb-icon-l"></i>&nbsp;&nbsp;{{ __( 'Add New', 'wedevs-project-manager') }}</a>
+                <a href="#" @click.prevent="openTaskForm()" class="page-title-action button-secondary"><i aria-hidden="true" class="bb-icon-plus bb-icon-l"></i>&nbsp;&nbsp;{{ __( 'New Task', 'wedevs-project-manager') }}</a>
             </div>
             <!-- <my-task-header></my-task-header> -->
             <router-view></router-view>

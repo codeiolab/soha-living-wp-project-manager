@@ -11,24 +11,24 @@
                             </a>
                         </li>
                         <li>
-                            <a @click.prevent="deleteSelfMilestone()" class="pm-milestone-delete" :title="delete_milestone" href="#">
-                                <span>{{ __('Delete', 'wedevs-project-manager') }}</span>
+                            <a href="#" @click.prevent="milestoneLockUnlock(milestone)" v-if="PM_Vars.is_pro && user_can('view_private_milestone')">
+                                <span v-if="milestone.meta.privacy == 0">{{ __('Lock', 'wedevs-project-manager') }}</span>
+                                <span v-else>{{ __('Public', 'wedevs-project-manager') }}</span>
                             </a>
                         </li>
                         <li>
                             <a v-if="is_complete" @click.prevent="milestoneMarkUndone(milestone)" class="pm-milestone-open" :title="mark_as_incomplete" href="#">
-                                <span>{{ __('Mark as Incomplete', 'wedevs-project-manager') }}</span>
+                                <span>{{ __('Mark Incomplete', 'wedevs-project-manager') }}</span>
                             </a>
                         </li>
                         <li>
                             <a v-if="!is_complete" @click.prevent="milestoneMarkDone(milestone)" class="pm-milestone-complete" :title="mark_as_complete" href="#">
-                                <span>{{ __('Mark as Complete', 'wedevs-project-manager') }}</span>
+                                <span>{{ __('Mark Complete', 'wedevs-project-manager') }}</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" @click.prevent="milestoneLockUnlock(milestone)" v-if="PM_Vars.is_pro && user_can('view_private_milestone')">
-                                <span v-if="milestone.meta.privacy == 0">{{ __('Lock', 'wedevs-project-manager') }}</span>
-                                <span v-else>{{ __('Public', 'wedevs-project-manager') }}</span>
+                            <a @click.prevent="deleteSelfMilestone()" class="pm-milestone-delete" :title="delete_milestone" href="#">
+                                <span>{{ __('Delete', 'wedevs-project-manager') }}</span>
                             </a>
                         </li>
                     </ul>
