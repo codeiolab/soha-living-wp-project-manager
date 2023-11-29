@@ -12,10 +12,9 @@ a{
     color: var(--pm-primary-button-text-regular);
     border: 1px solid var(--pm-primary-button-border-regular);
     font-family: inherit;
-    font-size: 12x;
+    font-size: 12px;
     border-radius: var(--pm-button-radius);
     min-height: 38px;
-    line-height: 38px;
     padding: 0 20px;
     text-decoration: none;
     cursor: pointer;
@@ -44,6 +43,9 @@ a{
     background-color: var(--pm-primary-button-background-hover);
     color: var(--pm-primary-button-text-hover);
     border-color: var(--pm-primary-button-border-hover);
+}
+button.cancelBtn.btn.btn-sm.btn-default{
+    height: 38px;
 }
 .actions-wrap .context .process-text-wrap:hover .process-btn{
     background-color: var(--pm-primary-button-background-regular);
@@ -473,4 +475,24 @@ body.page .kbc-title-wrap .pm-checkbox input[type="checkbox"] + label:before {
 
 .pm-wrap.pm.my-tasks.pm-my-tasks .pm-task-form .input-area .input-action-wrap .task-create-form .task-submit-wrap.process-content-2 a.pm-button.pm-secondary.cancel-button {
     display: none;
+}
+#wedevs-project-manager select.monthselect.col {
+    height: 40px!important;
+    border: 1px solid #DDDDDD;
+}
+.sub-task-content .subtask-checkbox input[type="checkbox"] + label:before {
+    top: 0;
+}
+
+.pm-pro-subtask-task-edit-form .add-new-subtask-form-field .action-icons.process-fields .process-content-1 {
+    height: auto;
+}
+
+.pm-pro-subtask-task-edit-form .add-new-subtask-form-field {
+    display: flex!important;
+}
+
+.pm-pro-subtask-task-edit-form .add-new-subtask-form-field .action-icons.process-fields .process-content-1 {
+    background: #fff!important;
+    border-radius: var(--pm-input-radius);
 }
