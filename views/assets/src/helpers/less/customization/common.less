@@ -1,4 +1,50 @@
 
+body {
+    background: var(--pm-body-background-color);
+}
+a{
+    color: var(--pm-primary-color);
+    outline: 0;
+    text-decoration: none;
+}
+.pm-button.pm-primary, #wedevs-project-manager .button-primary, button.applyBtn.btn.btn-sm.btn-primary{
+    background-color: var(--pm-primary-button-background-regular);
+    color: var(--pm-primary-button-text-regular);
+    border: 1px solid var(--pm-primary-button-border-regular);
+    font-family: inherit;
+    font-size: 12x;
+    border-radius: var(--pm-button-radius);
+    min-height: 38px;
+    line-height: 38px;
+    padding: 0 20px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    border-width: 1px;
+    border-style: solid;
+    outline: 0;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-transition: .3s all;
+    transition: .3s all;
+}
+
+.pm-wrap.pm.my-tasks.pm-my-tasks .pm-task-form .input-area .input-action-wrap .task-create-form .task-submit-wrap.process-content-2 input.pm-single-button.pm-button-primary{
+    border-radius: var(--pm-button-radius);
+    background-color: var(--pm-primary-button-background-regular);
+    color: var(--pm-primary-button-text-regular);
+    border: 1px solid var(--pm-primary-button-border-regular);
+    margin-left: 10px;
+}
+.pm-button.pm-primary:hover, #wedevs-project-manager .button-primary:hover, button.applyBtn.btn.btn-sm.btn-primary:hover, .pm-wrap.pm.my-tasks.pm-my-tasks .pm-task-form .input-area .input-action-wrap .task-create-form .task-submit-wrap.process-content-2 input.pm-single-button.pm-button-primary:hover{
+    outline: 0;
+    text-decoration: none;
+    background-color: var(--pm-primary-button-background-hover);
+    color: var(--pm-primary-button-text-hover);
+    border-color: var(--pm-primary-button-border-hover);
+}
 .mce-notification.mce-has-close {
     display: none;
 }
@@ -25,7 +71,7 @@
     border-color: transparent;
 }
 
-.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .title-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .description-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .milestone-field, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item input[type='text'], .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item select, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item textarea, #wedevs-project-manager input[type='text'], #wedevs-project-manager textarea, #wedevs-project-manager select, .pm-form .item input[type="text"], .pm-form .item select, .pm-form .item textarea, .pm-task-list-wrap .list-content-body .list-search-menu .multiselect__tags {
+.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .title-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .description-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .milestone-field, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item input[type='text'], .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item select, .pm-header-title-content .settings.header-settings .project-edit-form .pm-form .item textarea, #wedevs-project-manager input[type='text'], #wedevs-project-manager textarea, #wedevs-project-manager select, .pm-form .item input[type="text"], .pm-form .item select, .pm-form .item textarea, .pm-task-list-wrap .list-content-body .list-search-menu .multiselect__tags, .calendar-task-modal .popup-mask .popup-container .project-list-drop-down .multiselect .multiselect__tags{
     padding: 10px 15px!important;
     height: 42px!important;
     border-radius: var(--pm-input-radius);
@@ -42,7 +88,6 @@
 
 .pm-task-list-wrap .list-content-body .list-search-menu .multiselect__select {
     top: 2px;
-    z-index: 999;
 }
 #wedevs-project-manager .pm-task-list-wrap .list-content-body .list-search-menu .multiselect__tags input[type='text'] {
     position: absolute;
@@ -144,7 +189,7 @@
 #wedevs-project-manager.pm-page-wrapper .pm-project-search input.pm-search[type='text']{
     padding-left: 30px!important;
 }
-div#wedevs-project-manager {
+body.page div#wedevs-project-manager {
     margin-right: 0;
 }
 .pm-page-wrapper .pm-overview-panel .pm-panel-header .pm-tab-item a, #wedevs-project-manager .pm-project-menu .menu-item a{
@@ -338,4 +383,91 @@ h3.no-projects {
 
 .custom-time-form .pm-vue2-daterange-picker .vue-daterange-picker {
     width: 100%;
+}
+.kbc-kanboard .kbc-table-wrap .kbc-th-wrap .kbc-th .kbc-section-background .kbc-section-header-wrap {
+    background: transparent!important;
+}
+.kbc-kanboard .kbc-table-wrap .kbc-th-wrap .kbc-th .kbc-section-background .kbc-tasks-wrap .kbc-kanboard-sortable-wrap .kbc-td-contents .kbc-content-inside .kbc-after-task-title-wrap .kbc-task-user-wrap{
+    overflow: inherit;
+}
+.kbc-title-wrap .pm-checkbox input[type="checkbox"] + label:before {
+    top: 0px;
+    width: 15px;
+    height: 15px;
+}
+body.page .kbc-title-wrap .pm-checkbox input[type="checkbox"] + label:before {
+    top: -2px;
+    width: 16px;
+    height: 16px;
+}
+.kbc-after-task-title-wrap i.bb-icon-user.bb-icon-l {
+    margin-left: -6px;
+}
+.pm-message-form .item.milestone select {
+    width: 100%;
+    max-width: 100%;
+}
+
+.pm-message-form .notify-users a.pm-button-nofity-user, .doc_attach_comments .notify-users a.pm-button-nofity-user {
+    display: flex;
+    align-items: center;
+    margin-top: 1px;
+}
+.pm-message-form-wrap .pm-attachment-area-minimal {
+    height: 20px;
+}
+.pm-comment-content {
+    color: #000;
+}
+.milestone-discuss-member img {
+    border-radius: 50%;
+}
+.pm-doc-modal-action.pm-doc-modal-doc-margin{
+    padding: 20px 18px!important;
+}
+#wedevs-project-manager .calendar-task-modal .popup-mask .popup-container {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+}
+
+#wedevs-project-manager .calendar-task-modal .popup-mask .popup-container .popup-body {
+    overflow: inherit;
+}
+.calendar-task-modal .popup-mask .popup-container .project-list-drop-down .multiselect .multiselect__input{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: transparent;
+}
+.calendar-task-modal .popup-mask .popup-container .label{
+    margin-bottom: 5px;
+    display: block;
+    margin-top: 10px;
+}
+.daterangepicker .calendar-table td{
+    border: none!important;
+}
+.calendar-table tr td {
+    border-color: #fff!important;
+}
+
+#wedevs-project-manager .daterangepicker .calendar-table td.active {
+    border-bottom: none!important;
+}
+.vue-daterange-picker .pm-daterange-view .date-text {
+    min-width: 60px;
+    text-align: right;
+}
+
+.vue-daterange-picker .reportrange-text {
+    border: none;
+}
+.pm-wrap.pm.my-tasks.pm-my-tasks .pm-task-form .input-area .input-action-wrap .task-create-form .task-submit-wrap.process-content-2 {
+    display: flex;
+    align-items: center;
+}
+
+.pm-wrap.pm.my-tasks.pm-my-tasks .pm-task-form .input-area .input-action-wrap .task-create-form .task-submit-wrap.process-content-2 a.pm-button.pm-secondary.cancel-button {
+    display: none;
 }

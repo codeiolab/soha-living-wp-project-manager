@@ -145,7 +145,7 @@
 }
 
 
-.task-group .more-task-wrap .group-action-btn .anchor-btn, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a, .single-list-back-wrapper a.list-back-btn, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel, .comment-action-chunk a.pm-button.pm-secondary, .pm-btn.pm-plus-white, .button-secondary, .buddypress .buddypress-wrap button.fc-button, .pm-page-wrapper .pm-header .pm-header-left #pm-create-project, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .task-filter, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .active-task-filter, .fc-button-group .fc-button.fc-state-default, .fc-button.fc-state-default, a.button.pm-load-more{
+.task-group .more-task-wrap .group-action-btn .anchor-btn, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a, .single-list-back-wrapper a.list-back-btn, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel, .comment-action-chunk a.pm-button.pm-secondary, .pm-btn.pm-plus-white, .button-secondary, .buddypress .buddypress-wrap button.fc-button, .pm-page-wrapper .pm-header .pm-header-left #pm-create-project, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .task-filter, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .active-task-filter, .fc-button-group .fc-button.fc-state-default, .fc-button.fc-state-default, a.button.pm-load-more, button.cancelBtn.btn.btn-sm.btn-default{
 	background: var(--pm-secondary-button-background-regular)!important;
 	color: var(--pm-secondary-button-text-regular)!important;
 	border: 1px solid var(--pm-secondary-button-border-regular)!important;
@@ -158,7 +158,7 @@
     box-shadow: none;
     height: auto;
 }
-.task-group .more-task-wrap .group-action-btn .anchor-btn:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a:hover, .single-list-back-wrapper a.list-back-btn:hover, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel:hover, .comment-action-chunk a.pm-button.pm-secondary:hover, .pm-btn.pm-plus-white:hover, .button-secondary:hover, .pm-page-wrapper .pm-header .pm-header-left #pm-create-project:hover, .buddypress .buddypress-wrap button.fc-button:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .task-filter:hover, a.button.pm-load-more:hover {
+.task-group .more-task-wrap .group-action-btn .anchor-btn:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn a:hover, .single-list-back-wrapper a.list-back-btn:hover, .pm-task-comment-wrap .pm-comment-form .comment-action-chunk .pm-button-cancel:hover, .comment-action-chunk a.pm-button.pm-secondary:hover, .pm-btn.pm-plus-white:hover, .button-secondary:hover, .pm-page-wrapper .pm-header .pm-header-left #pm-create-project:hover, .buddypress .buddypress-wrap button.fc-button:hover, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .task-filter:hover, a.button.pm-load-more:hover, button.cancelBtn.btn.btn-sm.btn-default:hover {
 	background-color: var(--pm-secondary-button-background-hover)!important;
 	color: var(--pm-secondary-button-text-hover)!important;
 	border: 1px solid var(--pm-secondary-button-border-hover)!important;
@@ -1890,6 +1890,10 @@ form.pm-comment-form-vue.pm-comment-form .message {
     border-color: #fff!important;
     color: #a0a0a0!important;
 }
+.discuss-actions a.message-cancel:focus, .milestone-submission-section a.milestone-cancel.button-secondary:focus{
+    outline: 0;
+    box-shadow: none;
+}
 .pm-individual-discussion ul.pm-user-list label {
     font-size: 15px;
 }
@@ -1921,7 +1925,7 @@ form.pm-comment-form-vue.pm-comment-form .message {
 
 .pm-milestone-items-details .pm-milestone-discussion ul li {
     margin: 15px 0;
-    color: var(--bb-headings-color);
+    color: var(--pm-headings-color);
 }
 .pm-milestone-items-details .pm-milestone-discussion ul li:first-child{
     margin-top: 0px;
@@ -1930,7 +1934,7 @@ form.pm-comment-form-vue.pm-comment-form .message {
     margin-bottom: 0px;
 }
 .pm-milestone-items-details .pm-milestone-discussion ul li a{
-    color: var(--bb-headings-color);
+    color: var(--pm-headings-color);
     font-weight: 500;
 }
 .pm-milestone-items-details .pm-milestone-discussion ul li>div {
@@ -2112,4 +2116,9 @@ div#pm-progress-wrap {
 
 .comment-action-arrow .pm-popup-menu.comment-action ul {
     padding: 8px 0!important;
+}
+.list-search-menu .multiselect__select:before {
+    color: #555555;
+    font-size: 21px!important;
+    right: 0;
 }

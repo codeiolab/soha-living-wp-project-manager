@@ -248,7 +248,7 @@
                             </div>
                             <div class="margin-top">
                                 <div class="margin-title">{{__('Status', 'wedevs-project-manager')}}</div>
-                                <div class="status-elements">
+                                <div class="status-elements pm-select">
                                     <select name="" id="" class="title-field" v-model="filterStatus">
                                         <option value="">All</option>
                                         <option value="complete">{{__('Completed', 'wedevs-project-manager')}}</option>

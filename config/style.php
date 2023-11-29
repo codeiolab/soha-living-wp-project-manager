@@ -158,7 +158,7 @@ return [
             'pm-daterangepicker',
             'pm-const-style',
             'pm-new-style',
-            'pm-slicknav'
+            'pm-slicknav',
         ]
     ],
 ];
