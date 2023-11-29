@@ -7,7 +7,7 @@
             <div class="header-row-1">
                 <div class="project-title">
                     <span class="title">{{ project.title }}</span>
-                    <span class="icon-pm-down-arrow" @click.prevent="showHideTitleAction()"></span>
+                    <span class="icon-pm-down-arrow" :class="{active: showTitleAction}" @click.prevent="showHideTitleAction()"></span>
                 </div>
                 <div class="title-action-dropdown" v-if="showTitleAction">
                     <div class="settings first header-settings" v-if="is_manager()">
@@ -424,7 +424,6 @@
 
             showHideTitleAction(){
                 this.showTitleAction = !this.showTitleAction;
-                console.log(this.showTitleAction);
             },
 
             windowActivity (el) {

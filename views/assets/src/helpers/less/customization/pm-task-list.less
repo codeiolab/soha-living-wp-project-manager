@@ -268,27 +268,30 @@
     height: 40px!important;
 }
 #wedevs-project-manager #pm-single-task-wrap .description-wrap .task-description-action .pm-primary {
-    background: var(--pm-primary-button-background-regular);
-    padding: 5px 20px;
+    // background: var(--pm-primary-button-background-regular);
+    // padding: 5px 20px;
     font-size: 15px;
-    height: 38px;
-    border-radius: var(--pm-button-radius);
+    // height: 38px;
+    // border-radius: var(--pm-button-radius);
 }
-#wedevs-project-manager #pm-single-task-wrap .description-wrap .task-description-action a.pm-button.pm-secondary {
-    padding: 5px 20px;
-}
+// #wedevs-project-manager #pm-single-task-wrap .description-wrap .task-description-action a.pm-button.pm-secondary {
+//     padding: 5px 20px;
+// }
 
 .pm-header-title-content span.icon-pm-down-arrow{
 	cursor: pointer;
     width: 20px;
     display: inline-block;
     text-align: center;
+    transition: .3s;
     // height: 20px;
+}
+.pm-header-title-content span.icon-pm-down-arrow.active {
+    transform: rotate(180deg);
 }
 .pm-header-title-content span.icon-pm-down-arrow::before {
     color: #848484;
     font-size: 8px;
-
 }
 .title-action-dropdown {
     position: absolute;
@@ -2121,4 +2124,8 @@ div#pm-progress-wrap {
     color: #555555;
     font-size: 21px!important;
     right: 0;
+}
+#wedevs-project-manager .popup-mask.pm-subtask-to-task-wrap .popup-container {
+    position: relative;
+    right: auto;
 }
