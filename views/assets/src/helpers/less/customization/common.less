@@ -7,7 +7,7 @@ a{
     outline: 0;
     text-decoration: none;
 }
-.pm-button.pm-primary, #wedevs-project-manager .button-primary, button.applyBtn.btn.btn-sm.btn-primary{
+.pm-button.pm-primary, #wedevs-project-manager .button-primary, button.applyBtn.btn.btn-sm.btn-primary, .pm-button-wrap .pm-button-primary{
     background-color: var(--pm-primary-button-background-regular);
     color: var(--pm-primary-button-text-regular);
     border: 1px solid var(--pm-primary-button-border-regular);
@@ -38,12 +38,15 @@ a{
     border: 1px solid var(--pm-primary-button-border-regular);
     margin-left: 10px;
 }
-.pm-button.pm-primary:hover, #wedevs-project-manager .button-primary:hover, button.applyBtn.btn.btn-sm.btn-primary:hover, .pm-wrap.pm.my-tasks.pm-my-tasks .pm-task-form .input-area .input-action-wrap .task-create-form .task-submit-wrap.process-content-2 input.pm-single-button.pm-button-primary:hover{
+.pm-button.pm-primary:hover, #wedevs-project-manager .button-primary:hover, button.applyBtn.btn.btn-sm.btn-primary:hover, .pm-wrap.pm.my-tasks.pm-my-tasks .pm-task-form .input-area .input-action-wrap .task-create-form .task-submit-wrap.process-content-2 input.pm-single-button.pm-button-primary:hover, .pm-button-wrap .pm-button-primary:hover{
     outline: 0;
     text-decoration: none;
     background-color: var(--pm-primary-button-background-hover);
     color: var(--pm-primary-button-text-hover);
     border-color: var(--pm-primary-button-border-hover);
+}
+.actions-wrap .context .process-text-wrap:hover .process-btn{
+    background-color: var(--pm-primary-button-background-regular);
 }
 .mce-notification.mce-has-close {
     display: none;
