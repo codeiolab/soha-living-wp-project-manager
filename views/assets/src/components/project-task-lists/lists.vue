@@ -30,7 +30,7 @@
                                     
                                 </div>
                                 <div>
-                                    <a :class="isActiveTaskFilter() + ' list-action-group task-filter-btn'" v-pm-tooltip :title="__('Task Filter', 'wedevs-project-manager')" @click.prevent="showFilter()" href="#">
+                                    <a :class="isActiveTaskFilter() + ' list-action-group task-filter-btn'" v-pm-tooltip :title="__('Task Filter', 'wedevs-project-manager')" @click.prevent="showFilter()" href="#" ref="taskFilterBox">
                                         <i class="bb-icon-filter-alt bb-icon-l"></i>&nbsp;&nbsp;
                                         <span>{{__('Filter', 'wedevs-project-manager')}}</span>
                                     </a>
@@ -213,8 +213,8 @@
 
                     </div> -->
                 </div>
-
-                <div class="list-search-menu" v-if="isActiveFilter">
+                
+                <div class="list-search-menu" v-if="isActiveFilter" >
                     <div class="filter-title">
                         <h2>{{__('Filter', 'wedevs-project-manager')}}</h2>
                         <a @click.prevent="showFilter()" href="#" class="icon-pm-cross"></a>
@@ -613,9 +613,17 @@
             }
 
             pmBus.$on('pm_after_close_single_task_modal', this.closeSingleTaskModal);
+
+            
         },
 
         methods: {
+            handleClickOutside(event) {
+                const targetElement = this.$refs.taskFilterBox;
+                if (!targetElement.contains(event.target)) {
+                    this.isActiveFilter = false;
+                }
+            },
             nextPage (pageNumber) {
 
                 this.$router.push({
@@ -1094,6 +1102,7 @@
 
         mounted() {
             this.openSingleModalFromParams();
+            document.addEventListener('click', this.handleClickOutside);
         }
     }
 </script>

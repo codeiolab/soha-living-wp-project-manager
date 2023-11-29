@@ -22,7 +22,7 @@
         </div>
         <!-- <pre>{{ $store.state.project_users }}</pre> -->
         <div class="pm-discussion pm-discussion-container" v-if="isFetchDiscussion">
-            <div class="pm-blank-template discussion" v-if="blankTemplate">
+            <div class="pm-blank-template discussion" v-if="blankTemplate && is_discuss_form_active">
                 <transition name="slide" v-if="can_create_message()">
                     <div class="pm-new-message-form" v-if="is_discuss_form_active">
                         <h3>{{ __( 'Create a New Discussion', 'wedevs-project-manager') }}</h3>

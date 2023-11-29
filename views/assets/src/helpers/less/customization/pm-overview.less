@@ -363,7 +363,13 @@ i {
 }
 
 .pm-popper-ref.popper-ref.task-user-multiselect.bb-icon-user-avatar.bb-icon-l.pm-dark-hover {
-    font-size: 22px;
+    font-size: 20px;
+}
+.add-new-subtask-form-field .action-icons.process-fields .process-content-1 i.bb-icon-calendar.bb-icon-l.item, .pm-task-form .input-area .input-action-wrap .task-create-form .fields .process-fields .task-date i.bb-icon-calendar.bb-icon-l.item {
+    font-size: 19px;
+}
+.add-new-subtask-form-field .action-icons.process-fields .process-content-1 .item date-text{
+	font-size: 12px;
 }
 
 // Files view page
@@ -864,12 +870,14 @@ i {
 	display: none;
 }
 
-.pm-header-title-content .settings.header-settings .project-edit-form{
+.pm-header-title-content .header-row-1 .project-edit-form{
     z-index: 999;
     border: 0px;
     background: #fff;
     border-radius: 4px;
     box-shadow: 0px 2px 40px 0px rgba(214, 214, 214, 0.6);
+	min-width: 400px;
+
 }
 
 .daterangepicker .calendar-table td {
@@ -900,7 +908,7 @@ i {
     padding: 30px;
     border-radius: 4px;
 }
-.pm-header-title-content .settings.header-settings .project-edit-form {
+.pm-header-title-content .project-edit-form {
     min-width: 400px!important;
 }
 
@@ -1082,4 +1090,50 @@ div#pm-calender-page .project-select-area .form-content-wrap {
 .pm-doc-modal .modal-body{
 	margin:0;
 	padding: 20px 0!important;
+}
+.project-edit-form .new-pm-header h2 {
+    margin-top: 0;
+}
+
+.pm-header-title-content .project-edit-form .submit {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.pm-discussion.pm-discussion-container .pm-blank-template.discussion {
+    padding: 0;
+    border: none;
+    background: no-repeat;
+    box-shadow: none;
+}
+.pm-discussion.pm-discussion-container, .pm-discussion.pm-discussion-container .pm-new-message-form {
+    border-radius: 10px;
+}
+
+.pm-discussion.pm-discussion-container .pm-blank-template.discussion .submit {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+#wedevs-project-manager .discuss-notifier .notify-users .pm-multiselect-top {
+    right: auto;
+    left: 0;
+    top: 35px;
+    border: none;
+}
+
+#wedevs-project-manager .discuss-notifier .notify-users .pm-multiselect-top::before {
+    left: 10px;
+    right: auto;
+    border-color: transparent;
+}
+
+#wedevs-project-manager .discuss-notifier .notify-users .pm-multiselect-top::after {
+    left: 10px;
+    right: auto;
+}
+.vue-daterange-picker .dropdown-menu .yearselect {
+    height: 38px;
+}
+
+#wedevs-project-manager select.monthselect.col {
+    height: 38px!important;
 }

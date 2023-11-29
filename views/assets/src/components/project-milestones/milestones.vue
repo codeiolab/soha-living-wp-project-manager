@@ -18,7 +18,7 @@
             <a @click.prevent="showHideMilestoneForm('toggle')" id="pm-add-milestone" href="#" class="pm-btn pm-btn-blue pm-plus-white pm-margin-bottom add-milestone pm-btn-uppercase"> <i aria-hidden="true" class="bb-icon-plus bb-icon-l"></i>&nbsp; &nbsp;{{ __( 'New Milestone', 'wedevs-project-manager') }}</a>
         </div>
         <div class="pm-milestone pm-milestone-container" v-if="isFetchMilestone">
-            <div class="pm-blank-template milestone" v-if="blankTemplate">
+            <div class="pm-blank-template milestone" v-if="blankTemplate && is_milestone_form_active">
                 <div class="pm-content" >
                     <transition name="slide" v-if="can_create_milestone">
                         <div class="pm-new-milestone-form" v-if="is_milestone_form_active">

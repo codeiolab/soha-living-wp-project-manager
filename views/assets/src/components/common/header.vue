@@ -7,17 +7,22 @@
             <div class="header-row-1">
                 <div class="project-title">
                     <span class="title">{{ project.title }}</span>
-                    <span class="icon-pm-down-arrow" :class="{active: showTitleAction}" @click.prevent="showHideTitleAction()"></span>
+                    <span class="icon-pm-down-arrow" :class="{active: showTitleAction}" @click.prevent="showHideTitleAction()" ref="titleDropdownRef"></span>
                 </div>
+                <!-- <pm-popper trigger="click" :force-show="projectFormStatus"> -->
+                    <div class="pm-popper popper" v-if="projectFormStatus">
+                        <edit-project v-if="is_manager()" class="project-edit-form" :project="project" @makeFromClose="makeFromClose"></edit-project>
+                    </div>
+                <!-- </pm-popper> -->
                 <div class="title-action-dropdown" v-if="showTitleAction">
                     <div class="settings first header-settings" v-if="is_manager()">
-                        <pm-popper trigger="click" :options="popperOptions" :force-show="projectFormStatus">
+                        <!-- <pm-popper trigger="click" :options="popperOptions" :force-show="projectFormStatus">
                             <div class="pm-popper popper">
                                 <edit-project v-if="is_manager()" class="project-edit-form" :project="project" @makeFromClose="makeFromClose"></edit-project>
-                            </div>
+                            </div> -->
                             <!-- popper trigger element -->
                             <a href="#" @click.prevent="checkFormStatus" slot="reference" :title="__( 'action', 'wedevs-project-manager')" class="pm-project-update-wrap pm-popper-ref popper-ref">{{ __( 'Edit Projects Details', 'wedevs-project-manager') }}</a>
-                        </pm-popper>
+                        <!-- </pm-popper> -->
                     </div>
                     <div class="settings header-settings">
                         <a href="#" class="pm-project-update-wrap pm-popper-ref popper-ref">{{ __( 'Share with Group', 'wedevs-project-manager') }}</a>
@@ -408,6 +413,7 @@
             this.getProjectCategories();
             this.getRoles(); 
             window.addEventListener('click', this.windowActivity);
+            document.addEventListener('click', this.handleClickOutside);
         },
 
         components: {
@@ -417,6 +423,14 @@
         },
 
         methods: {
+            handleClickOutside(event) {
+                const targetElement = this.$refs.titleDropdownRef;
+                if (!targetElement.contains(event.target)) {
+                    if(this.showTitleAction){
+                        this.showTitleAction = false;
+                    }
+                }
+            },
             updateDescriptionVisibility () {
                 let status = this.showDescription ? false : true;
                 this.$store.commit( 'updateShowDescription', status );
