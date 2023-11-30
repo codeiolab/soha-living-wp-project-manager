@@ -213,84 +213,85 @@
 
                     </div> -->
                 </div>
-                
-                <div class="list-search-menu" v-if="isActiveFilter" >
-                    <div class="filter-title">
-                        <h2>{{__('Filter', 'wedevs-project-manager')}}</h2>
-                        <a @click.prevent="showFilter()" href="#" class="icon-pm-cross"></a>
-                    </div>
-                    
-                    <div class="search-content">
-                        <form @submit.prevent="taskFilter()">
-                            <div class="margin-top">
-                                <div class="margin-title">{{__('Task Title', 'wedevs-project-manager')}}</div>
-                                <div>
-                                    <input class="title-field" type="text" v-model="searchTasktitle">
+                <div class="project-task-filter-form" ref="taskFilterForm">
+                    <div class="list-search-menu" v-if="isActiveFilter" >
+                        <div class="filter-title">
+                            <h2>{{__('Filter', 'wedevs-project-manager')}}</h2>
+                            <a @click.prevent="showFilter()" href="#" class="icon-pm-cross"></a>
+                        </div>
+                        
+                        <div class="search-content">
+                            <form @submit.prevent="taskFilter()">
+                                <div class="margin-top">
+                                    <div class="margin-title">{{__('Task Title', 'wedevs-project-manager')}}</div>
+                                    <div>
+                                        <input class="title-field" type="text" v-model="searchTasktitle">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="margin-top">
-                                <div class="margin-title">{{__('Task List', 'wedevs-project-manager')}}</div>
-                                <div>
-                                    <multiselect 
-                                        v-model="defaultList" 
-                                        :options="searchLists" 
-                                        :show-labels="false"
-                                        :searchable="true"
-                                        :loading="asyncListLoading"
-                                        :placeholder="__('Type task list name', 'wedevs-project-manager')"
-                                        @search-change="asyncFind($event)"
-                                        label="title"
-                                        track-by="id">
-                                        <span slot="noResult">{{ __( 'No task lists found.', 'wedevs-project-manager' ) }}</span>
-                                            
-                                    </multiselect> 
+                                <div class="margin-top">
+                                    <div class="margin-title">{{__('Task List', 'wedevs-project-manager')}}</div>
+                                    <div>
+                                        <multiselect 
+                                            v-model="defaultList" 
+                                            :options="searchLists" 
+                                            :show-labels="false"
+                                            :searchable="true"
+                                            :loading="asyncListLoading"
+                                            :placeholder="__('Type task list name', 'wedevs-project-manager')"
+                                            @search-change="asyncFind($event)"
+                                            label="title"
+                                            track-by="id">
+                                            <span slot="noResult">{{ __( 'No task lists found.', 'wedevs-project-manager' ) }}</span>
+                                                
+                                        </multiselect> 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="margin-top">
-                                <div class="margin-title">{{__('Status', 'wedevs-project-manager')}}</div>
-                                <div class="status-elements pm-select">
-                                    <select name="" id="" class="title-field" v-model="filterStatus">
-                                        <option value="">All</option>
-                                        <option value="complete">{{__('Completed', 'wedevs-project-manager')}}</option>
-                                        <option value="incomplete">{{__('On-going', 'wedevs-project-manager')}}</option>
-                                    </select>
+                                <div class="margin-top">
+                                    <div class="margin-title">{{__('Status', 'wedevs-project-manager')}}</div>
+                                    <div class="status-elements pm-select">
+                                        <select name="" id="" class="title-field" v-model="filterStatus">
+                                            <option value="">All</option>
+                                            <option value="complete">{{__('Completed', 'wedevs-project-manager')}}</option>
+                                            <option value="incomplete">{{__('On-going', 'wedevs-project-manager')}}</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="margin-top">
-                                <div class="margin-title">{{__('Assigned to', 'wedevs-project-manager')}}</div>
-                                <div>
-                                    <multiselect 
-                                        v-model="defaultUser" 
-                                        :options="searchProjectUsers" 
-                                        :show-labels="false"
-                                        :placeholder="__('Type task list name', 'wedevs-project-manager')"
-                                        label="display_name"
-                                        track-by="id">
-                                            
-                                    </multiselect>
+                                <div class="margin-top">
+                                    <div class="margin-title">{{__('Assigned to', 'wedevs-project-manager')}}</div>
+                                    <div>
+                                        <multiselect 
+                                            v-model="defaultUser" 
+                                            :options="searchProjectUsers" 
+                                            :show-labels="false"
+                                            :placeholder="__('Type task list name', 'wedevs-project-manager')"
+                                            label="display_name"
+                                            track-by="id">
+                                                
+                                        </multiselect>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="margin-top">
-                                <div class="margin-title">{{__('Due Date', 'wedevs-project-manager')}}</div>
-                                <div>
-                                    <multiselect 
-                                        v-model="dueDate" 
-                                        :options="dueDates" 
-                                        :show-labels="false"
-                                        :placeholder="__('Type task list name', 'wedevs-project-manager')"
-                                        label="title"
-                                        track-by="id">
-                                            
-                                    </multiselect>
+                                <div class="margin-top">
+                                    <div class="margin-title">{{__('Due Date', 'wedevs-project-manager')}}</div>
+                                    <div>
+                                        <multiselect 
+                                            v-model="dueDate" 
+                                            :options="dueDates" 
+                                            :show-labels="false"
+                                            :placeholder="__('Type task list name', 'wedevs-project-manager')"
+                                            label="title"
+                                            track-by="id">
+                                                
+                                        </multiselect>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="action">
-                                <span v-if="taskFilterSpinner" class="pm-spinner"></span>
-                                <a @click.prevent="clearFilter()" class="pm-button pm-secondary" href="#">{{__('Clear', 'wedevs-project-manager')  }}</a>
-                                <input  type="submit" class="pm-button pm-primary filter-submit-btn" name="submit_todo" :value="__('Done', 'wedevs-project-manager')">
-                            </div>
-                            <div class="pm-clearfix"></div>
-                        </form>
+                                <div class="action">
+                                    <span v-if="taskFilterSpinner" class="pm-spinner"></span>
+                                    <a @click.prevent="clearFilter()" class="pm-button pm-secondary" href="#">{{__('Clear', 'wedevs-project-manager')  }}</a>
+                                    <input  type="submit" class="pm-button pm-primary filter-submit-btn" name="submit_todo" :value="__('Done', 'wedevs-project-manager')">
+                                </div>
+                                <div class="pm-clearfix"></div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -620,7 +621,8 @@
         methods: {
             handleClickOutside(event) {
                 const targetElement = this.$refs.taskFilterBox;
-                if (!targetElement.contains(event.target)) {
+                const taskFilterForm = this.$refs.taskFilterForm;
+                if (!targetElement.contains(event.target) && !taskFilterForm.contains(event.target)) {
                     this.isActiveFilter = false;
                 }
             },
