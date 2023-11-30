@@ -45,9 +45,12 @@ a{
     color: var(--pm-primary-button-text-hover);
     border-color: var(--pm-primary-button-border-hover);
 }
-button.cancelBtn.btn.btn-sm.btn-default, .pm-button.pm-secondary{
+.pm-button.pm-secondary{
     min-height: 38px;
     line-height: 37px;
+}
+.drp-buttons button.cancelBtn.btn.btn-sm.btn-default{
+    min-height: 38px;
 }
 .actions-wrap .context .process-text-wrap:hover .process-btn{
     background-color: var(--pm-primary-button-background-regular);
@@ -78,7 +81,7 @@ button.cancelBtn.btn.btn-sm.btn-default, .pm-button.pm-secondary{
     border-color: transparent;
 }
 
-.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .title-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .description-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .milestone-field, .pm-header-title-content .project-edit-form .pm-form .item input[type='text'], .pm-header-title-content .project-edit-form .pm-form .item select, .pm-header-title-content .project-edit-form .pm-form .item textarea, #wedevs-project-manager input[type='text'], #wedevs-project-manager textarea, #wedevs-project-manager select, .pm-form .item input[type="text"], .pm-form .item select, .pm-form .item textarea, .pm-task-list-wrap .list-content-body .list-search-menu .multiselect__tags, .calendar-task-modal .popup-mask .popup-container .project-list-drop-down .multiselect .multiselect__tags, .popup-mask.pm-subtask-to-task-wrap .pm-common-multiselect .multiselect__tags{
+.pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .title-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .description-field, .pm-task-list-wrap .list-content-body .content .list-action-btn-wrap .new-list-btn .list-form form .milestone-field, .pm-header-title-content .project-edit-form .pm-form .item input[type='text'], .pm-header-title-content .project-edit-form .pm-form .item select, .pm-header-title-content .project-edit-form .pm-form .item textarea, #wedevs-project-manager input[type='text'], #wedevs-project-manager textarea, #wedevs-project-manager select, .pm-form .item input[type="text"], .pm-form .item select, .pm-form .item textarea, .pm-task-list-wrap .list-content-body .list-search-menu .multiselect__tags, .calendar-task-modal .popup-mask .popup-container .project-list-drop-down .multiselect .multiselect__tags, .popup-mask.pm-subtask-to-task-wrap .pm-common-multiselect .multiselect__tags, .pm input[type="email"]{
     padding: 10px 15px!important;
     height: 42px!important;
     border-radius: var(--pm-input-radius);
@@ -341,9 +344,14 @@ h3.no-projects {
 #wedevs-project-manager #pm-single-task-wrap .pm-task-comment-wrap .comment-content .comment-header {
     position: relative;
     justify-content: flex-start!important;
-    gap: 20px;
+    // gap: 20px;
 }
-
+#wedevs-project-manager #pm-single-task-wrap .pm-task-comment-wrap .comment-content .comment-header .author-date {
+    margin-left: 10px;
+}
+.task-group .pm-todo-wrap .todo-content .bb-icon-calendar::before, .current-task-table .task-time .bb-icon-calendar::before {
+    margin: 0;
+}
 #wedevs-project-manager #pm-single-task-wrap .pm-task-comment-wrap .comment-content .comment-header .icon-pm-down-arrow.comment-action-arrow {
     position: absolute;
     right: 0;
@@ -551,10 +559,12 @@ body.page .kbc-title-wrap .pm-checkbox input[type="checkbox"] + label:before {
     padding-left: 0;
     padding-right: 0;
 }
-.wp-core-ui .button-secondary {
+ .wp-core-ui .kbc-section-footer .button-secondary, .wp-core-ui .folders-list-container .button-secondary, .pm-create-user-form-wrap button.button.button-cancel {
     max-height: 38px;
     line-height: 37px!important;
     padding: 0 20px!important;
+    border-radius: var(--pm-button-radius);
+    border: none!important;
 }
 
 .wp-core-ui .button-primary-disabled, .wp-core-ui .button-primary.disabled, .wp-core-ui .button-primary:disabled, .wp-core-ui .button-primary[disabled] {
@@ -567,4 +577,13 @@ body.page .kbc-title-wrap .pm-checkbox input[type="checkbox"] + label:before {
 .title-dropdown-menu-wrapper {
     position: absolute;
     top: 100%;
+}
+#pm-doc-form input.button.button-primary, #pm-link-form input.button.button-primary {
+    min-height: 38px!important;
+    line-height: inherit!important;
+}
+.pm-user-create-form .button-box {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
 }
