@@ -1,78 +1,55 @@
 <template>
     <div class="pm-header">
         <div class="pm-header-title-content" v-if="isProjectLoaded">
-            <!-- <div class="project-header-panel-main-menu">
-                <project-header-top-menu/>
-            </div> -->
             <div class="header-row-1">
                 <div class="project-title">
                     <span class="title">{{ project.title }}</span>
                     <span class="icon-pm-down-arrow" :class="{active: showTitleAction}" @click.prevent="showHideTitleAction()" ref="titleDropdownRef"></span>
                 </div>
-                <!-- <pm-popper trigger="click" :force-show="projectFormStatus"> -->
-                    <div class="pm-popper popper" v-if="projectFormStatus">
+                <div ref="projectEditForm" class="pm-edit-project-form">
+                    <div class="pm-popper popper" v-if="isShowProjectEditDropdown">
                         <edit-project v-if="is_manager()" class="project-edit-form" :project="project" @makeFromClose="makeFromClose"></edit-project>
                     </div>
-                <!-- </pm-popper> -->
-                <div class="title-action-dropdown" v-if="showTitleAction">
-                    <div class="settings first header-settings" v-if="is_manager()">
-                        <!-- <pm-popper trigger="click" :options="popperOptions" :force-show="projectFormStatus">
-                            <div class="pm-popper popper">
-                                <edit-project v-if="is_manager()" class="project-edit-form" :project="project" @makeFromClose="makeFromClose"></edit-project>
-                            </div> -->
-                            <!-- popper trigger element -->
+                </div>
+                <div ref="titleDropdownMenuRef" class="title-dropdown-menu-wrapper">
+                    <div class="title-action-dropdown" v-if="showTitleAction">
+                        <div class="settings first header-settings" v-if="is_manager()">
                             <a href="#" @click.prevent="checkFormStatus" slot="reference" :title="__( 'action', 'wedevs-project-manager')" class="pm-project-update-wrap pm-popper-ref popper-ref">{{ __( 'Edit Projects Details', 'wedevs-project-manager') }}</a>
-                        <!-- </pm-popper> -->
-                    </div>
-                    <div class="settings header-settings">
-                        <a href="#" class="pm-project-update-wrap pm-popper-ref popper-ref">{{ __( 'Share with Group', 'wedevs-project-manager') }}</a>
-                    </div>
-                    <div class="settings header-settings">
-                        <a href="#" class="pm-project-update-wrap pm-popper-ref popper-ref">{{ __( 'Copy Link', 'wedevs-project-manager') }}</a>
-                    </div>
-                    <div class="action-settings settings header-settings" v-if="is_manager()">
-                        <!-- <pm-popper trigger="click" :options="popperOptions"> -->
-                            <!-- <div class="pm-popper popper"> -->
-                                <div v-if="is_manager()" class="pm-action-menu-container">
-                                    <ul class="action-ul">
-                                        <li>
-                                            <a @click.prevent="selfProjectMarkDone(project)" href="#">
-                                                <span v-if="project.status === 'incomplete'" class="icon-pm-completed"></span>
-                                                <span v-if="project.status === 'incomplete'">{{ __( 'Complete', 'wedevs-project-manager') }}</span>
+                        </div>
+                        <div class="settings header-settings">
+                            <a href="#" class="pm-project-update-wrap pm-popper-ref popper-ref">{{ __( 'Share with Group', 'wedevs-project-manager') }}</a>
+                        </div>
+                        <div class="settings header-settings">
+                            <a href="#" class="pm-project-update-wrap pm-popper-ref popper-ref">{{ __( 'Copy Link', 'wedevs-project-manager') }}</a>
+                        </div>
+                        <div class="action-settings settings header-settings" v-if="is_manager()">
+                            <div v-if="is_manager()" class="pm-action-menu-container">
+                                <ul class="action-ul">
+                                    <li>
+                                        <a @click.prevent="selfProjectMarkDone(project)" href="#">
+                                            <span v-if="project.status === 'incomplete'" class="icon-pm-completed"></span>
+                                            <span v-if="project.status === 'incomplete'">{{ __( 'Complete', 'wedevs-project-manager') }}</span>
 
-                                                <span v-if="project.status === 'complete'" class="icon-pm-undo-arrow"></span>
-                                                <span v-if="project.status === 'complete'">{{ __( 'Restore', 'wedevs-project-manager') }}</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <pm-do-action :hook="'project_action_menu'" :actionData="project" ></pm-do-action>
-                                        </li>
-                                        <li>
-                                            <a href="#" @click.prevent="deleteProject(project.id)" :title="__( 'Delete project', 'wedevs-project-manager')">
+                                            <span v-if="project.status === 'complete'" class="icon-pm-undo-arrow"></span>
+                                            <span v-if="project.status === 'complete'">{{ __( 'Restore', 'wedevs-project-manager') }}</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <pm-do-action :hook="'project_action_menu'" :actionData="project" ></pm-do-action>
+                                    </li>
+                                    <li>
+                                        <a href="#" @click.prevent="deleteProject(project.id)" :title="__( 'Delete project', 'wedevs-project-manager')">
 
-                                                <span class="icon-pm-delete"></span>
-                                                <span class="">{{ __( 'Delete', 'wedevs-project-manager') }}</span>
-                                            </a>
-                                        </li>
-                                        <!-- <do-action :hook="'pm-header-menu'" :actionData="menu"></do-action>  -->
-                                    </ul>
+                                            <span class="icon-pm-delete"></span>
+                                            <span class="">{{ __( 'Delete', 'wedevs-project-manager') }}</span>
+                                        </a>
+                                    </li>
+                                    <!-- <do-action :hook="'pm-header-menu'" :actionData="menu"></do-action>  -->
+                                </ul>
 
-                                </div>
-                            <!-- </div> -->
-                            <!-- popper trigger element -->
-                            <!-- <a href="#" @click.prevent="" slot="reference" :title="__( 'action', 'wedevs-project-manager')" class="pm-popper-ref popper-ref icon-pm-settings header-settings-btn"></a> -->
-                        <!-- </pm-popper> -->
-
-                        <!-- <a href="#" v-if="is_manager()" @click.prevent="showHideSettings()" class="icon-pm-settings header-settings-btn"></a> -->
+                            </div>
+                        </div>
                     </div>
-                    <!-- <div class="settings last header-settings">
-                        <a 
-                            v-tooltip.top-center="__( 'Project Description', 'wedevs-project-manager' )"
-                            href="#" 
-                            class="flaticon-text-document"
-                            @click.prevent="updateDescriptionVisibility()"
-                        />
-                    </div> -->
                 </div>
 
                 <div class="project-search-box-container">
@@ -366,7 +343,8 @@
                     }
                 },
                 projectFormStatus : false,
-                showTitleAction : false
+                showTitleAction : false,
+                isShowProjectEditDropdown: false
             }
 
         },
@@ -425,10 +403,16 @@
         methods: {
             handleClickOutside(event) {
                 const targetElement = this.$refs.titleDropdownRef;
-                if (!targetElement.contains(event.target)) {
+                const titleDropdownMenuRef = this.$refs.titleDropdownMenuRef;
+                if ( targetElement && titleDropdownMenuRef && !targetElement.contains(event.target) && !titleDropdownMenuRef.contains(event.target)) {
                     if(this.showTitleAction){
                         this.showTitleAction = false;
                     }
+                }
+
+                const projectEditForm = this.$refs.projectEditForm;
+                if (projectEditForm && titleDropdownMenuRef && !projectEditForm.contains(event.target) && !titleDropdownMenuRef.contains(event.target)) {
+                    this.isShowProjectEditDropdown = false;
                 }
             },
             updateDescriptionVisibility () {
@@ -510,6 +494,8 @@
                 } else {
                     this.projectFormStatus = true ;
                 }
+
+                this.isShowProjectEditDropdown = !this.isShowProjectEditDropdown;
             },
 
             makeFromClose(value){

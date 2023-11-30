@@ -622,7 +622,7 @@
             handleClickOutside(event) {
                 const targetElement = this.$refs.taskFilterBox;
                 const taskFilterForm = this.$refs.taskFilterForm;
-                if (!targetElement.contains(event.target) && !taskFilterForm.contains(event.target)) {
+                if (targetElement && taskFilterForm && !targetElement.contains(event.target) && !taskFilterForm.contains(event.target)) {
                     this.isActiveFilter = false;
                 }
             },
