@@ -24,6 +24,7 @@ i {
     .pm-header {
         .pm-project-search {
             input  {
+				max-width: 18rem;
                 &.pm-search {
                     display: inline-block;
                     height: 38px !important;
@@ -245,8 +246,9 @@ i {
 	    flex-direction: row-reverse;
 	    align-items: center;
 	    padding: 13px 0;
-		.pm-view-style-group {
-			margin-left: 15px !important;
+		min-width: 18rem;
+		ul.pm-view-style-group {
+			margin-left: auto !important;
 			border: var(--pm-content-background-color) solid 2px;
 			border-radius: @theme-border-radius;
 			background: var(--pm-content-background-color);
@@ -1140,4 +1142,13 @@ div#pm-calender-page .project-select-area .form-content-wrap {
 
 #wedevs-project-manager select.monthselect.col {
     height: 38px!important;
+}
+
+// PM frontend Tasks > Activities page
+#wedevs-project-manager.pm-page-wrapper .pm-my-tasks .mytask-activity .pm-activity-list .pm-activity-body li div {
+    margin-left: 15px;
+}
+
+#wedevs-project-manager.pm-page-wrapper .pm-my-tasks .mytask-activity .pm-activity-list .pm-activity-body li div span:first-of-type {
+    margin-left: -10px !important;
 }
