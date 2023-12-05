@@ -24,7 +24,7 @@ i {
     .pm-header {
         .pm-project-search {
             input  {
-				max-width: 18rem;
+				min-width: 18rem !important;
                 &.pm-search {
                     display: inline-block;
                     height: 38px !important;
@@ -246,9 +246,8 @@ i {
 	    flex-direction: row-reverse;
 	    align-items: center;
 	    padding: 13px 0;
-		min-width: 18rem;
-		ul.pm-view-style-group {
-			margin-left: auto !important;
+		min-width: 18rem !important;
+		ul.pm-view-style-group.pm-list-inline {
 			border: var(--pm-content-background-color) solid 2px;
 			border-radius: @theme-border-radius;
 			background: var(--pm-content-background-color);
@@ -288,6 +287,9 @@ i {
 			}
 		}
 	}
+}
+#wedevs-project-manager.pm-page-wrapper .pm-view-style-container .pm-view-style-group {
+	margin-left: auto !important;
 }
 
 // Grid view
@@ -1144,11 +1146,30 @@ div#pm-calender-page .project-select-area .form-content-wrap {
     height: 38px!important;
 }
 
-// PM frontend Tasks > Activities page
 #wedevs-project-manager.pm-page-wrapper .pm-my-tasks .mytask-activity .pm-activity-list .pm-activity-body li div {
     margin-left: 15px;
 }
 
 #wedevs-project-manager.pm-page-wrapper .pm-my-tasks .mytask-activity .pm-activity-list .pm-activity-body li div span:first-of-type {
     margin-left: -10px !important;
+}
+
+#wedevs-project-manager #pm-progress-wrap .pm-activity a.pm-progress-label {
+	margin-left: -15px;
+}
+
+.pm-todo-item .todo-content .task-action-wrap .task-comment-total span {
+	min-width: 0px !important;
+}
+
+#wedevs-project-manager #pm-single-task-wrap .pm-task-comment-wrap .pm-comment-content {
+	margin-left: 35px;
+}
+
+.pm-messege-wrapper .dicussion-meta .comment-count i::before {
+	margin-left: 0px;
+}
+
+.pm-milestone-container .bb-icon-flag:before {
+	margin-left: 0px !important;
 }
