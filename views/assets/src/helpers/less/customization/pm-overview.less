@@ -1180,7 +1180,20 @@ div#pm-calender-page .project-select-area .form-content-wrap {
 // 	margin-left: 44px !important;
 // }
 
-.pm-single-task-wrap .popup-container .popup-body {
-	height: 100% !important;
-	padding-bottom: 0px !important;
+#wedevs-project-manager #pm-single-task-wrap {
+	.popup-container .popup-body {
+		height: 100% !important;
+		padding-bottom: 0px !important;
+		.pm-task-comment-wrap .comment-content {
+			.pm-comment-content {
+				margin-bottom: 15px;
+				div p{
+					margin-bottom: 0px !important;
+				}
+				ul.pm-attachments li {
+					margin-top: 0px !important;
+				}
+			}
+		}
+	}
 }
