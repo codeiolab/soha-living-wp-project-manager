@@ -18,11 +18,12 @@
                         <option v-for="milestone in milestones" :key="milestone.id" :value="milestone.id" v-html="milestone.title"></option>
                     </select>
                 </div>
+                <file-uploader :files="files" :delete="deleted_files" :discussionPage="isDiscussionPage"></file-uploader>
                 <div class="discuss-actions">
                     <div class="discuss-notifier">
-                        <file-uploader :files="files" :delete="deleted_files"></file-uploader>
+                        <!-- <file-uploader :files="files" :delete="deleted_files"></file-uploader> -->
                         <pm-do-action hook="pm_discuss_form" :actionData="discuss" ></pm-do-action>
-                        <div class="notify-users">
+                        <!-- <div class="notify-users">
                             <a href="#" @click.prevent="notifyUserButton()" class="pm-button pm-secondary pm-button-nofity-user">
                                 <i class="bb-icon-user bb-icon-l"></i>
                             </a>
@@ -56,7 +57,7 @@
                                     </multiselect>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="submit">
                         <a href="" @click.prevent="showHideDiscussForm(false, discuss)" class="message-cancel button-secondary">{{ __( 'Cancel', 'wedevs-project-manager') }}</a>
@@ -143,7 +144,7 @@
         deleted_files: [],
         pfiles: [],
         notify_users:[],
-        
+        isDiscussionPage: true,
       }
     },
 
