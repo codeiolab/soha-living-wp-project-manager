@@ -21,7 +21,7 @@
                             <input 
                                 v-model="task.title"  
                                 :maxlength="lengthtitle" 
-                                :placeholder="__('Add New Task (Character limit 200)', 'wedevs-project-manager')" 
+                                :placeholder="__('Add New Task', 'wedevs-project-manager')" 
                                 type="text" 
                                 ref="taskInput"
                                 @keyup="warningTitleCharacterLimit()"
