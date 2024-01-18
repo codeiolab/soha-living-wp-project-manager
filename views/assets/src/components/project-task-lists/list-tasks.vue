@@ -20,10 +20,10 @@
             <div v-if="parseInt(list.meta.total_complete_tasks) > 0 && checkSearchStatus()" class="group-action-btn show-completed-task">
                 
                 <a v-if="!showCompletedTask" @click.prevent="fetchCompleteTasks(list)" class="anchor-btn" href="#">
-                    <span>{{ __('Show Completed Task', 'wedevs-project-manager') }}</span>
+                    <span>{{ __('Show Completed Tasks', 'wedevs-project-manager') }}</span>
                 </a>
                 <a v-if="showCompletedTask" @click.prevent="showHideCompletedTask()" class="anchor-btn" href="#">    
-                    <span>{{ __('Hide Completed Task', 'wedevs-project-manager') }}</span>
+                    <span>{{ __('Hide Completed Tasks', 'wedevs-project-manager') }}</span>
                 </a>
             </div>
         </div>
