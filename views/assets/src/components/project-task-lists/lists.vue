@@ -76,8 +76,8 @@
                                         <div class="list-content">
                                             <div class="list-item-content">
                                                 <div class="before-title">
-                                                    <span v-if="!inboxList.expand" @click.prevent="listExpand(inboxList)" :class="inboxClass(inboxList) + ' icon-pm-down-arrow'"></span>
-                                                    <span v-if="inboxList.expand" @click.prevent="listExpand(inboxList)" :class="inboxClass(inboxList) + ' icon-pm-up-arrow'"></span>
+                                                    <span v-if="!inboxList.expand" @click.prevent="listExpand(inboxList)" :class="inboxClass(inboxList) + ' icon-pm-down-arrow icon-pm-right-arrow-inbox'"></span>
+                                                    <span v-if="inboxList.expand" @click.prevent="listExpand(inboxList)" :class="inboxClass(inboxList) + ' icon-pm-down-arrow'"></span>
                                                 </div>
 
                                                 <div class="list-title">
@@ -119,8 +119,8 @@
                                             <div class="list-item-content">
                                                 <div class="before-title">
                                                     <span v-if="!isInbox(list.id)" class="pm-list-drag-handle icon-pm-drag-drop"></span>
-                                                    <span v-if="!list.expand" @click.prevent="listExpand(list)" :class="inboxClass(list) + ' icon-pm-down-arrow'"></span>
-                                                    <span v-if="list.expand" @click.prevent="listExpand(list)" :class="inboxClass(list) + ' icon-pm-up-arrow'"></span>
+                                                    <span v-if="!list.expand" @click.prevent="listExpand(list)" :class="inboxClass(list) + ' icon-pm-down-arrow icon-pm-right-arrow'"></span>
+                                                    <span v-if="list.expand" @click.prevent="listExpand(list)" :class="inboxClass(list) + ' icon-pm-down-arrow'"></span>
                                                 </div>
 
                                                 <div class="list-title">
@@ -1272,6 +1272,18 @@
                                         font-size: 7px;
                                         font-weight: bold;
                                     }
+                                }
+                                .icon-pm-right-arrow-inbox {
+                                    top: 8px !important;
+                                    transform: rotate(-90deg);
+                                    -webkit-transform: rotate(-90deg);
+                                }
+                                .icon-pm-right-arrow {
+                                    justify-content: center !important;
+                                    transform: rotate(-90deg);
+                                    -webkit-transform: rotate(-90deg);
+                                    margin-left: -12px;
+                                    margin-right: 14px;
                                 }
                             }
 
