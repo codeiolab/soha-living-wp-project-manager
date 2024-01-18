@@ -123,7 +123,7 @@ i {
     // project styles
 	.pm-project-item {
 		background: #fff;
-		padding: 15px;
+		padding: 15px 15px 15px 30px;
 		border: 1px solid @theme-border-color;
 		border-radius: @theme-border-radius;
 		height: 100%;
@@ -1209,5 +1209,19 @@ div#pm-calender-page .project-select-area .form-content-wrap {
 		.popup-container .popup-body {
 			border-left: 1px solid lightgray !important;
 		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.project-list-view article .pm-project-item-header {
+		flex-basis: 30% !important;
+		max-width: 30% !important;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.project-list-view article .pm-project-item-body {
+		flex-basis: calc(70% - 50px) !important;
+		max-width: calc(70% - 50px) !important;
 	}
 }
