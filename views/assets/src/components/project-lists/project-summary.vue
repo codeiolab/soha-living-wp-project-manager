@@ -292,6 +292,13 @@ export default {
           parseInt(project.meta.data.total_complete_tasks, 10) || 0;
         progress = (100 * completed) / total_task;
       }
+
+      if ( total_task === 0 ) {
+        return {
+          width: "0%"
+        };
+      }
+      
       return {
         width: progress + "%"
       };
