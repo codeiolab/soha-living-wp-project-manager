@@ -1365,9 +1365,40 @@ span.acitivity-action-type{
 .pm-task-comment-wrap .comment-field-content .comment-field-avatar{
     align-self: center;
 }
-form.pm-comment-form-vue.pm-comment-form .message {
-    background: transparent;
-    padding: 0;
+
+form.pm-comment-form-vue.pm-comment-form {
+    .comment-action-chunk {
+        #comment-action-chunk-attach {
+            display: flex !important;
+            align-items: center !important;
+        }
+        div a.pm-button-nofity-user {
+            padding: 0px !important;
+        }
+        div a.pm-button-nofity-user {
+            display: flex !important;
+            align-items: center !important;
+            background: unset !important;
+            color: unset !important;
+            border: unset !important;
+        }
+        div a.pm-button-nofity-user:hover {
+            background: unset !important;
+            color: unset !important;
+            border: unset !important;
+        }
+        div a {
+            color: unset !important;
+        }
+        .notify-users .pm-multiselect-top {
+            right: 0px !important;
+            top: 35px !important;
+        }
+    }
+    .message {
+        background: transparent;
+        padding: 0;
+    }
 }
 
 /*Milestone dropdown*/
