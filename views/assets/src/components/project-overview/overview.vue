@@ -134,7 +134,7 @@
                         <div class="list-left">
                             <img :alt="ucfirst(user.display_name)" :src="user.avatar_url" class="avatar avatar-34 photo" height="34" width="34">
                             <a :title="ucfirst(user.display_name)" :href="myTaskRedirect(user.id)">
-                                {{ ucfirst(cutString(user.display_name, 8, true)) }}
+                                {{ ucfirst(cutString(user.display_name, 70, true)) }}
                             </a>
                             <span v-for="role in user.roles.data" :key="role.id">{{ __( role.title, 'wedevs-project-manager') }}</span>
                         </div>
