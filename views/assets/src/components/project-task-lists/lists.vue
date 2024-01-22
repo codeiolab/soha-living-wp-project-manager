@@ -95,6 +95,10 @@
                                                     <div class="list-title-action task-count">
                                                         <span>{{ inboxList.meta.total_complete_tasks }}</span>/<span>{{ getTotalTask( inboxList.meta.total_complete_tasks, inboxList.meta.total_incomplete_tasks ) }}</span>
                                                     </div>
+                                                    <div class="list-comment-total" v-if="inboxList.meta.total_comments > 0">
+                                                        <span>{{ inboxList.meta.total_comments }}</span>
+                                                        <i class="bb-icon-comment bb-icon-l"></i>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -143,6 +147,10 @@
                                                     <div v-if="!isInbox(list.id) && PM_Vars.is_pro" class="list-title-action">
                                                         <span  v-if="!parseInt(list.meta.privacy)" class="icon-pm-unlock"></span>
                                                         <span  v-if="parseInt(list.meta.privacy)" class="icon-pm-private"></span>
+                                                    </div>
+                                                    <div class="list-comment-total" v-if="list.meta.total_comments > 0"> 
+                                                        <span>{{ list.meta.total_comments }}</span>
+                                                        <i class="bb-icon-comment bb-icon-l"></i>
                                                     </div>
                                                 </div>
 
