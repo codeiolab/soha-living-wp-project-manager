@@ -227,7 +227,6 @@
                 this.httpRequest(request_data);
             },
             isThisPdf( file ) {
-                console.log(JSON.stringify(file));
                 var pdf = [];
                 if (typeof file.mime_type !== 'undefined' ) {
                     pdf = file.mime_type.split("/");
