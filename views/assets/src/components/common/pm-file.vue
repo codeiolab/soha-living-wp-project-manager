@@ -14,8 +14,9 @@
         </a>
         <template v-else>
             <div v-if="isPdf" class="comment-pdf-attachment">
-                <img v-if="file.absoluteUrl" class="pm-content-img-size" :src="file.absoluteUrl" :alt="file.name" :title="file.name">
-                <img v-if="!file.absoluteUrl" class="pm-content-img-size" :src="file.thumb" :alt="file.name" :title="file.name">
+                <!-- <img v-if="file.absoluteUrl" class="pm-content-img-size" :src="file.absoluteUrl" :alt="file.name" :title="file.name"> -->
+                <!-- <img v-if="!file.absoluteUrl" class="pm-content-img-size" :src="file.thumb" :alt="file.name" :title="file.name"> -->
+                <i class="bb-icon-file-pdf bb-icon-l"></i>
                 <div class="comment-pdf-attachment-info">
                     <span>{{ file.name }}.pdf</span>
                     <span>
@@ -44,6 +45,9 @@
         align-items: center;
         padding-left: 10px;
         margin-bottom: 8px;
+        i {
+            font-size: 40px !important;
+        }
         .comment-pdf-attachment-info {
             margin-left: 8px;
         }
