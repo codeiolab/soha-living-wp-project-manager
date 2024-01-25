@@ -238,7 +238,21 @@
                 } else {
                     return false;
                 }
+            },
+            handleClickOutside(self) {
+                jQuery('body').on('click', function(e) {
+                    var commentContentDiv = jQuery(document).find('.comment-field');
+
+                    if ( commentContentDiv.has(e.target).length == 0 ) {
+                        self.commentFormMeta.activeNewCommentField = false;
+                    }
+                });
             }
-        }
+        },
+        mounted() {
+            var self = this;
+
+            this.handleClickOutside(self);
+        },
     }
 </script>
