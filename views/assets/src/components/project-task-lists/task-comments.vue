@@ -256,7 +256,7 @@
                     if (jQuery(links[index]).attr('href') &&  jQuery(links[index]).attr('href').search('loom.com') !== -1) {
                         let embadedLink = jQuery(links[index]).attr('href').replace('share', 'embed');
 
-                        jQuery(links[index]).parent().append('<div><iframe src=' + embadedLink + '></iframe></div>');
+                        jQuery(links[index]).parent().append('<div><iframe height="300px" width="100%" src=' + embadedLink + '></iframe></div>');
                     }
                 });
 
