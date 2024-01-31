@@ -34,48 +34,6 @@
         </template>
     </div>
 </template>
-<style lang="less">
-    .pm-single-task-wrap .popup-container .comment-pdf-attachment {
-        width: 100%;
-        border: 1px solid lightgray;
-        border-radius: 5px;
-        background: white;
-        height: 80px !important;
-        display: flex;
-        align-items: center;
-        padding-left: 10px;
-        margin-bottom: 8px;
-        i {
-            font-size: 40px !important;
-        }
-        .comment-pdf-attachment-info {
-            margin-left: 8px;
-        }
-        img {
-            border: none !important;
-            height: 60% !important;
-        }
-        span {
-            display: block;
-        }
-        span:last-child {
-            color: #9C9C9C;
-            a {
-                color: #9C9C9C;
-            }
-            a:hover {
-                color: var(--pm-primary-button-background-regular);
-            }
-            span {
-                display: inline;
-            }
-            span:after {
-                content: "\2022";
-                padding: 2px;
-            }
-        }
-    }
-</style>
 
 <script>
 export default {
