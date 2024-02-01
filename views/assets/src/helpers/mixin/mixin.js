@@ -1532,6 +1532,26 @@ export default {
             
             return false;
         },
+        showLoomAndFigmaPreview(content, pageName) {
+            var customWidth = ['single-task', 'list-comments', 'single-file', 'single-link', 'single-doc'].includes(pageName) ? '100%' : '50%';
+            var doc = new DOMParser().parseFromString(content, 'text/html');
+            var links = doc.querySelectorAll('a');
+            
+            links.forEach(function(link, index){
+                if (jQuery(links[index]).attr('href') &&  jQuery(links[index]).attr('href').search('loom.com/share') !== -1) {
+                    let embadedLink = jQuery(links[index]).attr('href').replace('share', 'embed');
+
+                    jQuery(links[index]).parent().append('<div><iframe height="300px" width=' + customWidth + ' src=' + embadedLink + '></iframe></div>');
+                } else if (jQuery(links[index]).attr('href') &&  jQuery(links[index]).attr('href').search('figma.com/file') !== -1) {
+                    let figFileLink = jQuery(links[index]).attr('href');
+                    let figEmbededLink = '<div><iframe height="300px" width=' + customWidth + ' src="https://www.figma.com/embed?embed_host=astra&url=' + figFileLink + '"></iframe></div>';
+
+                    jQuery(links[index]).parent().append(figEmbededLink);
+                }
+            });
+
+            return doc.body.innerHTML;
+        }
     }
 };
 
