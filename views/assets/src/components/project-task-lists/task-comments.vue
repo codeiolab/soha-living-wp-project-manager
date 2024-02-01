@@ -48,7 +48,7 @@
 
                         <div v-if="!comment.edit_mode" class="pm-comment-content">
 
-                            <div v-html="showLoomPreview(comment.content)"></div>
+                            <div v-html="showLoomAndFigmaPreview(comment.content)"></div>
                             <ul class="pm-attachments" v-if="comment.files.data.length">
                                 <li v-for="file in comment.files.data" :key="file.id" v-bind:class="{'full-width-for-pdf': isThisPdf( file )}">
                                     <pm-file :file="file" :file_project_id="comment.project_id" />
@@ -248,15 +248,20 @@
                     }
                 });
             },
-            showLoomPreview(content) {
+            showLoomAndFigmaPreview(content) {
                 var doc = new DOMParser().parseFromString(content, 'text/html');
                 var links = doc.querySelectorAll('a');
                 
                 links.forEach(function(link, index){
-                    if (jQuery(links[index]).attr('href') &&  jQuery(links[index]).attr('href').search('loom.com') !== -1) {
+                    if (jQuery(links[index]).attr('href') &&  jQuery(links[index]).attr('href').search('loom.com/share') !== -1) {
                         let embadedLink = jQuery(links[index]).attr('href').replace('share', 'embed');
 
                         jQuery(links[index]).parent().append('<div><iframe height="300px" width="100%" src=' + embadedLink + '></iframe></div>');
+                    } else if (jQuery(links[index]).attr('href') &&  jQuery(links[index]).attr('href').search('figma.com/file') !== -1) {
+                        let figFileLink = jQuery(links[index]).attr('href');
+                        let figEmbededLink = '<div><iframe height="300px" width="100%" src="https://www.figma.com/embed?embed_host=astra&url=' + figFileLink + '"></iframe></div>';
+
+                        jQuery(links[index]).parent().append(figEmbededLink);
                     }
                 });
 
