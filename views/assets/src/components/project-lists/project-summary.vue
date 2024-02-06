@@ -1,10 +1,11 @@
 <template> 
     <!-- project-list-view toggle this class for list view -->
-    <div class="pm-projects-row" :class="{'project-list-view': !activeClass('grid_view') }">
+    <div v-pm-project-sortable class="pm-projects-row" :class="{'project-list-view': !activeClass('grid_view') }">
         <h3 v-if="!projects.length" class="no-projects">{{ __( 'No projects found.', 'wedevs-project-manager' ) }}</h3>
         <div class="pm-project-column" v-for="project in projects" :key="project.id">
 
-            <article class="pm-project-item clearfix">
+            <article class="pm-project-item clearfix" :data-id="project.id" >
+              <span class="pm-project-drag-handle icon-pm-drag-drop"></span>
                 <!-- project item header -->
                 <div class="pm-project-item-header">
                     <h3 class="pm-project-title pm-d-inline pm-pull-left">
@@ -207,6 +208,13 @@ export default {
         pm.Vue.set(project, "showMoreUser", false);
         pm.Vue.set(project, "showDropDownMenu", false);
       });
+
+      var projects = this.$root.$store.state.projects.sort(function(a,b) {
+        return a.meta.order - b.meta.order;
+      });
+
+      this.$store.commit('setProjects', {projects: projects});
+
       return this.$root.$store.state.projects;
     },
     meta() {
@@ -377,6 +385,21 @@ export default {
 </script>
 
 <style lang="less">
+
+.pm-ui-state-highlight {
+  background: none !important;
+  border: 1px dashed #d7dee2 !important;
+  min-height: 50px !important;
+  min-width: 95% !important;
+  margin: 0 0 15px 30px !important;
+}
+.pm-project-item {
+  .icon-pm-drag-drop {
+    cursor: grab;
+    padding: 0 10px 0 0 !important;
+  }
+}
+
 .pm-project-item {
   .dashicons-trash {
     &:before {

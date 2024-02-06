@@ -436,5 +436,21 @@ class Project_Controller {
 		}
 	}
 
+	public function projects_sorting( WP_REST_Request $request ) {
+		$orders = $request->get_param( 'orders' );
 
+		if ( empty( $orders ) ) {
+			return;
+		}
+
+		$orders = array_reverse( $orders );
+
+		foreach ( $orders as $index => $order ) {
+			$project_id        = empty( $order['id'] ) ? '' : intval( $order['id'] );
+
+			pm_update_meta( $project_id, $project_id, 'project', 'order', $order['index'] );
+		}
+
+		wp_send_json_success();
+	}
 }
