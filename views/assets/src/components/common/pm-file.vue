@@ -12,14 +12,28 @@
             <!--<img class="pm-content-img-size" :src="file.thumb" :alt="file.name">-->
             <img class="pm-content-img-size" :src="getAssetUrl('/images/icons/icon-psd.png')" :alt="file.name" :title="file.name">
         </a>
-
-        <a v-else class="pm-colorbox-img" :href="getDownloadUrl(file.attachment_id, projectId)" :title="file.name" target="_blank">
-            <img v-if="file.absoluteUrl" class="pm-content-img-size" :src="file.absoluteUrl" :alt="file.name" :title="file.name">
-            <img v-if="!file.absoluteUrl" class="pm-content-img-size" :src="file.thumb" :alt="file.name" :title="file.name">
-        </a>
+        <template v-else>
+            <div v-if="isPdf" class="comment-pdf-attachment">
+                <!-- <img v-if="file.absoluteUrl" class="pm-content-img-size" :src="file.absoluteUrl" :alt="file.name" :title="file.name"> -->
+                <!-- <img v-if="!file.absoluteUrl" class="pm-content-img-size" :src="file.thumb" :alt="file.name" :title="file.name"> -->
+                <i class="bb-icon-file-pdf bb-icon-l"></i>
+                <div class="comment-pdf-attachment-info">
+                    <span>{{ file.name }}.pdf</span>
+                    <span>
+                        <span>
+                            PDF
+                        </span>
+                        <a :href="getDownloadUrl(file.attachment_id, projectId)" target="_blank"> Download</a>
+                    </span>
+                </div>
+            </div>
+            <a v-else class="pm-colorbox-img" :href="getDownloadUrl(file.attachment_id, projectId)" :title="file.name" target="_blank">
+                <img v-if="file.absoluteUrl" class="pm-content-img-size" :src="file.absoluteUrl" :alt="file.name" :title="file.name">
+                <img v-if="!file.absoluteUrl" class="pm-content-img-size" :src="file.thumb" :alt="file.name" :title="file.name">
+            </a>
+        </template>
     </div>
 </template>
-
 
 <script>
 export default {
@@ -65,6 +79,20 @@ export default {
             if (typeof this.file.mime_type !== 'undefined' ) {
                 psd = this.file.mime_type.split("/");
                 if(psd[1] === "vnd.adobe.photoshop"){
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        },
+
+        isPdf() {
+            var pdf = [];
+            if (typeof this.file.mime_type !== 'undefined' ) {
+                pdf = this.file.mime_type.split("/");
+                if(pdf[1] === "pdf"){
                     return true;
                 } else {
                     return false;

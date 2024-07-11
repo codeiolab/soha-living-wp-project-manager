@@ -76,12 +76,24 @@ class New_Task_List_Transformer extends TransformerAbstract {
         $meta['total_tasks'] = $this->get_total_tasks( $item );
         $meta['total_complete_tasks'] = $this->get_total_complete_tasks( $item );
         $meta['total_incomplete_tasks'] = $this->get_total_incomplete_tasks( $item );
-        $meta['total_comments'] = 0;
+        $meta['total_comments'] = $this->get_total_comments( $item );
         $meta['total_assignees'] = 0;
         $meta['totla_files'] = 0;
 
         return $meta;
     }
+
+	/**
+	 * Get total comment count from $item
+	 *
+	 * @param TaskList $item Item represents a task list object.
+	 * @return int
+	 */
+	private function get_total_comments( $item ) {
+		$total_comments = count( $item->comments );
+
+		return $total_comments ?? 0;
+	}
 
     public function get_total_tasks( $item ) {
         

@@ -102,7 +102,49 @@ var Project = {
                 }
             }
         };
-    }
+    },
+    projectSortable: function(el, binding, vnode) {
+        var $ = jQuery;
+        var component = vnode.context;
+        
+        $(el).sortable({
+            // cancel: '.nonsortable,form',
+            placeholder: "pm-ui-state-highlight",
+            items: '> *',
+            handle: '.pm-project-drag-handle',
+            disabled: !component.is_manager(),
+            
+            update: function(event, ui) {
+                if(ui.sender) {
+                    
+                } else {
+                    let projects  = $(ui.item).closest('div.pm-projects-row').find('article.pm-project-item');
+                    let orders = Project.projectSorting(projects);
+                    
+                    component.projectOrder({
+                        orders: orders
+                    });
+                };
+            }
+        });
+    },
+    projectSorting (projects) {
+        projects = projects || [];
+        var $ = jQuery,
+            orders = [];
+ 
+        // finding new order sequence and old orders
+        projects.each( function(index, e) {
+            let project_id = $(e).data('id');
+            
+            orders.push({
+                index: index,
+                id: project_id
+            });
+        }); 
+
+        return orders;
+    },
 }
 
 
@@ -153,5 +195,10 @@ pm.Vue.directive('pm-user-create-popup-box', {
     }
 });
 
+pm.Vue.directive('pm-project-sortable', {
+    inserted: function (el, binding, vnode) {
+        Project.projectSortable(el, binding, vnode);
+    }
+});
 
 

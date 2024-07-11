@@ -133,7 +133,7 @@
                                 </div>
                             </div>
                             <div class="pm-comment-content">
-                                <div v-html="comment.content"></div>
+                                <div v-html="showLoomAndFigmaPreview(comment.content, 'discussion')"></div>
 
                                 <ul class="pm-attachments" v-if="comment.files.data.length">
                                     <li v-for="file in comment.files.data" :key="file.id">

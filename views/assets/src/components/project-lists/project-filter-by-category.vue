@@ -22,7 +22,15 @@
         },
         computed: {
             categories () {
-                return this.$root.$store.state.categories;
+                var categoriesUnsorted = this.$root.$store.state.categories;
+                var sortedIndexes = Object.keys(categoriesUnsorted).sort((a, b) => {
+                    return categoriesUnsorted[a].title.localeCompare(categoriesUnsorted[b].name);
+                });
+                var categoriesSorted = sortedIndexes.map(function(id) {
+                    return categoriesUnsorted[id];
+                });
+
+                return categoriesSorted;
             }
         },
         methods: {

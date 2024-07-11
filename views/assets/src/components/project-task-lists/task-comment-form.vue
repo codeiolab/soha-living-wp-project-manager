@@ -16,16 +16,22 @@
                 <span v-show="show_spinner" class="pm-spinner"></span>
             </div>
             <div class="comment-action-chunk">
-                <a href="#" v-pm-uploader class="pm-button pm-secondary">
-                    <span class="icon-pm-clip"></span>
-                    {{ __('Attach', 'wedevs-project-manager') }}
-                </a>
+                <div id="comment-action-chunk-attach">
+                    <span>
+                        <a v-pm-uploader  href="#">
+                            <i class="bb-icon-attach bb-icon-l"></i>
+                        </a>
+                    </span>
+                </div>
                 <div class="notify-users">
 
-                    <a href="#" @click.prevent="notifyUserButton()" class="pm-button pm-secondary pm-button-nofity-user">
-                        <span class="icon-pm-single-user"></span>
-                        {{ __('Notify user', 'wedevs-project-manager') }}
-                    </a>
+                    <!-- <a href="#" @click.prevent="notifyUserButton()" class="pm-button pm-secondary pm-button-nofity-user"> -->
+                        <!-- <span class="icon-pm-single-user"></span>
+                        {{ __('Notify user', 'wedevs-project-manager') }} -->
+                        <a href="#" @click.prevent="notifyUserButton()" class="pm-button pm-secondary pm-button-nofity-user">
+                            <i class="bb-icon-user bb-icon-l"></i>
+                    <!-- </a> -->
+                        </a>
 
                     <div  v-if="activeNotifyUsers"  class="pm-multiselect-top pm-multiselect-single-task">
                         <div class="pm-multiselect-content">

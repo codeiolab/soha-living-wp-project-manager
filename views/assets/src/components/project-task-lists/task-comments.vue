@@ -48,9 +48,9 @@
 
                         <div v-if="!comment.edit_mode" class="pm-comment-content">
 
-                            <div v-html="comment.content"></div>
+                            <div v-html="showLoomAndFigmaPreview(comment.content, 'single-task')"></div>
                             <ul class="pm-attachments" v-if="comment.files.data.length">
-                                <li v-for="file in comment.files.data" :key="file.id">
+                                <li v-for="file in comment.files.data" :key="file.id" v-bind:class="{'full-width-for-pdf': isThisPdf( file )}">
                                     <pm-file :file="file" :file_project_id="comment.project_id" />
                                 </li>
                             </ul>
@@ -112,6 +112,9 @@
     .pm-task-comment-thumb {
         height: 80px;
         width: 80px;
+    }
+    .full-width-for-pdf {
+        width: 100% !important;
     }
 </style>
 
@@ -222,8 +225,34 @@
                     }
                 }
                 this.httpRequest(request_data);
-            }
+            },
+            isThisPdf( file ) {
+                var pdf = [];
+                if (typeof file.mime_type !== 'undefined' ) {
+                    pdf = file.mime_type.split("/");
+                    if(pdf[1] === "pdf"){
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            },
+            handleClickOutside(self) {
+                jQuery('body').on('click', function(e) {
+                    var commentContentDiv = jQuery(document).find('.comment-field');
 
-        }
+                    if ( commentContentDiv.has(e.target).length == 0 ) {
+                        self.commentFormMeta.activeNewCommentField = false;
+                    }
+                });
+            },
+        },
+        mounted() {
+            var self = this;
+
+            this.handleClickOutside(self);
+        },
     }
 </script>

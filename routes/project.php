@@ -42,3 +42,5 @@ $router->post( 'projects/{id}/delete', 'WeDevs/PM/Project/Controllers/Project_Co
 // $router->get( 'projects/search', 'WeDevs/PM/Project/Controllers/Project_Controller@project_search' )
 //     ->permission(['WeDevs\PM\Core\Permissions\Authentic']);
 
+$router->post( 'projects/sorting', 'WeDevs/PM/Project/Controllers/Project_Controller@projects_sorting' )
+	->permission( ['WeDevs\PM\Core\Permissions\Project_Create_Capability'] );

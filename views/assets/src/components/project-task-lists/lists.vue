@@ -76,8 +76,8 @@
                                         <div class="list-content">
                                             <div class="list-item-content">
                                                 <div class="before-title">
-                                                    <span v-if="!inboxList.expand" @click.prevent="listExpand(inboxList)" :class="inboxClass(inboxList) + ' icon-pm-down-arrow'"></span>
-                                                    <span v-if="inboxList.expand" @click.prevent="listExpand(inboxList)" :class="inboxClass(inboxList) + ' icon-pm-up-arrow'"></span>
+                                                    <span v-if="!inboxList.expand" @click.prevent="listExpand(inboxList)" :class="inboxClass(inboxList) + ' icon-pm-down-arrow icon-pm-right-arrow-inbox'"></span>
+                                                    <span v-if="inboxList.expand" @click.prevent="listExpand(inboxList)" :class="inboxClass(inboxList) + ' icon-pm-down-arrow'"></span>
                                                 </div>
 
                                                 <div class="list-title">
@@ -94,6 +94,10 @@
                                                     <!-- never remove <div class="pm-progress-percent">{{ getProgressPercent( list ) }}%</div> -->
                                                     <div class="list-title-action task-count">
                                                         <span>{{ inboxList.meta.total_complete_tasks }}</span>/<span>{{ getTotalTask( inboxList.meta.total_complete_tasks, inboxList.meta.total_incomplete_tasks ) }}</span>
+                                                    </div>
+                                                    <div class="list-comment-total" v-if="inboxList.meta.total_comments > 0">
+                                                        <span>{{ inboxList.meta.total_comments }}</span>
+                                                        <i class="bb-icon-comment bb-icon-l"></i>
                                                     </div>
                                                 </div>
                                             </div>
@@ -119,8 +123,8 @@
                                             <div class="list-item-content">
                                                 <div class="before-title">
                                                     <span v-if="!isInbox(list.id)" class="pm-list-drag-handle icon-pm-drag-drop"></span>
-                                                    <span v-if="!list.expand" @click.prevent="listExpand(list)" :class="inboxClass(list) + ' icon-pm-down-arrow'"></span>
-                                                    <span v-if="list.expand" @click.prevent="listExpand(list)" :class="inboxClass(list) + ' icon-pm-up-arrow'"></span>
+                                                    <span v-if="!list.expand" @click.prevent="listExpand(list)" :class="inboxClass(list) + ' icon-pm-down-arrow icon-pm-right-arrow'"></span>
+                                                    <span v-if="list.expand" @click.prevent="listExpand(list)" :class="inboxClass(list) + ' icon-pm-down-arrow'"></span>
                                                 </div>
 
                                                 <div class="list-title">
@@ -143,6 +147,10 @@
                                                     <div v-if="!isInbox(list.id) && PM_Vars.is_pro" class="list-title-action">
                                                         <span  v-if="!parseInt(list.meta.privacy)" class="icon-pm-unlock"></span>
                                                         <span  v-if="parseInt(list.meta.privacy)" class="icon-pm-private"></span>
+                                                    </div>
+                                                    <div class="list-comment-total" v-if="list.meta.total_comments > 0"> 
+                                                        <span>{{ list.meta.total_comments }}</span>
+                                                        <i class="bb-icon-comment bb-icon-l"></i>
                                                     </div>
                                                 </div>
 
@@ -1272,6 +1280,18 @@
                                         font-size: 7px;
                                         font-weight: bold;
                                     }
+                                }
+                                .icon-pm-right-arrow-inbox {
+                                    top: 8px !important;
+                                    transform: rotate(-90deg);
+                                    -webkit-transform: rotate(-90deg);
+                                }
+                                .icon-pm-right-arrow {
+                                    justify-content: center !important;
+                                    transform: rotate(-90deg);
+                                    -webkit-transform: rotate(-90deg);
+                                    margin-left: -12px;
+                                    margin-right: 14px;
                                 }
                             }
 

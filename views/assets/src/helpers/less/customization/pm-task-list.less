@@ -68,6 +68,9 @@
 	}
 	.list-content-body .content .lists-content ul.pm-todolists .task-group {
 		margin-bottom: 0px!important;
+        .title-wrap {
+            width: 375px !important;
+        }
 	}
 	.list-content-body .content .task-field {
 		padding: 20px!important;
@@ -646,6 +649,9 @@
     border: none;
     background: no-repeat;
     padding: 0;
+    .comment-header .pm-avatar {
+        padding-right: 0px !important;
+    }
 }
 .single-task-list-comments .pm-task-comment-wrap .comment-field-content .comment-field .comment-field-text {
     // border: none;
@@ -740,9 +746,36 @@ div.mce-statusbar {
 ul.pm-user-list li {
     margin-bottom: 7px;
 }
-.pm .pm-message-page .pm-message-list ul, .pm .pm-message-page .pm-message-list li {
-    overflow: hidden!important;
+
+.pm .pm-message-page .pm-message-list {
+    .pm-attachment-area-minimal {
+        height: auto !important;
+        .pm-upload-filelist {
+            position: relative !important;
+            top: 0px !important;
+            margin-right: 10px !important;
+        }
+        
+    }
+    .notify-users {
+        display: inline-block !important;
+        .pm-multiselect-top.pm-multiselect-single-task {
+            top: 40px !important;
+            left: 0px !important;
+        }
+        .pm-multiselect-top.pm-multiselect-single-task:before {
+            top: -8px !important;
+            left: 10px !important;
+            right: unset !important;
+            border-color: transparent transparent white transparent !important;
+        }
+        .pm-multiselect-top.pm-multiselect-single-task:after {
+            display: none !important;
+        }
+        
+    }
 }
+
 .pm .pm-message-page .pm-message-list ul {
     border: none!important;
     background: transparent!important;
@@ -1335,9 +1368,40 @@ span.acitivity-action-type{
 .pm-task-comment-wrap .comment-field-content .comment-field-avatar{
     align-self: center;
 }
-form.pm-comment-form-vue.pm-comment-form .message {
-    background: transparent;
-    padding: 0;
+
+form.pm-comment-form-vue.pm-comment-form {
+    .comment-action-chunk {
+        #comment-action-chunk-attach {
+            display: flex !important;
+            align-items: center !important;
+        }
+        div a.pm-button-nofity-user {
+            padding: 0px !important;
+        }
+        div a.pm-button-nofity-user {
+            display: flex !important;
+            align-items: center !important;
+            background: unset !important;
+            color: unset !important;
+            border: unset !important;
+        }
+        div a.pm-button-nofity-user:hover {
+            background: unset !important;
+            color: unset !important;
+            border: unset !important;
+        }
+        div a {
+            color: unset !important;
+        }
+        .notify-users .pm-multiselect-top {
+            right: 0px !important;
+            top: 35px !important;
+        }
+    }
+    .message {
+        background: transparent;
+        padding: 0;
+    }
 }
 
 /*Milestone dropdown*/
@@ -1500,8 +1564,14 @@ form.pm-comment-form-vue.pm-comment-form .message {
 }
 
 .fc-row.fc-week.fc-widget-content .fc-content-skeleton {
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: unset !important;
     padding-bottom: 25px;
+    table tbody td.fc-event-container a {
+        background-color: #F5F5F5 !important;
+        .fc-content .fc-title {
+            color: black !important;
+        }
+    }
 }
 .pm-calendar a {
     padding: 5px;

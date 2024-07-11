@@ -31,6 +31,22 @@ export default {
 
         projectFetchStatus (status) {
         	this.$store.commit( 'projectLists/projectFetchComplete', status );
-        }
+        },
+
+        projectOrder (orders) {
+            var self = this;
+            
+            var request_data = {
+                url: self.base_url + 'pm/v2/projects/sorting',
+                type: 'POST',
+                data: orders,
+                success (res) {
+                },
+                error (res) {
+                }
+            }
+
+            self.httpRequest(request_data);
+        },
 	}
 }
